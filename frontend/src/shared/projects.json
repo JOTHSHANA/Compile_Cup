@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "name": "Blog App",
+    "imageUrls": [
+      "https://example.com/images/blogapp1.png",
+      "https://example.com/images/blogapp2.png"
+    ],
+    "description": "A modern blog application built with Blazor MAUI Hybrid. Supports Google Sign-In, Supabase storage, and MongoDB integration.",
+    "techStack": [".NET MAUI", "Blazor", "Supabase", "MongoDB", "Bootstrap"]
+  },
+  {
+    "id": 2,
+    "name": "Weather App",
+    "imageUrls": [
+      "https://example.com/images/weather1.png",
+      "https://example.com/images/weather2.png"
+    ],
+    "description": "A cross-platform weather app fetching live data from OpenWeatherMap API with support for dark mode and temperature unit toggle.",
+    "techStack": [".NET MAUI", "OpenWeatherMap API", "C#", "Bootstrap"]
+  },
+  {
+    "id": 3,
+    "name": "Music Player",
+    "imageUrls": [
+      "https://example.com/images/musicplayer1.png",
+      "https://example.com/images/musicplayer2.png",
+      "https://example.com/images/musicplayer3.png"
+    ],
+    "description": "A Blazor Hybrid music player app with audio playback, shuffle/repeat, and timeline slider control.",
+    "techStack": [".NET MAUI", "Blazor", "CommunityToolkit.Maui.MediaElement", "Bootstrap"]
+  }
+]

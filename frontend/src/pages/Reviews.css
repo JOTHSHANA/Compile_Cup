@@ -1,0 +1,23 @@
+.reviews-container {
+  background-color: var(--background-secondary); /* make sure CSS variable is defined in global styles */
+  min-height: 100vh;
+  color: white;
+  padding: 2rem;
+}
+
+.reviews-title {
+  color: #53d6f2;
+}
+
+.reviews-link {
+  color: #53d6f2;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.reviews-form {
+  max-width: 600px;
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 12px;
+}

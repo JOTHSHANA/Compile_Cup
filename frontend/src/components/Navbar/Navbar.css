@@ -11,7 +11,7 @@
   backdrop-filter: blur(10px);
   z-index: 1000;
   color: var(--text-primary);
-  /* border-bottom: 1px solid var(--accent-primary); */
+  border-bottom: 1px solid var(--accent-primary);
 }
 
 .navbar-logo a {
@@ -21,7 +21,7 @@
   font-weight: bold;
 }
 
-.navbar-right {
+.navbar-right-desktop {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -44,8 +44,17 @@
   color: var(--accent-primary);
 }
 
-@media (max-width: 768px) {
-  .navbar-links {
+.menu-icon-button {
+  display: none !important; /* Use !important to override MUI styles if needed */
+}
+
+/* Adjust breakpoint as needed */
+@media (max-width: 960px) {
+  .navbar-right-desktop {
     display: none;
+  }
+
+  .menu-icon-button {
+    display: inline-flex !important;
   }
 }

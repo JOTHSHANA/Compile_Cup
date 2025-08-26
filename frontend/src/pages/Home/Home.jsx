@@ -43,7 +43,7 @@ const Home = () => {
         </motion.p>
         <motion.div variants={itemVariants}>
           <Link to="/#projects" className="home-cta-button">Explore Our Work</Link>
-        </motion.div>.
+        </motion.div>
       </motion.div>
     </div>
   );

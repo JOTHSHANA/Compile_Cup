@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import Footer from './components/Footer/Footer';
 import MainLayout from './pages/MainLayout';
-import Reviews from './pages/Reviews';
+import Reviews from './pages/Reviews/Reviews';
 import useHashScroll from './hooks/useHashScroll';
 import { ThemeProvider, ThemeContext } from './context/ThemeContext';
 import './App.css';

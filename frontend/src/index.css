@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap');
+
+:root {
+  --background-primary: #FFFFFF;
+  --background-secondary: #F0F2F5;
+  --text-primary: #0D1137;
+  --text-secondary: #4a4a4a;
+  --accent-primary: #007BFF;
+  --accent-secondary: #E64A19;
+}
+
+[data-theme='dark'] {
+  --background-primary: #0D1137;
+  --background-secondary: #1A1A1A;
+  --text-primary: #F0F2F5;
+  --text-secondary: #a9b3c1;
+  --accent-primary: #53D6F2;
+  --accent-secondary: #FF6B6B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-margin-top: 70px; 
+}

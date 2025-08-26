@@ -1,0 +1,26 @@
+[
+  {
+    "title": "E-Commerce Platform",
+    "description": "A full-featured e-commerce website with a custom CMS, payment gateway integration, and a responsive design that works on all devices.",
+    "techStack": ["React", "Node.js", "MongoDB", "Stripe API"],
+    "image": "/images/project1.png"
+  },
+  {
+    "title": "Mobile Fitness App",
+    "description": "A cross-platform mobile app for tracking workouts, setting goals, and connecting with a community of fitness enthusiasts.",
+    "techStack": ["React Native", "Firebase", "GraphQL"],
+    "image": "/images/project2.png"
+  },
+  {
+    "title": "SaaS Dashboard",
+    "description": "A complex data visualization dashboard for a SaaS product, providing users with real-time analytics and reporting.",
+    "techStack": ["Vue.js", "Python", "PostgreSQL", "D3.js"],
+    "image": "/images/project3.png"
+  },
+  {
+    "title": "Company Portfolio Website",
+    "description": "A modern, animated portfolio website to showcase company projects and services, built with performance and SEO in mind.",
+    "techStack": ["Gatsby", "Contentful", "Netlify"],
+    "image": "/images/project4.png"
+  }
+]

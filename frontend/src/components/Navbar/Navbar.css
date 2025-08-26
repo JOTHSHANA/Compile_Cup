@@ -1,0 +1,60 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background-secondary);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--accent-primary);
+}
+
+.navbar-logo a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-right-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: var(--accent-primary);
+}
+
+.menu-icon-button {
+  display: none !important; /* Use !important to override MUI styles if needed */
+}
+
+/* Adjust breakpoint as needed */
+@media (max-width: 960px) {
+  .navbar-right-desktop {
+    display: none;
+  }
+
+  .menu-icon-button {
+    display: inline-flex !important;
+  }
+}

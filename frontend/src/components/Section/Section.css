@@ -1,0 +1,13 @@
+.section {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section--primary {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.section--secondary {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}

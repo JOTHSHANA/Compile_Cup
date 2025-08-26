@@ -11,13 +11,13 @@ import Contact from './Contact';
 const MainLayout = () => {
   return (
     <div>
-      <Section id="home" backgroundColor="#0D1137"><Home /></Section>
-      <Section id="about" backgroundColor="#1A1A1A"><About /></Section>
-      <Section id="services" backgroundColor="#53D6F2" textColor="#000"><Services /></Section>
-      <Section id="projects" backgroundColor="#FF6B6B"><Projects /></Section>
-      <Section id="developers" backgroundColor="#B9FF39" textColor="#000"><Developers /></Section>
-      <Section id="brochure" backgroundColor="#F0F2F5" textColor="#000"><Brochure /></Section>
-      <Section id="contact" backgroundColor="#0D1137"><Contact /></Section>
+      <Section id="home" variant="primary"><Home /></Section>
+      <Section id="about" variant="secondary"><About /></Section>
+      <Section id="services" variant="primary"><Services /></Section>
+      <Section id="projects" variant="secondary"><Projects /></Section>
+      <Section id="developers" variant="primary"><Developers /></Section>
+      <Section id="brochure" variant="secondary"><Brochure /></Section>
+      <Section id="contact" variant="primary"><Contact /></Section>
     </div>
   );
 };

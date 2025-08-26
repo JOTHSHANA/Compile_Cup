@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import './Section.css';
 
-const Section = ({ children, id, backgroundColor, textColor }) => {
+const Section = ({ children, id, variant = 'primary' }) => {
   return (
     <motion.section
       id={id}
-      style={{ backgroundColor, color: textColor || 'inherit' }}
+      className={`section section--${variant}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

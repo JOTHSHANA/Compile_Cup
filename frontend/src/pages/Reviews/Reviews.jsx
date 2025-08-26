@@ -134,7 +134,7 @@ const Reviews = () => {
       </Form>
 
       <ReviewsList />
-    </div>
+    </div >
   );
 };
 

@@ -1,51 +1,60 @@
-.review-marquee {
+.carousel-container {
   width: 100%;
-  overflow: hidden;
-  position: relative;
-  white-space: nowrap;
-  background: transparent;
-}
-
-.review-track {
+  height: 400px;
   display: flex;
-  gap: 16px;
-  width: max-content;
-  animation: scroll-left 20s linear infinite;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px; /* Establishes the 3D viewing perspective */
+  margin-top: 50px;
 }
 
-.review-marquee:hover .review-track {
-  animation-play-state: paused;
+.carousel {
+  width: 500px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d; /* Key to making children exist in 3D space */
+  transition: transform 0.8s ease-in-out;
 }
 
-.review-card {
-  min-width: 250px;
+.carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #222;
   color: #fff;
   border-radius: 12px;
   padding: 16px;
   cursor: pointer;
-  flex-shrink: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s, opacity 0.5s;
+  backface-visibility: hidden; /* Prevents back of card from being visible */
 }
 
-.review-card:hover {
-  transform: scale(1.05);
+/* Highlight the active card in the front */
+.carousel-card:first-child {
+  transform: rotateY(0deg) translateZ(calc(100% + 200px)); /* Example to highlight first card */
+  opacity: 1;
 }
 
-.review-card h3 {
+.carousel-card:not(:first-child) {
+  opacity: 0.8; /* Dim other cards */
+}
+
+.carousel-card h3 {
   margin: 0 0 8px;
   font-size: 1.2rem;
   color: #40a9ff;
 }
 
-.review-card h4 {
+.carousel-card h4 {
   margin: 0 0 6px;
   font-size: 1rem;
   color: #ddd;
 }
 
-.review-card p {
+.carousel-card p {
   margin: 5px 0;
   line-height: 1.4;
   color: #e0e0e0;
@@ -53,17 +62,44 @@
 
 .line-clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* ✅ fixed */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+
+
+
+.ribbon {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+.ribbon {
+  --f: .5em;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1.8;
+  padding-inline: 1lh;
+  padding-bottom: var(--f);
+  border-image: conic-gradient(#0008 0 0) 51%/var(--f);
+  clip-path: polygon(
+    100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
+  transform: translate(calc((cos(45deg) - 1)*100%), -100%) rotate(-45deg);
+  transform-origin: 100% 100%;
+  background-color: #F07818; /* the main color  */
 }

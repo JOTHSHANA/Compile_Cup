@@ -1,18 +1,11 @@
-.developers-container {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap');
+
+.developers-page-container {
   width: 100%;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.developers-title {
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  color: var(--text-primary);
-}
-
-.profiles-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }

@@ -1,32 +1,45 @@
 import React from 'react';
-import DeveloperProfile from '../../components/DeveloperProfile/DeveloperProfile';
-import person1 from '../../assets/person1.png';
-import person2 from '../../assets/person2.png';
+import DeveloperProfile from './DeveloperProfile';
 import './Developers.css';
+import priyan from '../../assets/priyan.jpg';
+import jo from '../../assets/person1.png';
+
+
 
 const developersData = [
   {
-    name: 'Alex Doe',
-    email: 'alex.doe@compilecup.com',
-    whatsapp: '1234567890',
-    image: person1,
+    id: 1,
+    name: 'PRIYAN',
+    image: priyan,
+    position: 'bottom-left', 
+    socials: {
+      email: 'bpriyan18082004@gmail.com',
+      phone: '9789762908',
+      linkedin: 'https://www.linkedin.com/',
+      instagram: 'https://www.instagram.com/',
+    },
   },
   {
-    name: 'Jane Smith',
-    email: 'jane.smith@compilecup.com',
-    whatsapp: '0987654321',
-    image: person2,
+    id: 2,
+    name: 'JOTHSHANA',
+    image: jo,
+    position: 'top-right', 
+    socials: {
+      email: 'jane.smith@example.com',
+      phone: '0987654321',
+      linkedin: 'https://www.linkedin.com/',
+      instagram: 'https://www.instagram.com/',
+    },
   },
 ];
 
+
 const Developers = () => {
   return (
-    <div className="developers-container">
-      <h1 className="developers-title">Meet the Team</h1>
-      <div className="profiles-wrapper">
-        <DeveloperProfile developer={developersData[0]} imagePosition="left" />
-        <DeveloperProfile developer={developersData[1]} imagePosition="right" />
-      </div>
+    <div className="developers-page-container">
+      {developersData.map((dev) => (
+        <DeveloperProfile key={dev.id} developer={dev} />
+      ))}
     </div>
   );
 };

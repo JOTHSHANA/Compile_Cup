@@ -21,7 +21,7 @@ const AppContent = () => {
 
   return (
     <>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <ToastMessage />
       <Navbar />
       <main>

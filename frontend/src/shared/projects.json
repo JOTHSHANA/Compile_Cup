@@ -7,7 +7,13 @@
       "https://example.com/images/blogapp2.png"
     ],
     "description": "A modern blog application built with Blazor MAUI Hybrid. Supports Google Sign-In, Supabase storage, and MongoDB integration.",
-    "techStack": [".NET MAUI", "Blazor", "Supabase", "MongoDB", "Bootstrap"]
+    "techStack": [
+      ".NET MAUI",
+      "Blazor",
+      "Supabase",
+      "MongoDB",
+      "Bootstrap"
+    ]
   },
   {
     "id": 2,
@@ -17,7 +23,12 @@
       "https://example.com/images/weather2.png"
     ],
     "description": "A cross-platform weather app fetching live data from OpenWeatherMap API with support for dark mode and temperature unit toggle.",
-    "techStack": [".NET MAUI", "OpenWeatherMap API", "C#", "Bootstrap"]
+    "techStack": [
+      ".NET MAUI",
+      "OpenWeatherMap API",
+      "C#",
+      "Bootstrap"
+    ]
   },
   {
     "id": 3,
@@ -28,6 +39,75 @@
       "https://example.com/images/musicplayer3.png"
     ],
     "description": "A Blazor Hybrid music player app with audio playback, shuffle/repeat, and timeline slider control.",
-    "techStack": [".NET MAUI", "Blazor", "CommunityToolkit.Maui.MediaElement", "Bootstrap"]
+    "techStack": [
+      ".NET MAUI",
+      "Blazor",
+      "CommunityToolkit.Maui.MediaElement",
+      "Bootstrap"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "E-commerce Storefront",
+    "imageUrls": [
+      "https://example.com/images/ecom1.png",
+      "https://example.com/images/ecom2.png",
+      "https://example.com/images/ecom3.png"
+    ],
+    "description": "A mobile-first e-commerce app with product listings, a shopping cart, and a secure checkout process powered by Stripe.",
+    "techStack": [
+      "React Native",
+      "Firebase",
+      "Stripe API",
+      "Redux",
+      "Styled Components"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Task Management App",
+    "imageUrls": [
+      "https://example.com/images/taskapp1.png",
+      "https://example.com/images/taskapp2.png"
+    ],
+    "description": "A collaborative task manager with drag-and-drop boards, due date reminders, and real-time updates using SignalR.",
+    "techStack": [
+      "ASP.NET Core",
+      "Angular",
+      "SignalR",
+      "SQL Server",
+      "Material UI"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Recipe Finder",
+    "imageUrls": [
+      "https://example.com/images/recipe1.png",
+      "https://example.com/images/recipe2.png"
+    ],
+    "description": "An application that allows users to search for recipes by ingredients, view nutritional information, and save their favorites.",
+    "techStack": [
+      "Vue.js",
+      "Edamam API",
+      "Vuex",
+      "Tailwind CSS",
+      "Axios"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Portfolio Website",
+    "imageUrls": [
+      "https://example.com/images/portfolio1.png"
+    ],
+    "description": "A personal portfolio website built with Next.js for server-side rendering, featuring a contact form and animated page transitions.",
+    "techStack": [
+      "Next.js",
+      "React",
+      "Framer Motion",
+      "Nodemailer",
+      "Vercel"
+    ]
   }
 ]

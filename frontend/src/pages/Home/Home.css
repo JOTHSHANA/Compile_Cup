@@ -16,9 +16,54 @@
 
 .home-title {
   font-size: 4rem;
-  color: var(--accent-primary);
   margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  text-transform: uppercase;
 }
+
+/* --- Animated Hover Effect --- */
+.animated-title span:nth-child(1) {
+  position: absolute;
+  top: 0; left: 0; color: var(--accent-primary);
+  transition: 0.5s;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  overflow: hidden;
+}
+.animated-title:hover span:nth-child(1) {
+  transform: translateY(-18px);
+}
+
+.animated-title span:nth-child(2) {
+  position: absolute;
+  top: 0; left: 0; color: var(--accent-primary);
+  transition: 0.5s;
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  overflow: hidden;
+}
+.animated-title:hover span:nth-child(2) {
+  transform: translateY(18px);
+}
+
+.animated-title span:nth-child(3) {
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translateY(-50%) scaleY(0);
+  width: 100%; color: var(--accent-primary);
+  background: black;
+  font-size: 0.25em;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-align: center;
+  padding-left: 20px;
+  margin-left: 5px;
+  transition: 0.5s;
+}
+.animated-title:hover span:nth-child(3) {
+  transform: translateY(-50%) scaleY(1);
+}
+/* --- End Animation --- */
 
 .home-tagline {
   font-size: 2rem;

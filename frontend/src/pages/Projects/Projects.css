@@ -1,127 +1,89 @@
-.projects-container {
-  width: 100%;
-  padding: 4rem 2rem;
-  text-align: center;
+/* Add this to center the book on the page */
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e0e0e0;
 }
 
-.projects-title {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  color: var(--text-primary);
+:root {
+  --text-secondary: #333; /* Darker text for better readability */
 }
 
-.book-container {
+/* Base style for all pages */
+.page {
+  background: linear-gradient(145deg, #fdfbfb 0%, #ebedee 100%);
+  border: 1px solid #ccc;
+  color: var(--text-secondary);
+  /* The static shadow gives pages a "lifted" 3D look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.project-book .page {
-  background-color: var(--background-secondary);
-  border: 1px solid var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.project-book .page-content {
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  box-sizing: border-box; /* Ensures padding is included in the dimensions */
+  text-align: center;
 }
 
-.book-cover, .book-end-cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background-color: var(--background-primary);
+/* Specific styling for the cover page */
+.page.cover {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  font-weight: bold;
 }
 
-.book-cover h2, .book-end-cover h2 {
+.page.cover h1 {
   font-size: 2.5rem;
-  color: var(--accent-primary);
+  margin-bottom: 10px;
 }
 
-.project-page-left {
-  width: 100%;
-  height: 50%;
-}
-
-.project-page-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-page-right {
-  width: 100%;
-  height: 50%;
-  padding: 1rem;
-  text-align: left;
-}
-
-.project-page-right h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.project-page-right .tech-stack {
-  margin-top: 1rem;
-}
-
-.tech-badge {
-  display: inline-block;
-  background-color: var(--accent-primary);
-  color: var(--background-primary);
-  padding: 0.3rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.page-number {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
-.navigation-controls {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.navigation-controls button {
-  background: none;
-  border: 1px solid var(--text-primary);
-  color: var(--text-primary);
-  cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navigation-controls button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.projects-note {
-  margin-top: 2rem;
-  color: var(--text-secondary);
+.page.cover p {
   font-style: italic;
+  font-size: 1rem;
+}
+
+/* Container for project details on each page */
+.project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Increased gap for better spacing */
+  width: 100%;
+  padding: 0 10px;
+}
+
+.project-container h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.project-container p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.tech-tag {
+  background-color: #16a085; /* Teal color */
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }

@@ -36,8 +36,17 @@ const Home = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 variants={itemVariants} className="home-title">Compile cup</motion.h1>
-        <motion.p variants={itemVariants} className="home-tagline">Your Vision, Deployed.</motion.p>
+        {/* Animated Compile Cup Text */}
+        <motion.h1 variants={itemVariants} className="home-title animated-title">
+          Compile Cup
+          <span>Compile Cup</span>
+          <span>Compile Cup</span>
+          <span>Empowering Ideas</span>
+        </motion.h1>
+
+        <motion.p variants={itemVariants} className="home-tagline">
+          Your Vision, Deployed.
+        </motion.p>
         <motion.p variants={itemVariants} className="home-subtitle">
           We build and deploy web & mobile applications with lifetime service, fast delivery, and affordable pricing.
         </motion.p>

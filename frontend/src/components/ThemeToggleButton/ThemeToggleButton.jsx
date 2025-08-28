@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
+import { SunOutlined, MoonOutlined } from '@ant-design/icons';
 import './ThemeToggleButton.css';
 
 const ThemeToggleButton = () => {
@@ -7,7 +8,11 @@ const ThemeToggleButton = () => {
 
   return (
     <button onClick={toggleTheme} className="theme-toggle-button">
-      {theme === 'light' ? 'Dark' : 'Light'} Mode
+      {theme === 'light' ? (
+        <MoonOutlined style={{ fontSize: '22px' }} />
+      ) : (
+        <SunOutlined style={{ fontSize: '22px' }} />
+      )}
     </button>
   );
 };

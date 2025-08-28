@@ -9,7 +9,7 @@ const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
   const [selectedReview, setSelectedReview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [rotation, setRotation] = useState(0); // State to control carousel rotation
+  const [rotation, setRotation] = useState(0); 
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -44,8 +44,6 @@ const ReviewList = () => {
     }
   };
 
-  // Calculate the Z-translation based on the number of cards
-  // This value creates the circle
   const cardCount = reviews.length;
   const cardZTranslate = cardCount > 0 ? (200 / Math.tan(Math.PI / cardCount)) : 0;
 

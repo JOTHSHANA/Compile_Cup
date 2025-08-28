@@ -3,9 +3,17 @@
 .developers-page-container {
   width: 100%;
   min-height: 100vh;
-  background-color: #121212;
+  background-color: var(--background-primary);
   color: #ffffff;
-  position: relative;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .developers-page-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

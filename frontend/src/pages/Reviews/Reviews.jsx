@@ -58,7 +58,7 @@ const Reviews = () => {
 
       showSuccess("Review submitted successfully!");
       form.resetFields();
-      setIsModalOpen(false); // Close the modal
+      setIsModalOpen(false); 
     } catch (err) {
       console.error("Unexpected error:", err);
       showError("Something went wrong!");

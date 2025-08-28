@@ -57,7 +57,6 @@ body {
   color: #8cc3ff;
 }
 
-/* Modal styles for the form */
 .ant-modal-content {
   background-color: #1a1a1a;
   color: var(--text-secondary);

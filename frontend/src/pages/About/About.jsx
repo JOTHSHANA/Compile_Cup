@@ -9,6 +9,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import aboutImage from '../../assets/about.png';
+import DraggableWrapper from '../../components/Drag/DraggableWrapper';
 import './About.css';
 
 const timelineItems = [

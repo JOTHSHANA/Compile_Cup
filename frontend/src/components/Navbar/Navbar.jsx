@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/#home">Compile cup</Link>
+        <Link to="/#home">COMPILE CUP</Link>
       </div>
       <div className="navbar-right-desktop">
         <ul className="navbar-links">

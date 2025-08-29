@@ -1,6 +1,4 @@
 body {
-  background-color: #000;
-  color: white;
   font-family: 'Arial', sans-serif;
 }
 
@@ -13,7 +11,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
 .reviews-header {
@@ -28,16 +25,12 @@ body {
 .reviews-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--text-secondary);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   margin: 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .add-review-button {
   border-radius: 10px;
-  border: 1px solid #40a9ff;
-  color: #40a9ff;
-  background-color: transparent;
   padding: 20px 16px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -46,7 +39,6 @@ body {
 .reviews-link {
   display: inline-block;
   margin-bottom: 30px;
-  color: #40a9ff;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s;
@@ -54,45 +46,33 @@ body {
 
 .reviews-link:hover {
   text-decoration: underline;
-  color: #8cc3ff;
 }
 
 .ant-modal-content {
-  background-color: #1a1a1a;
-  color: var(--text-secondary);
+  border-radius: 8px;
 }
 
 .ant-modal-header {
-  background-color: #1a1a1a;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid;
 }
 
 .ant-modal-title {
-  color: var(--text-secondary);
   font-size: 1.5rem;
 }
 
 .ant-form-item-label > label {
-  color: var(--text-secondary) !important;
+  font-weight: 500;
 }
 
-.ant-input, .ant-select-selector, .ant-input-affix-wrapper {
-  background-color: #2a2a2a !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid #444 !important;
+.ant-input,
+.ant-select-selector,
+.ant-input-affix-wrapper {
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.ant-input:focus, .ant-select-selector:focus, .ant-input-affix-wrapper:focus {
-  box-shadow: 0 0 0 2px rgba(64, 169, 255, 0.2) !important;
-  border-color: #40a9ff !important;
-}
-
-.ant-btn-primary {
-  background-color: #40a9ff !important;
-  border-color: #40a9ff !important;
-}
-
-.ant-btn-primary:hover {
-  background-color: #1890ff !important;
-  border-color: #1890ff !important;
+.ant-input:focus,
+.ant-select-selector:focus,
+.ant-input-affix-wrapper:focus {
+  box-shadow: 0 0 0 2px var(--ant-color-primary-hover);
 }

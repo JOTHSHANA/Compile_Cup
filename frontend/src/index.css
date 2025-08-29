@@ -68,7 +68,7 @@ section {
   mix-blend-mode: normal;
   
   clip-path: circle(0% at 100% 0);
-  animation: reveal 0.5s ease-in-out forwards;
+  animation: reveal 0.8s ease-in-out forwards;
 }
 
 @keyframes reveal {

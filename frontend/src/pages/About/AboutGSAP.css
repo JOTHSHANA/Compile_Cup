@@ -1,0 +1,120 @@
+.aboutgsap-wrapper {
+  width: 100%;
+  padding: 80px 24px; /* vertical spacing */
+  background: none;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* inner flex layout: left image + right horizontal scroller */
+.aboutgsap-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+}
+
+/* LEFT column: the image */
+.aboutgsap-left {
+  flex: 0 0 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutgsap-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+}
+
+/* HORIZONTAL track that will be translated by GSAP */
+.aboutgsap-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  align-items: stretch;
+  flex: 1 1 auto;
+  /* ensure full height panels on desktop */
+  min-height: 340px;
+}
+
+/* Each panel is a "slide" in the horizontal scroller */
+.aboutgsap-panel {
+  flex: 0 0 420px; /* width of each panel on desktop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* allow panels to breathe */
+}
+
+/* card inside panel (MUI Paper) */
+.aboutgsap-card {
+  width: 100%;
+  padding: 24px;
+  border-radius: var(--card-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,251,0.96));
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  color: var(--text-primary);
+}
+
+/* make text readable & responsive */
+.aboutgsap-card h3 {
+  margin: 0 0 6px 0;
+}
+.aboutgsap-card p {
+  margin: 0;
+}
+
+/* MOBILE: stacked layout */
+@media screen and (max-width: 767px) {
+  .aboutgsap-inner {
+    display: block;
+    padding: 0;
+  }
+
+  .aboutgsap-left {
+    width: 100%;
+    padding: 0 16px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .aboutgsap-horizontal {
+    display: block;
+    gap: 14px;
+    min-height: auto;
+    padding: 0 16px;
+  }
+
+  .aboutgsap-panel {
+    width: 100%;
+    flex: none;
+    margin-bottom: 14px;
+  }
+
+  .aboutgsap-card {
+    padding: 18px;
+  }
+}
+
+/* small polish for keyboard/focus */
+.aboutgsap-card:focus,
+.aboutgsap-card:focus-within {
+  outline: 3px solid rgba(136,189,242,0.18);
+}
+
+/* Keep everything accessible */
+@media (prefers-reduced-motion: reduce) {
+  .aboutgsap-horizontal,
+  .aboutgsap-card {
+    transition: none !important;
+    animation: none !important;
+  }
+}

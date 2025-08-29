@@ -13,6 +13,7 @@
   align-items: flex-start;
   animation: slideInFromLeft 1s 0.2s ease-out forwards;
 }
+
 .developer-card.top-right {
   top: -10vh;
   right: -15vw;
@@ -20,11 +21,13 @@
   align-items: flex-end;
   animation: slideInFromRight 1s 0.2s ease-out forwards;
 }
+
 .image-container {
   width: 100%;
   height: 100%;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .developer-image {
   width: 100%;
   height: 100%;
@@ -33,7 +36,6 @@
   filter: grayscale(100%);
   opacity: 0.6;
   transition: all 0.5s ease;
-  /* -webkit-mask-image: url('../../assets/paper.webp'); */
   mask-image: url('../../assets/paper.webp');
   -webkit-mask-size: contain;
   mask-size: contain;
@@ -52,25 +54,30 @@
 .developer-card:hover .image-container {
   transform: scale(1.05);
 }
+
 .developer-info {
   position: absolute;
   z-index: 2;
   padding: 4rem;
   pointer-events: none;
 }
+
 .social-links {
-    pointer-events: auto;
+  pointer-events: auto;
 }
+
 .bottom-left .developer-info {
   top: 5%;
   right: 5%;
   text-align: right;
 }
+
 .top-right .developer-info {
   bottom: 5%;
   left: 5%;
   text-align: left;
 }
+
 .developer-name {
   font-size: clamp(3rem, 6vw, 7rem);
   font-weight: 900;
@@ -84,20 +91,21 @@
 
 .social-links {
   position: absolute;
-  top: 50%; 
-  left: 25px; 
-  transform: translateY(-50%); 
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
 }
+
 .social-links menu {
   list-style: none;
   padding: 0;
   margin: 0;
   position: relative;
-  width: 3em; 
+  width: 3em;
   height: 3em;
   display: flex;
   justify-content: center;
@@ -107,7 +115,7 @@
 .social-links li {
   position: absolute;
   opacity: 0;
-  transform: translateY(10px) scale(0.5); 
+  transform: translateY(10px) scale(0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,11 +135,11 @@
 
 .developer-card:hover .social-links li {
   opacity: 1;
-  transform: scale(1); 
+  transform: scale(1);
 }
 
 .developer-card:hover .social-links a:nth-child(1) li {
-  transform: translate(-2em, -3.5em); 
+  transform: translate(-2em, -3.5em);
   transition-delay: 0s;
 }
 .social-links a:nth-child(1) li svg {
@@ -139,19 +147,19 @@
 }
 
 .developer-card:hover .social-links a:nth-child(2) li {
-  transform: translate(-4em, -1.5em); /* More left, less up */
+  transform: translate(-4em, -1.5em);
   transition-delay: .1s;
 }
 .social-links a:nth-child(2) li svg {
-  fill: #4caf50; 
+  fill: #4caf50;
 }
 
 .developer-card:hover .social-links a:nth-child(3) li {
-  transform: translate(-4em, 1.5em); 
+  transform: translate(-4em, 1.5em);
   transition-delay: .2s;
 }
 .social-links a:nth-child(3) li svg {
-  fill: #0077b5; 
+  fill: #0077b5;
 }
 
 .developer-card:hover .social-links a:nth-child(4) li {
@@ -161,113 +169,13 @@
 .social-links a:nth-child(4) li svg {
   fill: #E1306C;
 }
+
 @keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 @keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-
-/* media query */
-@media (max-width: 1024px) {
-  .developer-card {
-    width: 90vw;
-    height: 70vh;
-  }
-
-  .developer-name {
-    font-size: clamp(2rem, 5vw, 4rem);
-  }
-
-  .developer-info {
-    padding: 2rem;
-  }
-
-  .social-links {
-    font-size: 18px;
-    left: 15px;
-  }
-}
-
-/* Mobile View */
-@media (max-width: 768px) {
-  .developer-card {
-    position: relative;
-    width: 100vw;
-    height: auto;
-    flex-direction: column;
-    opacity: 1; /* ensure visible */
-    animation: none; /* disable slide animation */
-  }
-
-  .image-container {
-    width: 100%;
-    height: auto;
-  }
-
-  .developer-image {
-    height: 300px; 
-    object-fit: cover;
-    mask-image: none; 
-    -webkit-mask-image: none;
-  }
-
-  .developer-info {
-    position: relative;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .developer-name {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .social-links {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .social-links menu {
-    width: auto;
-    height: auto;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .social-links li {
-    position: relative;
-    opacity: 1;
-    transform: none;
-    background: white;
-    width: 2.5em;
-    height: 2.5em;
-  }
-
-  .developer-card:hover .social-links li {
-    transform: none;
-    opacity: 1;
-  }
-}

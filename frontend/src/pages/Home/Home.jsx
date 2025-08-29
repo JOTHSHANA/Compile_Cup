@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import DraggableWrapper from '../../components/Drag/DraggableWrapper';
 import './Home.css';
 
 const containerVariants = {
@@ -19,6 +20,7 @@ const itemVariants = {
 const Home = () => {
   return (
     <div className="home-container">
+      <DraggableWrapper>
       <motion.div
         className="background-shapes"
         initial={{ opacity: 0 }}
@@ -30,28 +32,29 @@ const Home = () => {
         <div className="shape shape3"></div>
         <div className="shape shape4"></div>
       </motion.div>
+</DraggableWrapper>
       <motion.div
         className="home-content"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Animated Compile Cup Text */}
-        <motion.h1 variants={itemVariants} className="home-title animated-title">
-          Compile Cup
-          <span>Compile Cup</span>
-          <span>Compile Cup</span>
-          <span>Empowering Ideas</span>
-        </motion.h1>
+        <motion.h1 variants={itemVariants} className="home-title animated-title"> Compile Cup <span>Compile Cup</span> <span>Compile Cup</span> <span>Empowering Ideas</span> </motion.h1>
 
         <motion.p variants={itemVariants} className="home-tagline">
-          Your Vision, Deployed.
+          <DraggableWrapper>Your Vision, Deployed.</DraggableWrapper>
         </motion.p>
+
         <motion.p variants={itemVariants} className="home-subtitle">
-          We build and deploy web & mobile applications with lifetime service, fast delivery, and affordable pricing.
+          <DraggableWrapper>We build and deploy web & mobile applications with lifetime service, fast delivery, and affordable pricing.</DraggableWrapper>
         </motion.p>
+
         <motion.div variants={itemVariants}>
-          <Link to="/#projects" className="home-cta-button">Explore Our Work</Link>
+          <DraggableWrapper>
+            <Link to="/#projects" className="home-cta-button">
+              Explore Our Work
+            </Link>
+          </DraggableWrapper>
         </motion.div>
       </motion.div>
     </div>

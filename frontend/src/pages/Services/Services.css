@@ -5,7 +5,7 @@
 }
 
 .services-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--text-primary);
 }
@@ -73,7 +73,7 @@
 }
 
 .service-card-back h4 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 

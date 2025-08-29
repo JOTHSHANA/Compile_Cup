@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import WebIcon from '@mui/icons-material/Web';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import StorageIcon from '@mui/icons-material/Storage';
-import DraggableWrapper from '../../components/Drag/DraggableWrapper';
 import './Services.css';
 
 const servicesData = [
@@ -13,63 +11,82 @@ const servicesData = [
     title: 'Web Applications',
     icon: <WebIcon />,
     description: 'Modern, responsive, and feature-rich web applications tailored to your business needs.',
-    techStack: ['React', 'Node.js','.NET','Blazor', 'Python', 'Django'],
+    techStack: ['React', 'Node.js', '.NET', 'Blazor', 'Python', 'Django'],
+    cardLetter: 'A'
   },
   {
     title: 'Mobile Applications',
     icon: <PhoneIphoneIcon />,
     description: 'Cross-platform mobile apps for iOS and Android with a focus on performance and user experience.',
-    techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin','Maui'],
+    techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Maui'],
+    cardLetter: 'B'
   },
   {
     title: 'Deployment & DevOps',
     icon: <CloudQueueIcon />,
     description: 'Efficient and scalable deployment pipelines to get your application to market quickly and reliably.',
     techStack: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
+    cardLetter: 'C'
   },
   {
     title: 'Lifetime Service & Support',
     icon: <StorageIcon />,
     description: 'We provide continuous support and maintenance to ensure your application remains up-to-date and secure.',
     techStack: ['Monitoring', 'Backups', 'Security', 'Updates'],
+    cardLetter: 'D'
   },
 ];
 
 const Services = () => {
-  return (
-    <div className="services-container">
-      <h1 className="services-title">Our Services</h1>
-      <div className="services-grid">
-        {servicesData.map((service, index) => (
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalServices = servicesData.length;
 
-          <DraggableWrapper>
-            <motion.div
-              key={index}
-              className="service-card"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="service-card-inner">
-                <div className="service-card-front">
-                  <div className="service-icon">{service.icon}</div>
-                  <h3>{service.title}</h3>
-                </div>
-                <div className="service-card-back">
-                  <h4>{service.title}</h4>
-                  <p>{service.description}</p>
-                  <div className="tech-stack">
-                    {service.techStack.map((tech, i) => (
-                      <span key={i} className="tech-badge">{tech}</span>
-                    ))}
-                  </div>
-                </div>
+  const handleNavClick = (increment) => {
+    setActiveIndex((prevIndex) => (prevIndex + increment + totalServices) % totalServices);
+    console.log(`New Index: ${(activeIndex + increment + totalServices) % totalServices}`); // For browser console debugging
+  };
+
+  return (
+    <div className="services-page-container">
+      <h1 className="services-main-title">Our Services</h1>
+      
+      {/* Debugger to show the current active index */}
+      <p className="debug-index-display">Current Active Index: {activeIndex}</p>
+
+      <section 
+        className="services-carousel" 
+        style={{ '--n': totalServices, '--k': activeIndex }}
+      >
+        {servicesData.map((service, index) => (
+          <article 
+            key={index} 
+            className="service-article" 
+            style={{ '--i': index, '--a': `${(Math.random() * 20 - 10).toFixed(2)}deg` }}
+          >
+            <div className="service-icon-card">
+              <span className="card-debug-letter">{service.cardLetter}</span>
+              <div className="icon-container">{service.icon}</div>
+            </div>
+
+            <div className="service-content">
+              <h2>{service.title}</h2>
+              <p>{service.description}</p>
+              <div className="tech-stack">
+                {service.techStack.map((tech, i) => (
+                  <span key={i} className="tech-badge">{tech}</span>
+                ))}
               </div>
-            </motion.div>
-          </DraggableWrapper>
+            </div>
+          </article>
         ))}
-      </div>
+
+        <div className="service-nav">
+          <button aria-label="previous" onClick={() => handleNavClick(-1)}></button>
+          <button aria-label="next" onClick={() => handleNavClick(1)}></button>
+        </div>
+      </section>
+      
+
       <p className="services-note">Charges may vary according to the complexity of the client's requirements.</p>
       <Link to="/#contact" className="contact-button">Contact Us</Link>
     </div>

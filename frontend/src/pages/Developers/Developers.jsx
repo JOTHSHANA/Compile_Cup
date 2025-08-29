@@ -10,7 +10,7 @@ const developersData = [
     id: 1,
     name: 'PRIYAN',
     image: priyan,
-    position: 'bottom-left', // This class will control the layout
+    position: 'bottom-left', 
     socials: {
       email: 'bpriyan18082004@gmail.com',
       phone: '9789762908',
@@ -22,7 +22,7 @@ const developersData = [
     id: 2,
     name: 'JOTHSHANA',
     image: jo,
-    position: 'top-right', // This class will control the layout
+    position: 'top-right',
     socials: {
       email: 'jothshana123@gmail.com',
       phone: '7306176900',

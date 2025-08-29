@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import "antd/dist/reset.css";
 import Navbar from "./components/Navbar/Navbar";
 import CustomCursor from "./components/CustomCursor/CustomCursor";
 import Footer from "./components/Footer/Footer";
@@ -21,7 +22,7 @@ const AppContent = () => {
 
   return (
     <>
-      {/* <CustomCursor /> */}
+      <CustomCursor />
       <ToastMessage />
       <Navbar />
       <main>

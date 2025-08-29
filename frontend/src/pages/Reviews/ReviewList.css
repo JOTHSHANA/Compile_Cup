@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px; /* Establishes the 3D viewing perspective */
+  perspective: 1000px; 
   margin-top: 50px;
 }
 
@@ -12,7 +12,7 @@
   width: 500px;
   height: 200px;
   position: relative;
-  transform-style: preserve-3d; /* Key to making children exist in 3D space */
+  transform-style: preserve-3d; 
   transition: transform 0.8s ease-in-out;
 }
 
@@ -29,17 +29,16 @@
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.5s, opacity 0.5s;
-  backface-visibility: hidden; /* Prevents back of card from being visible */
+  backface-visibility: hidden; 
 }
 
-/* Highlight the active card in the front */
 .carousel-card:first-child {
-  transform: rotateY(0deg) translateZ(calc(100% + 200px)); /* Example to highlight first card */
+  transform: rotateY(0deg) translateZ(calc(100% + 200px)); 
   opacity: 1;
 }
 
 .carousel-card:not(:first-child) {
-  opacity: 0.8; /* Dim other cards */
+  opacity: 0.8; 
 }
 
 .carousel-card h3 {
@@ -99,5 +98,5 @@
     100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
   transform: translate(calc((cos(45deg) - 1)*100%), -100%) rotate(-45deg);
   transform-origin: 100% 100%;
-  background-color: #F07818; /* the main color  */
+  background-color: #F07818;
 }

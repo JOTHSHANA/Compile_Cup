@@ -3,17 +3,9 @@
 .developers-page-container {
   width: 100%;
   min-height: 100vh;
+  display: flex;
   background-color: var(--background-primary);
   color: #ffffff;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
-}
-
-@media (max-width: 768px) {
-  .developers-page-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2rem;
-  }
 }

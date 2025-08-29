@@ -42,7 +42,6 @@ const Services = () => {
       <div className="services-grid">
         {servicesData.map((service, index) => (
 
-          <DraggableWrapper>
             <motion.div
               key={index}
               className="service-card"
@@ -67,7 +66,6 @@ const Services = () => {
                 </div>
               </div>
             </motion.div>
-          </DraggableWrapper>
         ))}
       </div>
       <p className="services-note">Charges may vary according to the complexity of the client's requirements.</p>

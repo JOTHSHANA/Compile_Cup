@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ConfigProvider, theme as antdTheme } from "antd";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "./ThemeContext";
 
 const AntdThemeContext = ({ children }) => {
   const { theme } = useContext(ThemeContext);
@@ -14,7 +14,7 @@ const AntdThemeContext = ({ children }) => {
             : antdTheme.defaultAlgorithm,
       }}
     >
-      <div data-theme={theme}>{children}</div>
+      {children}
     </ConfigProvider>
   );
 };

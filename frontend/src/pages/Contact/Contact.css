@@ -63,3 +63,17 @@
   object-fit: cover;
   border-radius: 5px; 
 }
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-item {
+  flex: 1; /* make them equal width */
+}
+
+/* Disable textarea resize */
+.no-resize {
+  resize: none !important;
+}

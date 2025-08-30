@@ -55,47 +55,54 @@ const Contact = () => {
           <h1 className="contact-title">Contact Us</h1>
 
           <Form
-            form={form}
-            layout="vertical"
-            onFinish={onFinish}
-            className="contact-form"
-          >
-            <Form.Item
-              label="Name"
-              name="name"
-              rules={[{ message: "Please enter your name!" }]}
-            >
-              <Input placeholder="Enter your name" />
-            </Form.Item>
+  form={form}
+  layout="vertical"
+  onFinish={onFinish}
+  className="contact-form"
+>
+  {/* Name + Email row */}
+  <div className="form-row">
+    <Form.Item
+      label="Name"
+      name="name"
+      rules={[{ required: true, message: "Please enter your name!" }]}
+      className="form-item"
+    >
+      <Input placeholder="Enter your name" />
+    </Form.Item>
 
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                { message: "Please enter your email!" },
-                { type: "email", message: "Please enter a valid email!" },
-              ]}
-            >
-              <Input placeholder="Enter your email" />
-            </Form.Item>
+    <Form.Item
+      label="Email"
+      name="email"
+      rules={[
+        { required: true, message: "Please enter your email!" },
+        { type: "email", message: "Please enter a valid email!" },
+      ]}
+      className="form-item"
+    >
+      <Input placeholder="Enter your email" />
+    </Form.Item>
+  </div>
 
-            <Form.Item
-              label="Message"
-              name="message"
-              rules={[{ message: "Please enter your message!" }]}
-            >
-              <TextArea
-                rows={5}
-                placeholder="Write your message here..."
-              />
-            </Form.Item>
+  {/* Message field */}
+  <Form.Item
+    label="Message"
+    name="message"
+    rules={[{ required: true, message: "Please enter your message!" }]}
+  >
+    <TextArea
+      rows={5}
+      placeholder="Write your message here..."
+      className="no-resize"
+    />
+  </Form.Item>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit" className="submit-btn">
-                Send Message
-              </Button>
-            </Form.Item>
-          </Form>
+  <Form.Item>
+    <Button type="primary" htmlType="submit" className="submit-btn">
+      Send Message
+    </Button>
+  </Form.Item>
+</Form>
 
         </div>
       </div>

@@ -1,110 +1,59 @@
-import React, { useState } from 'react';
+import React from "react";
 import {
-  PhoneOutlined,
   MailOutlined,
+  PhoneOutlined,
   LinkedinOutlined,
   InstagramOutlined,
-  WhatsAppOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
-const Toast = ({ message, isVisible }) => {
-  if (!isVisible) return null;
-  return <div className="toast-notification">{message}</div>;
-};
+import paper from "../../assets/bg.png";
 
 const DeveloperProfile = ({ developer }) => {
-  const { name, image, position, socials } = developer;
-  const [toastMessage, setToastMessage] = useState('');
-  const [isToastVisible, setIsToastVisible] = useState(false);
+  const { name, image, socials, position } = developer;
 
-  const showTemporaryToast = (message) => {
-    setToastMessage(message);
-    setIsToastVisible(true);
-    setTimeout(() => setIsToastVisible(false), 3000);
-  };
-
-  const openNewTab = (url) => {
-    try {
-      const w = window.open(url, '_blank', 'noopener,noreferrer');
-      if (w) w.opener = null;
-    } catch (e) {
-      console.error('Failed to open new tab:', e);
-    }
-  };
-
-  const copyToClipboard = (text) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(
-        () => showTemporaryToast(`Copied: ${text}`),
-        () => showTemporaryToast('Failed to copy.')
-      );
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'absolute';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        showTemporaryToast(`Copied: ${text}`);
-      } catch (err) {
-        showTemporaryToast('Failed to copy.');
-      }
-      document.body.removeChild(ta);
-    }
-  };
-
-  const handleKey = (e, fn) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      fn();
-    }
-  };
+  const SocialLinks = () => (
+    <div className="social-links">
+      <a href={`mailto:${socials.email}`} target="_blank" rel="noreferrer">
+        <MailOutlined />
+      </a>
+      <a href={`tel:${socials.phone}`} target="_blank" rel="noreferrer">
+        <PhoneOutlined />
+      </a>
+      <a href={socials.linkedin} target="_blank" rel="noreferrer">
+        <LinkedinOutlined />
+      </a>
+      <a href={socials.instagram} target="_blank" rel="noreferrer">
+        <InstagramOutlined />
+      </a>
+    </div>
+  );
 
   return (
-    <>
-      <div className={`developer-card ${position}`}>
-        <div className="image-container">
-          <img src={image} alt={name} className="developer-image" />
-          <h2 className="developer-name">{name}</h2>
-
-          <div className="social-links">
-            <button className="mail"
-              onClick={() => openNewTab(`mailto:${socials.email}`)}
-              onKeyDown={(e) => handleKey(e, () => openNewTab(`mailto:${socials.email}`))}>
-              <MailOutlined />
-            </button>
-
-            <button className="phone"
-              onClick={() => copyToClipboard(socials.phone)}
-              onKeyDown={(e) => handleKey(e, () => copyToClipboard(socials.phone))}>
-              <PhoneOutlined />
-            </button>
-
-            <button className="linkedin"
-              onClick={() => openNewTab(socials.linkedin)}
-              onKeyDown={(e) => handleKey(e, () => openNewTab(socials.linkedin))}>
-              <LinkedinOutlined />
-            </button>
-
-            <button className="instagram"
-              onClick={() => openNewTab(socials.instagram)}
-              onKeyDown={(e) => handleKey(e, () => openNewTab(socials.instagram))}>
-              <InstagramOutlined />
-            </button>
-
-            <button className="whatsapp"
-              onClick={() => openNewTab(`https://wa.me/${socials.phone}`)}
-              onKeyDown={(e) => handleKey(e, () => openNewTab(`https://wa.me/${socials.phone}`))}>
-              <WhatsAppOutlined />
-            </button>
-          </div>
-        </div>
+    <div
+      className={`developer-card ${
+        position === "image-right" ? "reverse" : ""
+      }`}
+    >
+      <div className="developer-image-container">
+        <img
+          src={image}
+          alt={name}
+          className="developer-image"
+          style={{
+            maskImage: `url(${paper})`,
+            WebkitMaskImage: `url(${paper})`,
+            maskSize: "contain",
+            WebkitMaskSize: "full",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+          }}
+        />
+        <h2 className="developer-name">{name}</h2>
       </div>
-
-      <Toast message={toastMessage} isVisible={isToastVisible} />
-    </>
+      <SocialLinks />
+    </div>
   );
 };
 

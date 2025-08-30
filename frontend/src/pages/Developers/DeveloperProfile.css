@@ -1,252 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-
 .developers-page-container {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--background-primary);
-  font-family: 'Inter', sans-serif;
-  box-sizing: border-box;
+  background: var(--background-primary, #111);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* gap: 3rem; */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .developer-card {
   display: flex;
-  flex-direction: column; 
   align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  /* gap: 1rem; */
+  justify-content: space-between;
+  /* gap: 2rem; */
+  flex-wrap: wrap;
 }
 
-.image-container {
+.developer-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.developer-image-container {
   position: relative;
-  width: 100%;
-  flex-basis: 50%;
-  aspect-ratio: 4 / 3;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.image-container:hover .developer-image {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
+  flex: 2; 
+  max-width: 600px;
 }
 
 .developer-image {
   width: 100%;
   height: 100%;
-  object-fit:cover;
+  object-fit: full;
+  display: block;
   filter: grayscale(100%);
-  opacity: 0.7;
-  transition: all 0.4s ease-in-out;
-  mask-image: url('../../assets/paper.webp');
-  -webkit-mask-image: url('../../assets/paper.webp');
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
+  transition: filter 0.4s ease;
+}
+
+.developer-image:hover {
+  filter: grayscale(0%);
 }
 
 .developer-name {
   position: absolute;
-  /* bottom: 1rem;  */
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: white;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6rem;
   font-weight: 900;
   color: var(--text-primary);
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-  pointer-events: none; 
-  transition: transform 0.4s ease;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
 }
 
-.developer-info {
-  flex-basis: 50%;
-  position: relative;
-  z-index: 2;
-  padding: 1rem;
-  width: 100%;
-}
 .social-links {
   display: flex;
-  gap: 0.8rem;
-  z-index: 999;
-  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1.2rem;
+  font-size: 2.2rem;
+  flex: 1;
 }
 
-.social-links button {
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  opacity: 1;
-  transform: scale(1);
-  color: #fff;
-  font-size: 18px;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  animation: float 9s ease-in-out infinite;
-}
-.social-links button.mail { background: #e37369; }     
-.social-links button.phone { background: #6B7280; }     
-.social-links button.linkedin { background: #0077B5; } 
-.social-links button.instagram { background: #E1306C; }
-.social-links button.whatsapp { background: #25D366; }  
-
-.social-links button:hover {
-  transform: scale(1.15);
-  filter: brightness(1.15);
-}
-
-@keyframes float {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-}
-
-.social-links button:nth-child(1) { animation-duration: 9s; }
-.social-links button:nth-child(2) { animation-duration: 2s; }
-.social-links button:nth-child(3) { animation-duration: 7s; }
-.social-links button:nth-child(4) { animation-duration: 4s; }
-.social-links button:nth-child(5) { animation-duration: 6.5s; }
-
-@media (max-width: 640px) {
-  .social-links {
-    gap: 0.6rem;
-  }
-  .social-links button {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 768px) {
-  .developer-card {
-    flex-direction: row; 
-    gap: 0;
-  }
-  .developer-image{
-    mask-size: cover;
-  -webkit-mask-size: cover;
-  }
-  .developer-name {
-    top: 80%;
-    transform: translateY(-50%);
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
-
-  .developer-info {
-    padding: 2rem;
-    margin-left: -5%; 
-  }
-
-  .developer-card.top-right {
-    flex-direction: row-reverse;
-  }
-  .developer-card.top-right .developer-info {
-    margin-left: 0;
-    margin-right: -5%;
-  }
-}
-.toast-notification {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #1f2937;
+.social-links a {
   color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  animation: fadeInOut 3s ease-in-out forwards;
+  transition: color 0.3s ease;
 }
 
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; transform: translateY(20px); }
-  10%, 90% { opacity: 1; transform: translateY(0); }
-}
-@media (min-width: 768px) {
-  .developer-card {
-    flex-direction: row;
-    gap: 0;
-    position: relative;
-  }
-
-  .developer-name {
-    top: 80%;
-    transform: translateY(-50%);
-    font-size: clamp(2rem, 10vw, 5rem);
-  }
-
-  .developer-info {
-    padding: 2rem;
-  }
-
-  .developer-card.top-right {
-    flex-direction: row-reverse;
-    z-index: 2; 
-    margin-top: -150px; 
-
-  }
-
-  .developer-card.bottom-left {
-    margin-top: 0px; 
-    z-index: 1;
-  }
-
-  .developer-card.top-right .social-links {
-    justify-content:center;
-  }
-
-  .developer-card.bottom-left .social-links {
-    justify-content:center;
-  }
-}
-@media (max-width: 1024px) {
-  .developer-name {
-    font-size: clamp(2rem, 8vw, 4rem);
-  }
-  .developer-name{
-    top: 75%;
-  }
-}
-@media (max-width: 640px) {
-  .developer-name {
-    font-size: 2rem;
-  }
-  .developer-image{
-filter: grayscale(0);  
-}
-.developer-name{
-  top: 70%;
-}
+.social-links a:hover {
+  color: #1890ff;
 }
 
 @media (max-width: 768px) {
-  .social-links {
-    width: 140px;
-    height: 140px;
+  .developer-card {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    padding: 0%;
   }
-  .developer-image {
-    width: 100px;
-    height: 100px;
+  .developer-image{
+    filter: grayscale(0%);
   }
   .developer-name {
-    font-size: 1rem;
+    font-size: 2rem;
   }
-  .social-links button {
-    font-size: 16px;
-    padding: 6px;
+
+  .social-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .developer-image-container {
+    max-width: 100%;
+    padding: 0%;
+
   }
 }

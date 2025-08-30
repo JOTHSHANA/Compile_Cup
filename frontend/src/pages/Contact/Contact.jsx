@@ -86,7 +86,7 @@ const Contact = () => {
             >
               <TextArea
                 rows={5}
-                placeholder="Write your purpose and message here..."
+                placeholder="Write your message here..."
               />
             </Form.Item>
 

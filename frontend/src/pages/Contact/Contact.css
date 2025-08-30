@@ -9,7 +9,6 @@
   border-radius: 10px;
 }
 
-
 .left-contact {
   flex: 1;
   display: flex;
@@ -25,7 +24,6 @@
   padding: 25px;
   border-radius: 10px;
 }
-
 
 .contact-image {
   flex: 1;
@@ -59,12 +57,9 @@
   align-items: center;
   gap: 10px;
 }
-
-/* Add this to your Contact.css file */
-
 .contact-img-element {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This is the key property */
-  border-radius: 5px; /* Optional: to match the container's curve */
+  object-fit: cover;
+  border-radius: 5px; 
 }

@@ -4,7 +4,6 @@
   background: var(--background-primary, #111);
   display: flex;
   flex-direction: column;
-  /* gap: 3rem; */
   padding: 2rem;
   box-sizing: border-box;
 }
@@ -13,7 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 2rem; */
   flex-wrap: wrap;
 }
 
@@ -51,13 +49,42 @@
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
   pointer-events: none;
 }
+.developer-info-container {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+.developer-role {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  color: var(--text-primary);
+  line-height: 50px;
+  margin: 0;
+}
+
+.developer-bio {
+  font-size: 0.9rem;
+  color:var(--text-primary);
+  font-weight: lighter;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
 
 .social-links {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 1.2rem;
   font-size: 2.2rem;
-  flex: 1;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.769);
+  padding: 8px;
+  width: fit-content;
+  border-radius: 50px;
 }
 
 .social-links a {
@@ -65,10 +92,95 @@
   transition: color 0.3s ease;
 }
 
-.social-links a:hover {
-  color: #1890ff;
+.social-links .icon {
+  font-size: 2rem;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.4s ease;
 }
 
+.social-links .icon:hover {
+  transform: translateY(-20px);
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links .icon:hover svg {
+  transition: color 0.4s ease;
+}
+
+.social-links a[href*="mailto"] :hover {
+  color: #d93025; 
+}
+
+.social-links a[href^="tel"] :hover {
+  color: #34a853; 
+}
+
+.social-links a[href*="linkedin"]:hover {
+  color: #0077b5;
+}
+.social-links a[href*="github.com"]:hover{
+  color: #333; 
+}
+.social-links a[href*="wa.me"]:hover{
+  color: #25d366; 
+}
+
+
+
+@media (max-width: 768px) {
+  .developer-role {
+    font-size: 1.2rem;
+  }
+
+  .developer-bio {
+    font-size: 0.9rem;
+  }
+
+  .social-links .icon {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 1200px) {
+  .developer-name {
+    font-size: 4rem;
+    bottom: 20px;
+  }
+}
+@media (max-width: 999px) {
+  .developer-name {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 480px) {
+  .developer-info-container {
+    gap: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .developer-role {
+    font-size: 1rem;
+  }
+
+  .developer-bio {
+    font-size: 0.5rem;
+  }
+
+  .social-links {
+    gap: 0.3rem;
+  }
+
+  .social-links .icon {
+    font-size: 1.4rem;
+  }
+}
 @media (max-width: 768px) {
   .developer-card {
     flex-direction: column !important;
@@ -86,12 +198,15 @@
   .social-links {
     flex-direction: row;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.2rem;
+    
   }
 
   .developer-image-container {
     max-width: 100%;
     padding: 0%;
-
+  }
+  .developers-page-container{
+    flex-direction: column-reverse;
   }
 }

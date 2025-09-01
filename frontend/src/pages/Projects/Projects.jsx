@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
-import HTMLFlipBook from 'react-pageflip';
-import projectData from '../../shared/projects.json'; 
-import './Projects.css';
-
+import React, { useRef } from "react";
+import HTMLFlipBook from "react-pageflip";
+import projectData from "../../shared/projects.json";
+import "./Projects.css";
 function Projects() {
   const bookRef = useRef(null);
   return (
@@ -10,7 +9,7 @@ function Projects() {
       <h1 className="background-title">PROJECTS</h1>
       <HTMLFlipBook
         ref={bookRef}
-        width={400} 
+        width={400}
         height={550}
         flippingTime={1000}
         drawShadow={true}
@@ -20,17 +19,14 @@ function Projects() {
       >
         <div className="page cover">
           <div className="page-content">
-            <h1>Our Projects</h1>
-            <p>A showcase of our latest work.</p>
+            <h1>Our Projects</h1> <p>A showcase of our latest work.</p>
           </div>
         </div>
-
         {projectData.map((project) => (
           <div className="page" key={project.id}>
             <div className="page-content">
               <div className="project-container">
-                <h2>{project.name}</h2>
-                <p>{project.description}</p>
+                <h2>{project.name}</h2> <p>{project.description}</p>
                 <div className="tech-stack-container">
                   {project.techStack.map((tech, index) => (
                     <span key={index} className="tech-tag">
@@ -42,22 +38,16 @@ function Projects() {
             </div>
           </div>
         ))}
-
         <div className="page cover">
           <div className="page-content">
-            <h2>The End</h2>
-            <p>Contact us for collaborations!</p>
+            <h2>The End</h2> <p>Contact us for collaborations!</p>
           </div>
         </div>
       </HTMLFlipBook>
-
       <p className="helper-text">
         Click or swipe to flip through our projects.
       </p>
-
-      
     </div>
   );
 }
-
 export default Projects;

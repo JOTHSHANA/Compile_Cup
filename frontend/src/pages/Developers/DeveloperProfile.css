@@ -1,7 +1,33 @@
 .developers-page-container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  background: var(--background-primary, #111);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1rem, 16vw, 15rem);  
+  font-family: "Dosis", sans-serif;
+  font-weight: 950;
+  color: rgba(0, 0, 0, 0.092);
+  z-index: 0; 
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+.developers-page-container {
+  width: 100%;
+  min-height: 100vh;
+  /* background: var(--background-primary, #111); */
   display: flex;
   flex-direction: column;
   padding: 2rem;

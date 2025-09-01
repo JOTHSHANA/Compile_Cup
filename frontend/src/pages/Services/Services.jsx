@@ -55,50 +55,49 @@ const Services = () => {
   };
 
   return (
-    <div className="services-page-container">
-      <h1 className="services-main-title">Our Services</h1>
-
-      <section
-        className="services-carousel"
-        style={{ '--n': totalServices, '--k': activeIndex }}
-      >
-        {/* Left Column */}
-        <div className="card-stack-container">
-          {servicesWithAngles.map((service, index) => (
-            <article
-              key={index}
-              className="service-article"
-              style={{ '--i': index, '--a': `${service.randomAngle}deg` }}
-            >
-              <div className="service-icon-card">
-                <span className="card-debug-letter">{service.cardLetter}</span>
-                <div className="icon-container">{service.icon}</div>
+    <div>
+      {/* <h1 className="background-title">SERVICES</h1> */}
+      <div className="services-page-container">
+        <section
+          className="services-carousel"
+          style={{ '--n': totalServices, '--k': activeIndex }}
+        >
+          {/* Left Column */}
+          <div className="card-stack-container">
+            {servicesWithAngles.map((service, index) => (
+              <article
+                key={index}
+                className="service-article"
+                style={{ '--i': index, '--a': `${service.randomAngle}deg` }}
+              >
+                <div className="service-icon-card">
+                  <span className="card-debug-letter">{service.cardLetter}</span>
+                  <div className="icon-container">{service.icon}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+          {/* Right Column: New wrapper for content and nav */}
+          <div className="right-column-container">
+            <div key={activeIndex} className="service-content">
+              <h2>{activeService.title}</h2>
+              <p>{activeService.description}</p>
+              <div className="tech-stack">
+                {activeService.techStack.map((tech, i) => (
+                  <span key={i} className="tech-badge">{tech}</span>
+                ))}
               </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Right Column: New wrapper for content and nav */}
-        <div className="right-column-container">
-          <div key={activeIndex} className="service-content">
-            <h2>{activeService.title}</h2>
-            <p>{activeService.description}</p>
-            <div className="tech-stack">
-              {activeService.techStack.map((tech, i) => (
-                <span key={i} className="tech-badge">{tech}</span>
-              ))}
+            </div>
+      
+            <div className="service-nav">
+              <button aria-label="previous" onClick={() => handleNavClick(-1)}></button>
+              <button aria-label="next" onClick={() => handleNavClick(1)}></button>
             </div>
           </div>
-          
-          <div className="service-nav">
-            <button aria-label="previous" onClick={() => handleNavClick(-1)}></button>
-            <button aria-label="next" onClick={() => handleNavClick(1)}></button>
-          </div>
-        </div>
-      </section>
-
-      <p className="services-note">Charges may vary according to the complexity of the client's requirements.</p>
-      <Link to="/#contact" className="contact-button">Contact Us</Link>
+        </section>
+        <p className="services-note">Charges may vary according to the complexity of the client's requirements.</p>
+        <Link to="/#contact" className="contact-button">Contact Us</Link>
+      </div>
     </div>
   );
 };

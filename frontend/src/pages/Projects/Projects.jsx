@@ -5,21 +5,9 @@ import './Projects.css';
 
 function Projects() {
   const bookRef = useRef(null);
-
-  const nextPage = () => {
-    if (bookRef.current) {
-      bookRef.current.pageFlip().flipNext();
-    }
-  };
-
-  const prevPage = () => {
-    if (bookRef.current) {
-      bookRef.current.pageFlip().flipPrev();
-    }
-  };
-
   return (
     <div className="projects-wrapper">
+      <h1 className="background-title">PROJECTS</h1>
       <HTMLFlipBook
         ref={bookRef}
         width={400} 
@@ -33,7 +21,7 @@ function Projects() {
         <div className="page cover">
           <div className="page-content">
             <h1>Our Projects</h1>
-            <p>A showcase of my latest work.</p>
+            <p>A showcase of our latest work.</p>
           </div>
         </div>
 
@@ -55,7 +43,6 @@ function Projects() {
           </div>
         ))}
 
-        {/* End Page */}
         <div className="page cover">
           <div className="page-content">
             <h2>The End</h2>
@@ -65,7 +52,7 @@ function Projects() {
       </HTMLFlipBook>
 
       <p className="helper-text">
-        Use the arrows below or swipe to flip through my projects.
+        Click or swipe to flip through our projects.
       </p>
 
       

@@ -1,23 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Londrina+Outline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root {
-  /* Light Theme */
-  --background-primary: #F2F6FA;   /* very light blue-gray */
-  --background-secondary: #E1EAF2; /* pale mist blue */
-  --text-primary: #1E2A36;         /* dark charcoal-blue */
-  --text-secondary: #4C5D70;       /* slate gray */
-  --accent-primary: #6A89A7;       /* steel blue-gray */
-  --accent-secondary: #88BDF2;     /* calm sky blue */
+  --background-primary: #F2F6FA;  
+  --background-secondary: #E1EAF2; 
+  --text-primary: #1E2A36;         
+  --text-secondary: #4C5D70;      
+  --accent-primary: #6A89A7;       
+  --accent-secondary: #88BDF2;   
+  --page-background: #faf8f2;        
+  --page-border: #ddd6c4;           
+  --page-text: #3b3b3b;            
+  --cover-background-start: #3b2f2f; 
+  --cover-background-end: #2a1f1f;
+  --cover-border: #1c1212;
+  --cover-text: #fdfdfd;
+ --page-background: #f9f5e7;   
+  --page-border: #d6c9a3;      
+  --page-text: #3b2f2f;   
+  --project-title: #2c2c2c;
+  --project-text: #555;
+
+  --tag-background: #5c6bc0;         
+  --tag-text: #ffffff;
+
+  --helper-text: #777;  
 }
 
 [data-theme='dark'] {
-  /* Dark Theme */
-  --background-primary: #1B222A;   /* deep navy-charcoal */
-  --background-secondary: #242F3A; /* muted storm gray */
-  --text-primary: #E6EDF5;         /* soft off-white */
-  --text-secondary: #AAB7C4;       /* dim gray-blue */
-  --accent-primary: #88BDF2;       /* soft sky blue */
-  --accent-secondary: #6A89A7;     /* steel blue-gray */
+  --background-primary: #1B222A;   
+  --background-secondary: #242F3A; 
+  --text-primary: #E6EDF5;         
+  --text-secondary: #AAB7C4;       
+  --accent-primary: #88BDF2;       
+  --accent-secondary: #6A89A7;  
+  --page-background: #2b2f36;       
+  --page-border: #3c424a;            
+  --page-text: #e6edf5;              
+  --cover-background-start: #20272f; 
+  --cover-background-end: #151a20;
+  --cover-border: #0d1117;
+  --cover-text: #e6edf5;
+   --page-background: #1a140c;   
+  --page-border: #4a3b29;     
+  --page-text: #e8decf;  
+  --project-title: #e6edf5;
+  --project-text: #aab7c4;
+  --tag-background: #88bdf2;         
+  --tag-text: #1b222a;
+  --helper-text: #aab7c4;   
 }
 
 

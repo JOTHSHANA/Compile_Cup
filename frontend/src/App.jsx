@@ -41,7 +41,7 @@ function App() {
   return (
     <ThemeProvider>
       <AntdThemeContext>
-        <ParallaxBackground />
+        {/* <ParallaxBackground /> */}
         <AppContent />
       </AntdThemeContext>
     </ThemeProvider>

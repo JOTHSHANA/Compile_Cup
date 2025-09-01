@@ -80,7 +80,7 @@
   margin: 0 auto 2rem auto;
   color: var(--text-secondary);
 }
-
+/* 
 .home-cta-button {
   background-color: var(--accent-primary);
   color: var(--background-primary);
@@ -93,6 +93,52 @@
 
 .home-cta-button:hover {
   opacity: 0.9;
+} */
+
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.home-cta-button {
+  width: 230px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-primary);
+  border: none;
+  color: white;
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  padding: 20px;
+}
+
+.home-cta-button::before {
+  width: 230px;
+  height: 130px;
+  position: absolute;
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  left: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
+
+.home-cta-button:hover::before {
+  transition-duration: .9s;
+  transform: translate(100%,-50%);
+  border-radius: 0;
+}
+
+.home-cta-button:active {
+  transform: translate(5px,5px);
+  transition-duration: .3s;
 }
 
 .background-shapes {

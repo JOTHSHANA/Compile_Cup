@@ -1,78 +1,136 @@
+General body styles to ensure the font is applied
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin: 0;
+}
+
+/* Main container with a dark background. It's set to relative positioning
+  to act as a positioning context for its children. 
+*/
 .home-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 100vh;
-  background: var(--background-primary);
-  gap: 3rem;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bd-grd-color); /* bg-gray-900 */
+  overflow: hidden; /* Prevents content from overflowing before animations */
 }
 
-.home-left {
-  flex: 1;
-  max-width: 600px;
-}
-
-.home-title {
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--accent-primary);
-}
-
-.home-tagline {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  color: var(--text-primary);
-}
-
-.home-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-/* 
-.home-cta-button {
-  display: inline-block;
-  background: var(--accent-primary);
-  color: var(--background-primary);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.home-cta-button:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-.home-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+/* Right side container for the background image */
+.home-image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .home-image {
-  max-width: 100%;
-  height: 100vh;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
 }
 
-@media (max-width: 992px) {
-  .home-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem 5%;
+/* This is the gradient overlay that creates the fading effect. */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* Fades from solid dark on the left to transparent on the right */
+  background-image: var(--bg-grd);
+}
+
+/* Left side container for the text content */
+.home-content-container {
+  position: relative;
+  z-index: 10; /* Ensures content appears above the image and overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.home-content {
+  max-width: 36rem; /* Restricts the width of the text for readability */
+}
+
+.home-title {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.home-tagline {
+  /* margin-top: 1rem; */
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #22d3ee; /* A vibrant cyan for contrast */
+  font-weight: 500;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+}
+
+.home-subtitle {
+  /* margin-top: 1.5rem; */
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+
+.home-cta-button {
+  /* margin-top: 2.5rem; */
+  display: inline-block;
+  background-color: #06b6d4;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transition: transform 300ms, background-color 300ms;
+  text-decoration: none;
+}
+
+.home-cta-button:hover {
+  background-color: #0891b2;
+  transform: scale(1.05);
+}
+
+/* --- Responsive Media Queries --- */
+
+/* For small screens (e.g., larger phones) */
+@media (min-width: 640px) {
+  .home-content-container {
+    padding: 3rem;
   }
-  .home-left {
-    max-width: 100%;
+}
+
+/* For medium screens (e.g., tablets) */
+@media (min-width: 768px) {
+  .home-content-container {
+    padding: 5rem;
   }
-  .home-right {
-    margin-top: 2rem;
+  .home-title {
+    font-size: 4.5rem;
+  }
+  .home-tagline {
+    font-size: 1.875rem;
+    /* line-height: 2.25rem; */
+  }
+  .home-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* For large screens (e.g., desktops) */
+@media (min-width: 1024px) {
+  .home-image-container {
+    width: 70%; /* Image takes up 70% of the screen width */
+  }
+  .home-content-container {
+    width: 60%; /* Content area is constrained to 60% */
   }
 }

@@ -58,10 +58,12 @@ const Services = () => {
     <div>
       {/* <h1 className="background-title">SERVICES</h1> */}
       <div className="services-page-container">
+        <h1>Our Services</h1>
         <section
           className="services-carousel"
           style={{ '--n': totalServices, '--k': activeIndex }}
         >
+          
           {/* Left Column */}
           <div className="card-stack-container">
             {servicesWithAngles.map((service, index) => (

@@ -1,54 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Londrina+Outline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
-  --background-primary: #F2F6FA;  
-  --background-secondary: #E1EAF2; 
-  --text-primary: #1E2A36;         
-  --text-secondary: #4C5D70;      
-  --accent-primary: #6A89A7;       
-  --accent-secondary: #88BDF2;   
-  --page-background: #faf8f2;        
-  --page-border: #ddd6c4;           
-  --page-text: #3b3b3b;            
-  --cover-background-start: #3b2f2f; 
+  --bg-grd: linear-gradient(to right, #f0f1f3, rgba(215, 219, 223, 0.8), transparent);
+  --bd-grd-color: #f0f1f3;
+  --background-primary: #F2F6FA;
+  --background-secondary: #E1EAF2;
+  --text-primary: #1E2A36;
+  --text-secondary: #4C5D70;
+  --accent-primary: #6A89A7;
+  --accent-secondary: #88BDF2;
+  --page-background: #faf8f2;
+  --page-border: #ddd6c4;
+  --page-text: #3b3b3b;
+  --cover-background-start: #3b2f2f;
   --cover-background-end: #2a1f1f;
   --cover-border: #1c1212;
   --cover-text: #fdfdfd;
- --page-background: #f9f5e7;   
-  --page-border: #d6c9a3;      
-  --page-text: #3b2f2f;   
+  --page-background: #f9f5e7;
+  --page-border: #d6c9a3;
+  --page-text: #3b2f2f;
   --project-title: #2c2c2c;
   --project-text: #555;
 
-  --tag-background: #5c6bc0;         
+  --tag-background: #5c6bc0;
   --tag-text: #ffffff;
 
-  --helper-text: #777;  
+  --helper-text: #777;
 }
 
 [data-theme='dark'] {
-  --background-primary: #1B222A;   
-  --background-secondary: #242F3A; 
-  --text-primary: #E6EDF5;         
-  --text-secondary: #AAB7C4;       
-  --accent-primary: #88BDF2;       
-  --accent-secondary: #6A89A7;  
-  --page-background: #2b2f36;       
-  --page-border: #3c424a;            
-  --page-text: #e6edf5;              
-  --cover-background-start: #20272f; 
+  --bg-grd: linear-gradient(to right, #111827, rgba(17, 24, 39, 0.8), transparent);
+  --bd-grd-color: #111827;
+  --background-primary: #1B222A;
+  --background-secondary: #242F3A;
+  --text-primary: #E6EDF5;
+  --text-secondary: #AAB7C4;
+  --accent-primary: #88BDF2;
+  --accent-secondary: #6A89A7;
+  --page-background: #2b2f36;
+  --page-border: #3c424a;
+  --page-text: #e6edf5;
+  --cover-background-start: #20272f;
   --cover-background-end: #151a20;
   --cover-border: #0d1117;
   --cover-text: #e6edf5;
-   --page-background: #1a140c;   
-  --page-border: #4a3b29;     
-  --page-text: #e8decf;  
+  --page-background: #1a140c;
+  --page-border: #4a3b29;
+  --page-text: #e8decf;
   --project-title: #e6edf5;
   --project-text: #aab7c4;
-  --tag-background: #88bdf2;         
+  --tag-background: #88bdf2;
   --tag-text: #1b222a;
-  --helper-text: #aab7c4;   
+  --helper-text: #aab7c4;
 }
 
 
@@ -70,7 +75,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -86,7 +96,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  scroll-margin-top: 70px; 
+  scroll-margin-top: 70px;
 }
 
 ::view-transition-old(root) {
@@ -95,9 +105,9 @@ section {
 }
 
 ::view-transition-new(root) {
-  animation: none; 
+  animation: none;
   mix-blend-mode: normal;
-  
+
   clip-path: circle(0% at 100% 0);
   animation: reveal 0.8s ease-in-out forwards;
 }
@@ -108,6 +118,6 @@ section {
   }
 }
 
-ul{
+ul {
   margin-bottom: 0px;
 }

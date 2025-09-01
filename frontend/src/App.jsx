@@ -12,6 +12,8 @@ import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
 import AntdThemeContext from "./context/AntdThemeContext";
 import ParallaxBackground from "./components/Parallax/Parallax";
 import "./App.css";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const AppContent = () => {
   useHashScroll();
@@ -38,6 +40,12 @@ const AppContent = () => {
 };
 
 function App() {
+   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,     
+    })
+  }, [])
   return (
     <ThemeProvider>
       <AntdThemeContext>

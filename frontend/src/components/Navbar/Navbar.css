@@ -7,11 +7,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: var(--background-secondary);
   backdrop-filter: blur(10px);
   z-index: 1000;
   color: var(--text-primary);
-  border-bottom: 1px solid var(--accent-primary);
 }
 
 .navbar-logo a {
@@ -29,8 +27,9 @@
 
 .navbar-links {
   list-style: none;
+  font-weight: 600;
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 .navbar-links a {
@@ -45,10 +44,9 @@
 }
 
 .menu-icon-button {
-  display: none !important; /* Use !important to override MUI styles if needed */
+  display: none !important;
 }
 
-/* Adjust breakpoint as needed */
 @media (max-width: 960px) {
   .navbar-right-desktop {
     display: none;

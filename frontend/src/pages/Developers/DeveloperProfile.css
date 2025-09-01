@@ -22,7 +22,7 @@
 .developer-image-container {
   position: relative;
   flex: 2; 
-  max-width: 450px;
+  max-width: 600px;
 }
 
 .developer-image {
@@ -153,10 +153,16 @@
     font-size: 4rem;
     bottom: 20px;
   }
+  .social-links {
+    gap: 0.2rem;
+  }
 }
 @media (max-width: 999px) {
   .developer-name {
     font-size: 3rem;
+  }
+  .social-links {
+    gap: 0.1rem;
   }
 }
 @media (max-width: 480px) {

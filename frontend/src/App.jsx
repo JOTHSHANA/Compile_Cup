@@ -10,6 +10,7 @@ import useHashScroll from "./hooks/useHashScroll";
 import ToastMessage from "./components/toast/toast";
 import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
 import AntdThemeContext from "./context/AntdThemeContext";
+import ParallaxBackground from "./components/Parallax/Parallax";
 import "./App.css";
 
 const AppContent = () => {
@@ -40,6 +41,7 @@ function App() {
   return (
     <ThemeProvider>
       <AntdThemeContext>
+        <ParallaxBackground />
         <AppContent />
       </AntdThemeContext>
     </ThemeProvider>

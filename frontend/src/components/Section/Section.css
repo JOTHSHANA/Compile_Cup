@@ -13,12 +13,12 @@
 
 
 .section--primary {
-  background-color: var(--background-primary);
+  /* background-color: var(--background-primary); */
   color: var(--text-primary);
 }
 
 .section--secondary {
-  background-color: var(--background-secondary);
+  /* background-color: var(--background-secondary); */
   color: var(--text-primary);
 }
 

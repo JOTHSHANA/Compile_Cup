@@ -21,9 +21,9 @@ const Home = () => {
 
       <div className="home-content-container" data-aos="fade-right">
         <div className="home-content">
-          <h1 className="home-title" data-aos="fade-up">
+          <p className="home-title" data-aos="fade-up">
             COMPILE CUP
-          </h1>
+          </p>
           <p className="home-tagline" data-aos-delay="200" data-aos="fade-up">
             Your Vision, Deployed
           </p>

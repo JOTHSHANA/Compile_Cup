@@ -269,3 +269,76 @@
     flex-direction: column-reverse;
   }
 }
+
+
+
+
+
+/* --- Innovative Expanding Buttons --- */
+.expanding-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #27d6e6; /* Primary theme color */
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.expanding-btn:hover {
+  width: 180px; /* Expanded width */
+  border-radius: 50px;
+  background-color: #19c6d6; /* Darker hover color */
+  justify-content: flex-start; /* Align content to the left on hover */
+  padding-left: 15px;
+}
+
+/* --- Icon Styling --- */
+.expanding-btn-icon {
+  display: inline-flex;
+  color: white;
+  transition: transform 0.3s ease-out;
+}
+
+/* MUI icons are SVGs, so we can style them directly */
+.expanding-btn-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.expanding-btn:hover .expanding-btn-icon {
+  transform: translateX(5px); /* Slightly move icon to the right */
+}
+
+/* --- Text Styling --- */
+.expanding-btn-text {
+  position: absolute;
+  left: 50px; /* Position text to appear after the icon */
+  color: white;
+  font-size: 1rem;
+  opacity: 0; /* Initially hidden */
+  transform: translateX(-15px); /* Start slightly to the left */
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.expanding-btn:hover .expanding-btn-text {
+  opacity: 1; /* Fade in on hover */
+  transform: translateX(0); /* Slide into place */
+}
+
+.resume-portfolio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 20px;
+}

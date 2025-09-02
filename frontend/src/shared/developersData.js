@@ -15,6 +15,8 @@ const developersData = [
       linkedin: 'https://www.linkedin.com/in/priyan1808/',
       github: 'https://github-com/Priyadarshan-B',
       whatsapp: 'https://wa.me/9789762908',
+      portfolioUrl: 'https://portfolio-priyan.netlify.app/',
+      resumeUrl: 'https://drive.google.com/file/d/your_file_id/view?usp=sharing',
     },
   },
   {
@@ -30,6 +32,8 @@ const developersData = [
       linkedin: 'https://www.linkedin.com/in/jothshana/',
       github: 'https://github.com/JOTHSHANA',
       whatsapp: 'https://wa.me/7306176900',
+      portfolioUrl: 'https://jothshana.netlify.app/',
+      resumeUrl: 'https://drive.google.com/file/d/your_file_id/view?usp=sharing',
     },
   },
 ];

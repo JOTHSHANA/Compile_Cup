@@ -64,7 +64,6 @@ const Services = () => {
           style={{ '--n': totalServices, '--k': activeIndex }}
         >
           
-          {/* Left Column */}
           <div className="card-stack-container">
             {servicesWithAngles.map((service, index) => (
               <article

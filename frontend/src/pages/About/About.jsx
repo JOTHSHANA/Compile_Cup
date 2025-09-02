@@ -5,12 +5,13 @@ import HotelClassIcon from '@mui/icons-material/HotelClass';
 const About = () => {
   return (
     <div style={{ height: '80vh' }}>
-      <div className='about-title'>
+      <div className='about-title' data-aos="fade-down" data-aos-duration="1000">
         ABOUT US
       </div>
+      <h1 className="background-title">ABOUT US</h1>
+
       <div className="about-container">
 
-        {/* Card 1 */}
         <div className="parent">
           <div className="card">
             <div className="logo">
@@ -50,7 +51,6 @@ const About = () => {
             </div>
           </div>
         </div>
-        {/* Card 2 */}
         <div className="parent">
           <div className="card">
             <div className="logo">

@@ -2,7 +2,6 @@ import React from 'react';
 import Section from '../components/Section/Section';
 import Home from './Home/Home';
 import About from './About/About';
-import AboutGSAP from './About/AboutGSAP';
 import Services from './Services/Services';
 import Projects from './Projects/Projects';
 import Developers from './Developers/Developers';
@@ -14,7 +13,6 @@ const MainLayout = () => {
     <div>
       <Section id="home" variant="primary"><Home /></Section>
       <Section id="about" variant="secondary"><About /></Section>
-      {/* <Section id="about" variant="secondary"><AboutGSAP /></Section> */}
       <Section id="services" variant="primary"><Services /></Section>
       <Section id="projects" variant="secondary"><Projects /></Section>
       <Section id="developers" variant="primary"><Developers /></Section>

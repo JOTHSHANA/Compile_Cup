@@ -28,7 +28,7 @@
   justify-content: flex-start;
   text-align: center;
   overflow: hidden;
-  /* background-color: var(--background-primary); */
+  background-color: var(--background-primary);
 }
 
 .services-main-title {
@@ -46,7 +46,6 @@
   font-family: monospace;
 }
 
-/* --- Carousel Styling (NOW FLEXBOX) --- */
 .services-carousel {
   --t: 0.8s;
   --p: var(--k);
@@ -260,14 +259,25 @@
 }
 
 .contact-button {
-  display: inline-block;
-  padding: 0.8rem 2.5rem;
-  background-color: var(--accent-primary);
-  color: var(--background-primary);
-  border-radius: 5px;
-  font-weight: bold;
-}
+   color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  float: left;
+  border-radius: 0.5em;
+  background: #e8e8e800;
+  cursor: pointer;
+  border: 1px solid #e8e8e800;
+  transition: all 0.3s;
+box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+              -6px -6px 10px rgba(255, 255, 255, .5),
+              6px 6px 8px rgba(255, 255, 255, .075),
+              6px 6px 10px rgba(0, 0, 0, .15); 
+             }
 
 .contact-button:hover {
-  opacity: 0.9;
-}
+     color: #666;
+box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+              -2px -2px 4px rgba(255, 255, 255, .4),
+              2px 2px 2px rgba(255, 255, 255, .05),
+              2px 2px 4px rgba(0, 0, 0, .1);
+            }

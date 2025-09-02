@@ -1,3 +1,19 @@
+/* --- Root Variables (Assuming you have these, if not, you can define them) --- */
+:root {
+  --page-background: #fdfdfd;
+  --page-border: #e0e0e0;
+  --page-text: #333;
+  --cover-background-start: #4a5568;
+  --cover-background-end: #2d3748;
+  --cover-border: #718096;
+  --cover-text: #f7fafc;
+  --project-title: #2d3748;
+  --project-text: #4a5568;
+  --tag-background: #e2e8f0;
+  --tag-text: #4a5568;
+  --helper-text: #718096;
+}
+
 .projects-wrapper {
   display: flex;
   align-items: center;
@@ -8,7 +24,7 @@
 }
 
 .page {
-    background: var(--page-background);
+  background: var(--page-background);
   border: 1px solid var(--page-border);
   color: var(--page-text);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
@@ -37,11 +53,19 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Aligns content to the top */
   align-items: center;
   box-sizing: border-box;
   text-align: center;
   font-family: "Ubuntu Mono", monospace;
+  position: relative;
+}
+
+.page-number {
+  position: absolute; 
+  bottom: 20px;
+  font-size: 0.85rem;
+  color: #888;
 }
 
 .page.cover {
@@ -51,6 +75,10 @@
   font-weight: bold;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   font-family: "Playfair Display", serif;
+}
+
+.page.cover .page-content {
+  justify-content: center; /* Center content only on cover pages */
 }
 
 .page.cover h1,
@@ -66,6 +94,24 @@
   opacity: 0.9;
 }
 
+/* --- MODIFIED: Image Container Styles --- */
+.project-img-container {
+  height: 180px; /* Adjusted height slightly */
+  width: 100%;
+  margin-bottom: 20px; /* Adjusted margin */
+  border-radius: 4px;  /* Added for a softer look */
+  overflow: hidden;      /* Hides any part of the image that might overflow */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Added a subtle shadow */
+}
+
+/* --- NEW: Image Styles --- */
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This is the key property */
+  border: 1px solid gray;
+}
+
 .project-container {
   display: flex;
   flex-direction: column;
@@ -73,13 +119,14 @@
   gap: 15px; 
   width: 100%;
   padding: 0 10px;
+  text-align: center;
   font-family: "Ubuntu Mono", monospace;
 }
 
 .project-container h2 {
   font-size: 1.5rem;
   font-weight: bold;
- color: var(--project-title);
+  color: var(--project-title);
   margin: 0;
   font-family: "Ubuntu Mono", monospace;
 }
@@ -87,8 +134,8 @@
 .project-container p {
   font-size: 0.9rem;
   line-height: 1.5;
-    color: var(--project-text);
-
+  color: var(--project-text);
+  margin-top: 0;
 }
 
 .tech-stack-container {
@@ -100,7 +147,7 @@
 }
 
 .tech-tag {
-background-color: var(--tag-background);
+  background-color: var(--tag-background);
   color: var(--tag-text);
   padding: 5px 12px;
   border-radius: 15px;
@@ -118,4 +165,3 @@ background-color: var(--tag-background);
   font-style: italic;
   letter-spacing: 0.5px;
 }
-

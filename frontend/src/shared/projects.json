@@ -1,27 +1,20 @@
 [
   {
     "id": 1,
-    "name": "Blog App",
-    "imageUrls": [
-      "https://example.com/images/blogapp1.png",
-      "https://example.com/images/blogapp2.png"
-    ],
-    "description": "A modern blog application built with Blazor MAUI Hybrid. Supports Google Sign-In, Supabase storage, and MongoDB integration.",
+    "name": "Inventory Management System",
+    "imageName": "inventory-app.png",
+    "description": "A modern inventory management system built with Blazor MAUI Hybrid. Supports Google Sign-In, Supabase storage, and MongoDB integration.",
     "techStack": [
-      ".NET MAUI",
-      "Blazor",
-      "Supabase",
-      "MongoDB",
-      "Bootstrap"
+      "React JS",
+      "Node JS",
+      "Express JS",
+      "MySQL"
     ]
   },
   {
     "id": 2,
     "name": "Weather App",
-    "imageUrls": [
-      "https://example.com/images/weather1.png",
-      "https://example.com/images/weather2.png"
-    ],
+    "imageName": "weather-app.png",
     "description": "A cross-platform weather app fetching live data from OpenWeatherMap API with support for dark mode and temperature unit toggle.",
     "techStack": [
       ".NET MAUI",
@@ -33,11 +26,7 @@
   {
     "id": 3,
     "name": "Music Player",
-    "imageUrls": [
-      "https://example.com/images/musicplayer1.png",
-      "https://example.com/images/musicplayer2.png",
-      "https://example.com/images/musicplayer3.png"
-    ],
+    "imageName": "music-player.png",
     "description": "A Blazor Hybrid music player app with audio playback, shuffle/repeat, and timeline slider control.",
     "techStack": [
       ".NET MAUI",
@@ -49,11 +38,7 @@
   {
     "id": 4,
     "name": "E-commerce Storefront",
-    "imageUrls": [
-      "https://example.com/images/ecom1.png",
-      "https://example.com/images/ecom2.png",
-      "https://example.com/images/ecom3.png"
-    ],
+    "imageName": "ecom.png",
     "description": "A mobile-first e-commerce app with product listings, a shopping cart, and a secure checkout process powered by Stripe.",
     "techStack": [
       "React Native",
@@ -66,10 +51,7 @@
   {
     "id": 5,
     "name": "Task Management App",
-    "imageUrls": [
-      "https://example.com/images/taskapp1.png",
-      "https://example.com/images/taskapp2.png"
-    ],
+    "imageName": "task-app.png",
     "description": "A collaborative task manager with drag-and-drop boards, due date reminders, and real-time updates using SignalR.",
     "techStack": [
       "ASP.NET Core",
@@ -82,10 +64,7 @@
   {
     "id": 6,
     "name": "Recipe Finder",
-    "imageUrls": [
-      "https://example.com/images/recipe1.png",
-      "https://example.com/images/recipe2.png"
-    ],
+    "imageName": "recipe.png",
     "description": "An application that allows users to search for recipes by ingredients, view nutritional information, and save their favorites.",
     "techStack": [
       "Vue.js",
@@ -98,9 +77,7 @@
   {
     "id": 7,
     "name": "Portfolio Website",
-    "imageUrls": [
-      "https://example.com/images/portfolio1.png"
-    ],
+    "imageName": "portfolio.png",
     "description": "A personal portfolio website built with Next.js for server-side rendering, featuring a contact form and animated page transitions.",
     "techStack": [
       "Next.js",

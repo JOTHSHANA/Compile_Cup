@@ -29,6 +29,9 @@
   --tag-text: #ffffff;
 
   --helper-text: #777;
+  --neumorphic-shadow: 
+    -5px -5px 12px rgba(255, 255, 255, 0.8),
+    5px 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme='dark'] {
@@ -55,6 +58,9 @@
   --tag-background: #88bdf2;
   --tag-text: #1b222a;
   --helper-text: #aab7c4;
+  --neumorphic-shadow: 
+    -5px -5px 12px rgba(255, 255, 255, 0.05),
+    5px 5px 12px rgba(0, 0, 0, 0.5);
 }
 
 

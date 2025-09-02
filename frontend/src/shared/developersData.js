@@ -8,7 +8,7 @@ const developersData = [
     image: priyan,
     position: 'image-right',
     role: "Full Stack Developer",
-    bio: "Passionate about building scalable web and mobile apps",
+    bio: "Architecting robust, end-to-end digital solutions with a passion for problem-solving.",
     socials: {
       email: 'bpriyan18082004@gmail.com',
       phone: '9789762908',
@@ -23,7 +23,7 @@ const developersData = [
     image: jo,
     position: 'image-left',
     role: "Full Stack Developer",
-    bio: "Passionate about building scalable web and mobile apps",
+    bio: "Crafting intuitive, user-centric experiences with a passion for clean code.",
     socials: {
       email: 'jothshana123@gmail.com',
       phone: '7306176900',

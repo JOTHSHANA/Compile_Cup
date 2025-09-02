@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react';
 import bgImage from '../../assets/bg-m.png'; // Make sure this path is correct
+
 import './Home.css'; // Import the new CSS file
 
 const App = () => {

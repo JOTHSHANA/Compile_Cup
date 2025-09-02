@@ -113,7 +113,7 @@ useEffect(() => {
             </div>
             <div className="con-info-container">
               <LinkedInIcon sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }} />
-              Compile Cup
+              linkedin.com/in/compile-cup/
             </div>
           </div>
         </div>

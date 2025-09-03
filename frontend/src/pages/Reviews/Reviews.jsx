@@ -58,7 +58,7 @@ const Reviews = () => {
 
       showSuccess("Review submitted successfully!");
       form.resetFields();
-      setIsModalOpen(false); 
+      setIsModalOpen(false);
     } catch (err) {
       console.error("Unexpected error:", err);
       showError("Something went wrong!");
@@ -71,9 +71,9 @@ const Reviews = () => {
     <div className="reviews-container">
       <div className="reviews-header">
         <h1 className="reviews-title">Reviews</h1>
-        <Button 
-          type="" 
-          icon={<PlusCircleOutlined />} 
+        <Button
+          type=""
+          icon={<PlusCircleOutlined />}
           onClick={() => setIsModalOpen(true)}
           className="add-review-button"
         >
@@ -82,7 +82,7 @@ const Reviews = () => {
       </div>
 
       <ReviewsList />
-      
+     
       <Modal
         title="Submit a Review"
         open={isModalOpen}
@@ -91,10 +91,10 @@ const Reviews = () => {
           <Button key="back" onClick={() => setIsModalOpen(false)}>
             Cancel
           </Button>,
-          <Button 
-            key="submit" 
-            type="primary" 
-            loading={loading} 
+          <Button
+            key="submit"
+            type="primary"
+            loading={loading}
             onClick={() => form.submit()}
           >
             {loading ? "Submitting..." : "Submit"}

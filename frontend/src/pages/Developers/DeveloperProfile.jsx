@@ -20,10 +20,10 @@ const DeveloperProfile = ({ developer }) => {
 
   const SocialLinks = () => (
     <div className="developer-info-container" data-aos="fade-up" data-aos-delay="200">
-      <h3 className="developer-role" data-aos="fade-right" data-aos-delay="300">
+      <h3 className="developer-role" data-aos="fade-down" data-aos-delay="300">
         {role.toUpperCase()}
       </h3>
-      <p className="developer-bio" data-aos="fade-left" data-aos-delay="400">
+      <p className="developer-bio" data-aos="fade-up" data-aos-delay="400">
         {bio}
       </p>
       <div className="social-links" data-aos="zoom-in" data-aos-delay="500">

@@ -103,7 +103,7 @@ const Contact = () => {
 >
   <div className="contact-page-container">
     {/* Left Side */}
-    <div className="left-contact" data-aos="fade-right" data-aos-duration="1000">
+    <div className="left-contact" data-aos="fade-up" data-aos-duration="1000">
       <div className="contact-image" data-aos="zoom-in" data-aos-delay="200">
         <img src={contact} alt="Contact" className="contact-img-element" />
       </div>
@@ -163,7 +163,7 @@ const Contact = () => {
     </div>
 
     {/* Right Side Form */}
-    <div className="right-contact-formm" data-aos="fade-left" data-aos-duration="1000">
+    <div className="right-contact-formm" data-aos="fade-down" data-aos-duration="1000">
       <h1 className="contact-title" data-aos="fade-down">
         Contact Us
       </h1>

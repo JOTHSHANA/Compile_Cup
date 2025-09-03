@@ -1,6 +1,7 @@
 .reviews-container {
   min-height: 100vh;
-  padding: 90px;
+  padding: 10px;
+  padding-top: 90px;
   position: relative;
   overflow: hidden;
   display: flex;

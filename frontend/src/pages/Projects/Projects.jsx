@@ -10,7 +10,7 @@ import musicPlayer from '../../assets/music-player.png';
 import ecom from '../../assets/ecom.png';
 import taskApp from '../../assets/task-app.png';
 import recipe from '../../assets/recipe.png';
-import portfolio from '../../assets/portfolio.png';
+import portfolio from '../../assets/Portfolio.png';
 // Add any other image imports here
 
 // Step 2: Create the mapping object that connects JSON names to the imported images

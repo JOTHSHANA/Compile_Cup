@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemText, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton';
+import { useLocation } from "react-router-dom";
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import './Navbar.css';
 
@@ -10,13 +11,18 @@ const Navbar = () => {
   const sectionIds = ['home', 'about', 'services', 'projects', 'developers', 'brochure', 'contact'];
   const activeId = useScrollSpy(sectionIds, { rootMargin: '0px 0px -50% 0px' });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const getLinkClass = (id) => {
-    return `navbar-link ${activeId === id ? 'active' : ''}`;
+     if (location.pathname === "/reviews") {
+    return `navbar-link ${id === "reviews" ? "active" : ""}`;
+  }
+
+  return `navbar-link ${activeId === id ? "active" : ""}`;
   };
 
   const drawer = (
@@ -52,7 +58,7 @@ const Navbar = () => {
           <li><Link to="/#developers" className={getLinkClass('developers')}>Developers</Link></li>
           <li><Link to="/#brochure" className={getLinkClass('brochure')}>Brochure</Link></li>
           <li><Link to="/#contact" className={getLinkClass('contact')}>Contact</Link></li>
-          <li><Link to="/reviews">Reviews</Link></li>
+  <li><Link to="/reviews" className={getLinkClass("reviews")}>Reviews</Link></li>
         </ul>
         <ThemeToggleButton />
       </div>

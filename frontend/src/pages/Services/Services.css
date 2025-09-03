@@ -318,3 +318,11 @@
   font-size: 34px;
   margin-bottom: 30px;
 }
+
+
+@media (max-width: 1024px) {
+  .services-carousel {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

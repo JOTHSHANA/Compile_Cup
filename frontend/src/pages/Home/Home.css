@@ -123,6 +123,7 @@ General body styles to ensure the font is applied body {
     font-size: 1rem;
     line-height: 1.75rem;
   }
+  
 }
 
 @media (min-width: 1024px) {
@@ -133,4 +134,22 @@ General body styles to ensure the font is applied body {
   .home-content-container {
     width: 60%;
   }
+}
+
+@media (max-width: 1080px) {
+   .home-content{
+    margin-left: 0;
+  }
+
+  .home-content-container{
+    padding: 20px;
+  }
+
+  .home-content{
+    text-align: center;
+  }
+}
+
+#home{
+  padding: 0px;
 }

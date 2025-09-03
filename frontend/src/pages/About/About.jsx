@@ -4,14 +4,14 @@ import HotelClassIcon from '@mui/icons-material/HotelClass';
 
 const About = () => {
   return (
-    <div style={{ height: '80vh' }}>
-      <div className='about-title' data-aos="fade-down" data-aos-duration="1000">
+    <div className="about-wrapper">
+      <div className="about-title" data-aos="fade-down" data-aos-duration="1000">
         ABOUT US
       </div>
       <h1 className="background-title">ABOUT US</h1>
 
       <div className="about-container">
-
+        {/* Card 1 */}
         <div className="parent">
           <div className="card">
             <div className="logo">
@@ -30,27 +30,25 @@ const About = () => {
             <div className="glass"></div>
             <div className="content">
               <span className="title">Who We Are?</span>
-              <span className="text">We are a dynamic duo of final-year Computer Science Engineering students, combining cutting-edge academic knowledge with two years of real-world freelancing experience. We're passionate about building technology that solves problems and drives growth.</span>
+              <span className="text">
+                We are a dynamic duo of final-year Computer Science Engineering students, combining cutting-edge academic knowledge with two years of real-world freelancing experience. We're passionate about building technology that solves problems and drives growth.
+              </span>
             </div>
             <div className="bottom">
               <div className="social-buttons-container">
-                <button className="social-button social-button1">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button2">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button3">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
+                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
               </div>
               <div className="view-more">
                 <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Card 2 */}
         <div className="parent">
           <div className="card">
             <div className="logo">
@@ -69,28 +67,24 @@ const About = () => {
             <div className="glass"></div>
             <div className="content">
               <span className="title">What We Do?</span>
-              <span className="text">We specialize in turning ideas into reality. Our core services include building custom web and mobile applications, handling seamless cloud deployment, and implementing efficient DevOps practices to ensure your project runs smoothly.
+              <span className="text">
+                We specialize in turning ideas into reality. Our core services include building custom web and mobile applications, handling seamless cloud deployment, and implementing efficient DevOps practices to ensure your project runs smoothly.
               </span>
             </div>
             <div className="bottom">
               <div className="social-buttons-container">
-                <button className="social-button social-button1">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button2">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button3">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
+                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
               </div>
               <div className="view-more">
                 <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
               </div>
             </div>
           </div>
         </div>
+
         {/* Card 3 */}
         <div className="parent">
           <div className="card">
@@ -110,23 +104,19 @@ const About = () => {
             <div className="glass"></div>
             <div className="content">
               <span className="title">Why Choose Us?</span>
-              <span className="text">Our partnership doesn't end at launch. We stand out by offering **lifetime service and support** for every project we build. This means we're committed to ensuring your application remains secure, updated, and effective for the long haul.</span>
+              <span className="text">
+                Our partnership doesn't end at launch. We stand out by offering lifetime service and support for every project we build. This means we're committed to ensuring your application remains secure, updated, and effective for the long haul.
+              </span>
             </div>
             <div className="bottom">
               <div className="social-buttons-container">
-                <button className="social-button social-button1">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button2">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
-                <button className="social-button social-button3">
-                  <span className="social-letter"><HotelClassIcon /></span>
-                </button>
+                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
+                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
               </div>
               <div className="view-more">
                 <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
               </div>
             </div>
           </div>

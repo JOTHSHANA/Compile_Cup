@@ -267,3 +267,97 @@
 .parent:hover .card .logo .circle5 {
   transform: translate3d(0, 0, 120px);
 }
+
+
+
+
+@media (max-width: 1024px) {
+  .logo{
+    display: none;
+  }
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-container .parent {
+    margin: 0;
+  }
+
+  .parent {
+    width: 90%;
+    max-width: 350px;
+    height: fit-content;
+  }
+
+  .card {
+    border-radius: 25px;
+  }
+
+  .content {
+    padding: 60px 25px 20px 25px;
+  }
+
+  .content .title {
+    font-size: 18px;
+  }
+
+  .content .text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: none;
+  }
+
+  .bottom .view-more {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo{
+    display: none;
+  }
+
+  .about-title {
+    font-size: 26px;
+  }
+
+  .background-title {
+    font-size: 40px;
+  }
+
+  .parent {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .content {
+    padding: 40px 20px 15px 20px;
+  }
+
+  .content .text {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .text{
+    padding: 10px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .social-buttons-container {
+    justify-content: center;
+  }
+}

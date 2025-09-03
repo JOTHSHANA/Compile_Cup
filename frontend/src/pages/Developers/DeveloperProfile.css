@@ -237,36 +237,101 @@
   }
 }
 
+/* 📱 Tablet (<= 768px) */
 @media (max-width: 768px) {
   .developer-card {
     flex-direction: column !important;
     align-items: center;
     text-align: center;
-    padding: 0%;
+    padding: 1rem 0;
   }
 
   .developer-image {
     filter: grayscale(0%);
+    /* always show color on mobile */
+    width: 80%;
+    height: auto;
   }
 
   .developer-name {
     font-size: 2rem;
+    bottom: 10px;
+  }
+
+  .developer-bio {
+    width: 100%;
+    max-width: 90%;
+    font-size: 0.8rem;
+  }
+
+  .developer-info-container {
+    margin-top: 1rem;
+    padding: 0.5rem;
   }
 
   .social-links {
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.2rem;
-
+    gap: 0.6rem;
+    padding: 10px 12px;
   }
 
-  .developer-image-container {
-    max-width: 100%;
-    padding: 0%;
+  .social-links .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+}
+
+/* 📱 Small Mobile (<= 480px) */
+@media (max-width: 480px) {
+  .developer-image {
+    width: 90%;
   }
 
-  .developers-page-container {
-    flex-direction: column-reverse;
+  .developer-name {
+    font-size: 1.6rem;
+    bottom: 6px;
+  }
+
+  .developer-role {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .developer-bio {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .social-links {
+    gap: 0.4rem;
+    padding: 8px 10px;
+  }
+
+  .social-links .icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .resume-portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .expanding-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    justify-content: center;
+  }
+
+  .expanding-btn-text {
+    display: inline-block;
   }
 }
 
@@ -279,7 +344,8 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background-color: #27d6e6; /* Primary theme color */
+  background-color: #27d6e6;
+  /* Primary theme color */
   border: none;
   font-weight: 600;
   display: flex;
@@ -294,10 +360,13 @@
 }
 
 .expanding-btn:hover {
-  width: 180px; /* Expanded width */
+  width: 180px;
+  /* Expanded width */
   border-radius: 50px;
-  background-color: #19c6d6; /* Darker hover color */
-  justify-content: flex-start; /* Align content to the left on hover */
+  background-color: #19c6d6;
+  /* Darker hover color */
+  justify-content: flex-start;
+  /* Align content to the left on hover */
   padding-left: 15px;
 }
 
@@ -315,30 +384,56 @@
 }
 
 .expanding-btn:hover .expanding-btn-icon {
-  transform: translateX(5px); /* Slightly move icon to the right */
+  transform: translateX(5px);
+  /* Slightly move icon to the right */
 }
 
 /* --- Text Styling --- */
 .expanding-btn-text {
   position: absolute;
-  left: 50px; /* Position text to appear after the icon */
+  left: 50px;
+  /* Position text to appear after the icon */
   color: white;
   font-size: 1rem;
-  opacity: 0; /* Initially hidden */
-  transform: translateX(-15px); /* Start slightly to the left */
+  opacity: 0;
+  /* Initially hidden */
+  transform: translateX(-15px);
+  /* Start slightly to the left */
   transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
 }
 
 .expanding-btn:hover .expanding-btn-text {
-  opacity: 1; /* Fade in on hover */
-  transform: translateX(0); /* Slide into place */
+  opacity: 1;
+  /* Fade in on hover */
+  transform: translateX(0);
+  /* Slide into place */
 }
 
-.resume-portfolio{
+.resume-portfolio {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   margin: 20px;
+}
+
+@media (max-width: 480px) {
+  .resume-portfolio {
+    flex-direction: row;
+    gap: 0.6rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .expanding-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    justify-content: center;
+  }
+
+  .expanding-btn-text {
+    display: inline-block;
+  }
 }

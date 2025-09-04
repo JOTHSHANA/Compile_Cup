@@ -8,7 +8,7 @@ const About = () => {
       <div className="about-title" data-aos="fade-down" data-aos-duration="1000">
         ABOUT US
       </div>
-      <h1 className="background-title">ABOUT US</h1>
+      {/* <h1 className="background-title">ABOUT US</h1> */}
 
       <div className="about-container">
         {/* Card 1 */}

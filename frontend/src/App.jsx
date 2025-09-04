@@ -48,7 +48,7 @@ function App() {
       once: false,
     });
 
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 1000);
 
     return () => clearTimeout(timer);
   }, []);

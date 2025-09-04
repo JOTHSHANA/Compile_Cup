@@ -248,8 +248,7 @@
 
   .developer-image {
     filter: grayscale(0%);
-    /* always show color on mobile */
-    width: 80%;
+    width: 100%;
     height: auto;
   }
 
@@ -286,7 +285,8 @@
 /* 📱 Small Mobile (<= 480px) */
 @media (max-width: 480px) {
   .developer-image {
-    width: 90%;
+    width: 100%;
+    height: auto;
   }
 
   .developer-name {

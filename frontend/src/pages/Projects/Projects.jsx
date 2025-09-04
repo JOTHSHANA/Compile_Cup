@@ -48,6 +48,7 @@ function Projects() {
         showCover={true}
         size="fixed"
         
+        
       >
         <div className="page cover">
           <div className="page-content">

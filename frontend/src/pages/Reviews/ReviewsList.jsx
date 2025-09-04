@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { showError } from "../../components/toast/toast";
 import { Modal, Skeleton } from "antd";
 import "./ReviewList.css";
 
-const ReviewList = () => {
+const ReviewList = forwardRef((props, ref) => {
   const [reviews, setReviews] = useState([]);
   const [selectedReview, setSelectedReview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchReviews();
-  }, []);
 
   const fetchReviews = async () => {
     setLoading(true);
@@ -29,6 +25,15 @@ const ReviewList = () => {
     }
     setLoading(false);
   };
+
+  // expose fetchReviews to parent
+  useImperativeHandle(ref, () => ({
+    reload: fetchReviews,
+  }));
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
 
   const handleCardClick = (review) => {
     setSelectedReview(review);
@@ -50,7 +55,7 @@ const ReviewList = () => {
               key={review.id}
               className="review-card"
               data-aos="fade-up"
-              data-aos-delay={index * 100} // staggered animation
+              data-aos-delay={index * 100}
               onClick={() => handleCardClick(review)}
             >
               <div className="review-content-default">
@@ -97,6 +102,6 @@ const ReviewList = () => {
       </Modal>
     </div>
   );
-};
+});
 
 export default ReviewList;

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Input, Select, Button, Spin, Modal } from 'antd';
+import React, { useEffect, useState, useRef } from 'react';
+import { Form, Input, Select, Button, Modal } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
-import emailjs from 'emailjs-com';
 import { supabase } from '../../lib/supabaseClient';
 import ReviewsList from './ReviewsList';
 import { showError, showSuccess } from '../../components/toast/toast';
@@ -16,6 +14,8 @@ const Reviews = () => {
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const reviewsRef = useRef(); // 👈 reference to child
 
   useEffect(() => {
     setProjects(projectsData);
@@ -35,30 +35,15 @@ const Reviews = () => {
       if (supabaseError) {
         console.error("Supabase insert error:", supabaseError);
         showError("Error submitting review!");
-        setLoading(false);
         return;
-      }
-
-      const templateParams = {
-        name: values.name,
-        message: `Project: ${values.project}\n\nReview: ${values.review}`,
-      };
-
-      try {
-        await emailjs.send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          templateParams,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        );
-      } catch (emailError) {
-        console.error("EmailJS error:", emailError);
-        showError("Review saved but email failed!");
       }
 
       showSuccess("Review submitted successfully!");
       form.resetFields();
-      setIsModalOpen(false); 
+      setIsModalOpen(false);
+
+      // 👈 refresh reviews list after submit
+      reviewsRef.current?.reload();
     } catch (err) {
       console.error("Unexpected error:", err);
       showError("Something went wrong!");
@@ -72,7 +57,6 @@ const Reviews = () => {
       <div className="reviews-header">
         <h1 className="reviews-title">Reviews</h1>
         <Button 
-          type="" 
           icon={<PlusCircleOutlined />} 
           onClick={() => setIsModalOpen(true)}
           className="add-review-button"
@@ -81,8 +65,8 @@ const Reviews = () => {
         </Button>
       </div>
 
-      <ReviewsList />
-      
+      <ReviewsList ref={reviewsRef} /> {/* 👈 pass ref */}
+
       <Modal
         title="Submit a Review"
         open={isModalOpen}

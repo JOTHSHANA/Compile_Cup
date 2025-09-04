@@ -1,4 +1,3 @@
-/* --- Root Variables (Assuming you have these, if not, you can define them) --- */
 :root {
   --page-background: #fdfdfd;
   --page-border: #e0e0e0;
@@ -164,4 +163,32 @@
   text-align: center;
   font-style: italic;
   letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 1rem;
+    width: 80%;
+  }
+  .page-content {
+    padding: 15px;
+  }
+
+  .project-img-container {
+    height: 150px; /* Slightly reduced height for smaller screens */
+    margin-bottom: 15px; /* Reduced margin */
+  }
+
+  .project-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-container p {
+    font-size: 0.85rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
 }

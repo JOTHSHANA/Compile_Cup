@@ -69,6 +69,7 @@ const Contact = () => {
       name: values.name,
       email: values.email,
       message: values.message,
+      time: new Date().toLocaleString(),
     };
 
     emailjs

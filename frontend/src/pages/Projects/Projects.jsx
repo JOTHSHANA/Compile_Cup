@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
 import projectData from "../../shared/projects.json";
+import useWindowSize from "../../hooks/useWindowSize";
 import "./Projects.css";
 
 import inventoryApp from '../../assets/inventory-app.png';
@@ -23,6 +24,9 @@ const projectImages = {
 
 function Projects() {
   const bookRef = useRef(null);
+  const size = useWindowSize();
+  const bookWidth = size.width < 768 ? 350 : 400;
+  const bookHeight = size.width < 768 ? 425 : 550;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,15 +44,13 @@ function Projects() {
       <h1 className="background-title">PROJECTS</h1>
       <HTMLFlipBook
         ref={bookRef}
-        width={400}
-        height={550}
+        width={bookWidth}
+        height={bookHeight}
         flippingTime={1000}
         drawShadow={true}
         maxShadowOpacity={0.5}
         showCover={true}
-        size="fixed"
-        
-        
+        size="fixed" 
       >
         <div className="page cover">
           <div className="page-content">

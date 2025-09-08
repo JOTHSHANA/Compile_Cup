@@ -27,7 +27,7 @@
 .developers-page-container {
   width: 100%;
   min-height: 100vh;
-  background: var(--background-primary);
+  /* background: var(--background-primary); */
   display: flex;
   flex-direction: column;
   padding: 2rem;

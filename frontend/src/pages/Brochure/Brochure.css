@@ -1,0 +1,215 @@
+.brochure-page-container {
+    min-height: 100vh;
+    background-color: var(--background-secondary);
+    display: flex;
+    flex-direction: column;
+    /* Apply magnifying glass cursor for the whole page */
+    cursor: url("https://cdn-icons-png.flaticon.com/512/149/149852.png") 20 20, zoom-in;
+}
+
+.brochure_heading {
+    font-weight: 700;
+    font-size: 34px;
+    padding: 30px;
+    height: 100px;
+}
+
+.brochure-content {
+    display: flex;
+    margin: 0px 250px 30px 250px;
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+    color: white;
+}
+
+.brochure-blocks {
+    flex: 1;
+    padding: 0px 20px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.b3 {
+    background-color: #3f4154;
+}
+
+.b1 {
+    background-color: #132030;
+}
+
+.b2 {
+    background-color: #132030e3;
+    padding: 0px 10px 0px 10px;
+    align-items: center;
+}
+
+/* Download button */
+.download-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+.brochure-image1 {
+    width: 100%;
+    height: auto;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.brochure-image2 {
+    width: 85%;
+    height: auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.brochure_headings {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #066d72;
+    width: fit-content;
+    padding-bottom: 5px;
+}
+
+.brochure_paragraphs {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: justify;
+    margin-bottom: 5px;
+}
+
+.dev-profile-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #3f4154b5;
+    border-radius: 5px;
+}
+
+.brochure-icon-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-name {
+    font-size: 40px;
+    color: #c54e52;
+}
+
+.peach-ribbon {
+    background-color: #c54e52;
+    height: 95%;
+    border-radius: 0px 0px 20px 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.brochure-services {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.brochure-icon {
+    background-color: rgb(246, 246, 246);
+    border-radius: 50%;
+    padding: 5px;
+    color: #132030;
+}
+
+.sp {
+    font-size: 10px;
+}
+
+/* Zoom effect for important sections */
+/* Base zoom-section style */
+.zoom-section {
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  padding: 15px; /* base padding */
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Hover zoom */
+.zoom-section:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+/* Animated border effect */
+.zoom-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #00e5ff, #ff00d4, #ff9900, #00e5ff);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  animation: borderAnim 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show border only when hovered */
+.zoom-section:hover::before {
+  opacity: 1;
+}
+
+/* Animated gradient border */
+@keyframes borderAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === DIM OTHER SECTIONS === */
+.brochure-content:has(.zoom-section:hover) .zoom-section {
+  opacity: 0.3; /* dim all zoom sections */
+  filter: blur(1px);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Keep hovered section bright */
+.brochure-content:has(.zoom-section:hover) .zoom-section:hover {
+  opacity: 1;
+  filter: none;
+}
+
+
+
+.abt-us-container,
+.devs {
+    padding: 10px;
+}

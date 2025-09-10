@@ -42,7 +42,7 @@ function Projects() {
     <div className="projects-wrapper" data-aos="fade-up"
         data-aos-duration="1000">
       <h1 className="background-title">PROJECTS</h1>
-      <HTMLFlipBook
+      {size.width && size.height ?(<HTMLFlipBook
         ref={bookRef}
         width={bookWidth}
         height={bookHeight}
@@ -93,7 +93,7 @@ function Projects() {
             <p>Contact us for collaborations!</p>
           </div>
         </div>
-      </HTMLFlipBook>
+      </HTMLFlipBook>):(<div>Loading...</div>)}
       <p className="helper-text">
         Click or swipe to flip through our projects.
       </p>

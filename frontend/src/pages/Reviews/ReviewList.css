@@ -91,14 +91,14 @@
   color: var(--text-primary);
 }
 
-.review-snippet {
+.review-content-default p {
   margin: 1rem 0;
   flex-grow: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical;
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -126,6 +126,7 @@
 .review-content-hover {
   opacity: 0;
   justify-content: center;
+  align-items: center;
   color: white;
   overflow-y: auto;
 }
@@ -138,4 +139,9 @@
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10; /* Clamps text after 15 lines */
+  -webkit-box-orient: vertical;
 }

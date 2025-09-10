@@ -8,25 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Section = ({ children, id, variant = 'primary' }) => {
   const sectionRef = useRef(null);
 
-  // useEffect(() => {
-  //   const el = sectionRef.current;
-
-  //   gsap.fromTo(
-  //     el,
-  //     { opacity: 0, y: 50 },
-  //     {
-  //       opacity: 1,
-  //       y: 0,
-  //       duration: 1,
-  //       ease: 'power3.out',
-  //       scrollTrigger: {
-  //         trigger: el,
-  //         start: 'top 80%',
-  //         toggleActions: 'play none none reverse',
-  //       },
-  //     }
-  //   );
-  // }, []);
 
   return (
     <section

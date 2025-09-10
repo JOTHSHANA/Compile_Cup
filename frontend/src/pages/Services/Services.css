@@ -28,14 +28,14 @@
   justify-content: flex-start;
   text-align: center;
   overflow: hidden;
-  background-color: var(--background-primary);
+  /* background-color: var(--background-primary); */
 }
 
 #services{
   padding: 0px;
 }
 
-.services-main-title {
+.services-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
@@ -298,22 +298,11 @@
 
 
 .service-icon-card {
-  /* display: grid; */
   border: 2px solid var(--accent-primary);
   height: 15em;
   aspect-ratio: 1;
   border-radius: 1rem;
   position: relative;
-
-  /* transform: translate(calc(-150% * var(--mov) * sqrt(var(--sin)))) rotate(calc((1 - var(--sin)) * var(--a))); */
-
-  /* REMOVE the background-color property to ensure the image is visible.
-    The background is now the image itself.
-  */
-  /* background-color: color-mix(in srgb, var(--accent-primary) calc(var(--top) * 100%), var(--background-secondary)); */
-
-  /* transition: transform 0.2s; */
-  /* Removed background-color from transition */
 }
 
 
@@ -328,5 +317,18 @@
   .services-carousel {
     flex-direction: column;
     gap: 30px;
+  }
+}
+
+@media (max-width:748px){
+  .services-page-container {
+    padding: 2rem 1rem;
+  }
+  .services-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+.service-content h2{
+    font-size: 1.5rem;
   }
 }

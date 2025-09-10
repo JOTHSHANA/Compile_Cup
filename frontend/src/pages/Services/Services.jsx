@@ -81,7 +81,7 @@ const Services = () => {
 
           <div className="right-column-container" data-aos="fade-left">
             <div key={activeIndex} className="service-content">
-              <h2 data-aos="fade-up">{activeService.title}</h2>
+              <h2 className='ser-title' data-aos="fade-up">{activeService.title}</h2>
               <p data-aos="fade-up" data-aos-delay="150">{activeService.description}</p>
               <div className="tech-stack" data-aos="fade-up" data-aos-delay="250">
                 {activeService.techStack.map((tech, i) => (

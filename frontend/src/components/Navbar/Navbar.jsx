@@ -25,6 +25,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/#home">COMPILE CUP</Link>
+        
       </div>
 
       {/* Desktop Navbar */}

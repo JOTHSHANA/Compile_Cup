@@ -165,6 +165,22 @@
   letter-spacing: 0.5px;
 }
 
+.flip-btn {
+  background: var(--bg, #f0f0f0);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+.flip-btn:hover {
+  background: var(--blob2, #007bff);
+  color: white;
+}
+
 @media (max-width: 768px) {
   .page-wrapper {
     padding: 1rem;
@@ -192,3 +208,4 @@
     padding: 4px 10px;
   }
 }
+

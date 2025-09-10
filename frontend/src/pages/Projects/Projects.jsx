@@ -26,7 +26,7 @@ function Projects() {
   const bookRef = useRef(null);
   const size = useWindowSize();
   const bookWidth = size.width < 768 ? 350 : 400;
-  const bookHeight = size.width < 768 ? 425 : 550;
+  const bookHeight = size.width < 768 ? 450 : 550;
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Londrina+Outline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@500&family=Roboto&display=swap');
 :root {
   --bg-grd: linear-gradient(to right, #f0f1f3, rgba(215, 219, 223, 0.8), transparent);
   --bd-grd-color: #f0f1f3;
@@ -32,6 +32,11 @@
   --neumorphic-shadow: 
     -5px -5px 12px rgba(255, 255, 255, 0.8),
     5px 5px 12px rgba(0, 0, 0, 0.15);
+  --bg: #e6f2ff;
+  --bg-gradient: linear-gradient(135deg, #e6f2ff, #f0f8ff, #d9ecff);
+  --blob1: rgba(0, 102, 255, 0.6);
+  --blob2: rgba(0, 204, 255, 0.6);
+  --blob3: rgba(102, 153, 255, 0.6);
 }
 
 [data-theme='dark'] {
@@ -61,6 +66,11 @@
   --neumorphic-shadow: 
     -5px -5px 12px rgba(255, 255, 255, 0.05),
     5px 5px 12px rgba(0, 0, 0, 0.5);
+   --bg: #0a0f1f;
+  --bg-gradient: linear-gradient(135deg, #0a0f1f, #0f111a, #0d151e);
+  --blob1: rgba(1, 19, 54, 0.6);   
+  --blob2: rgba(11, 24, 36, 0.6);  
+  --blob3: rgba(27, 7, 48, 0.6); 
 }
 
 

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Box, Drawer, List, ListItem, ListItemButton, ListItemText, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Link, useLocation } from 'react-router-dom';
 import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import './Navbar.css';
@@ -10,39 +8,26 @@ const Navbar = () => {
   const sectionIds = ['home', 'about', 'services', 'projects', 'developers', 'brochure', 'contact'];
   const activeId = useScrollSpy(sectionIds, { rootMargin: '0px 0px -50% 0px' });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const getLinkClass = (id) => {
-    return `navbar-link ${activeId === id ? 'active' : ''}`;
+    if (location.pathname === "/reviews") {
+      return `navbar-link ${id === "reviews" ? "active" : ""}`;
+    }
+    return `navbar-link ${activeId === id ? "active" : ""}`;
   };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', backgroundColor: 'var(--background-secondary)', height: '100%' }}>
-      <List>
-        {sectionIds.map((id) => (
-          <ListItem key={id} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} component={Link} to={`/#${id}`}>
-              <ListItemText primary={id.charAt(0).toUpperCase() + id.slice(1)} sx={{ color: 'var(--text-primary)' }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: 'center' }} component={Link} to="/reviews">
-            <ListItemText primary="Reviews" sx={{ color: 'var(--text-primary)' }} />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  );
 
   return (
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/#home">COMPILE CUP</Link>
       </div>
+
+      {/* Desktop Navbar */}
       <div className="navbar-right-desktop">
         <ul className="navbar-links">
           <li><Link to="/#home" className={getLinkClass('home')}>Home</Link></li>
@@ -52,31 +37,49 @@ const Navbar = () => {
           <li><Link to="/#developers" className={getLinkClass('developers')}>Developers</Link></li>
           <li><Link to="/#brochure" className={getLinkClass('brochure')}>Brochure</Link></li>
           <li><Link to="/#contact" className={getLinkClass('contact')}>Contact</Link></li>
-          <li><Link to="/reviews">Reviews</Link></li>
+          <li><Link to="/reviews" className={getLinkClass("reviews")}>Reviews</Link></li>
         </ul>
         <ThemeToggleButton />
       </div>
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="start"
+ <div className="navbar-mobile-theme">
+    <ThemeToggleButton />
+  </div>
+      <div
+        className={`menu-icon-button ${mobileMenuOpen ? "open" : ""}`}
         onClick={handleDrawerToggle}
-        className="menu-icon-button"
-        sx={{ color: 'var(--text-primary)' }}
       >
-        <MenuIcon />
-      </IconButton>
-      <Drawer
-        anchor="right"
-        open={mobileMenuOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, 
-        }}
-        sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }}
-      >
-        {drawer}
-      </Drawer>
+        <div className="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
+        <ul className="mobile-links">
+          {sectionIds.map((id, index) => (
+            <li
+              key={id}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              onClick={handleDrawerToggle}
+            >
+              <Link to={`/#${id}`} className={getLinkClass(id)}>
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </Link>
+            </li>
+          ))}
+          <li
+            data-aos="fade-up"
+            data-aos-delay={sectionIds.length * 100}
+            onClick={handleDrawerToggle}
+          >
+            <Link to="/reviews" className={getLinkClass("reviews")}>
+              Reviews
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

@@ -43,16 +43,110 @@
   color: var(--accent-primary);
 }
 
+/* Hide hamburger on desktop */
 .menu-icon-button {
-  display: none !important;
+  display: none;
+  cursor: pointer;
 }
 
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate hamburger to cross */
+.menu-icon-button.open .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon-button.open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon-button.open .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile fullscreen menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: var(--background-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.4s ease-in-out;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-links {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.mobile-links li {
+  margin: 1.2rem 0;
+}
+
+.mobile-links a {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobile-links a:hover,
+.mobile-links a.active {
+  color: var(--accent-primary);
+}
+
+/* Mobile only */
 @media (max-width: 960px) {
   .navbar-right-desktop {
     display: none;
   }
 
   .menu-icon-button {
-    display: inline-flex !important;
+    display: inline-flex;
+    z-index: 1001; /* above menu */
+  }
+}
+
+/* Mobile Theme Toggle */
+.navbar-mobile-theme {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-mobile-theme {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 80px; /* keeps space for hamburger menu */
+    z-index: 1001;
+  }
+
+  .navbar-right-desktop {
+    display: none;
   }
 }

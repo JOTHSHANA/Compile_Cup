@@ -69,6 +69,7 @@ const Contact = () => {
       name: values.name,
       email: values.email,
       message: values.message,
+      time: new Date().toLocaleString(),
     };
 
     emailjs
@@ -102,7 +103,6 @@ const Contact = () => {
   }}
 >
   <div className="contact-page-container">
-    {/* Left Side */}
     <div className="left-contact" data-aos="fade-up" data-aos-duration="1000">
       <div className="contact-image" data-aos="zoom-in" data-aos-delay="200">
         <img src={contact} alt="Contact" className="contact-img-element" />
@@ -162,7 +162,6 @@ const Contact = () => {
       </div>
     </div>
 
-    {/* Right Side Form */}
     <div className="right-contact-formm" data-aos="fade-down" data-aos-duration="1000">
       <h1 className="contact-title" data-aos="fade-down">
         Contact Us

@@ -1,12 +1,17 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useLayoutEffect, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Services.css';
 import serviceImage1 from '../../assets/service1.jpeg';
 import serviceImage2 from '../../assets/service2.png';
 import serviceImage3 from '../../assets/service3.png';
 import serviceImage4 from '../../assets/service4.png';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const servicesData = [
+  // ... (your servicesData remains the same)
   {
     title: 'Web Applications',
     image: serviceImage1,
@@ -35,6 +40,7 @@ const servicesData = [
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const servicesPageRef = useRef(null);
 
   const servicesWithAngles = useMemo(() => {
     return servicesData.map(service => ({
@@ -50,23 +56,51 @@ const Services = () => {
     setActiveIndex((prevIndex) => (prevIndex + increment + totalServices) % totalServices);
   };
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesPageRef.current,
+          start: "top 70%",
+          toggleActions: "play reverse play reverse",
+        }
+      });
+
+      tl.from(".services-title", { opacity: 0, y: 50, duration: 0.8 })
+        .from(".card-stack-container", { opacity: 0, scale: 0.8, y: 100, duration: 1 }, "-=0.5")
+        .from(".right-column-container", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
+        .from(".services-note, .contact-button", { opacity: 0, y: 30, stagger: 0.2 }, "-=0.5");
+
+    }, servicesPageRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    gsap.from(".service-content > *", {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+  }, [activeIndex]); 
+
   return (
-    <div>
+    <div ref={servicesPageRef}>
       <div className="services-page-container">
-        <h1 className="services-title" data-aos="fade-up">OUR SERVICES</h1>
+        <h1 className="services-title">OUR SERVICES</h1>
 
         <section
           className="services-carousel"
           style={{ '--n': totalServices, '--k': activeIndex }}
         >
-          <div className="card-stack-container" data-aos="zoom-in-up">
+          <div className="card-stack-container">
             {servicesWithAngles.map((service, index) => (
               <article
                 key={index}
                 className="service-article"
                 style={{ '--i': index, '--a': `${service.randomAngle}deg` }}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
               >
                 <div className="service-icon-card">
                   <img
@@ -79,27 +113,27 @@ const Services = () => {
             ))}
           </div>
 
-          <div className="right-column-container" data-aos="fade-left">
+          <div className="right-column-container">
             <div key={activeIndex} className="service-content">
-              <h2 className='ser-title' data-aos="fade-up">{activeService.title}</h2>
-              <p data-aos="fade-up" data-aos-delay="150">{activeService.description}</p>
-              <div className="tech-stack" data-aos="fade-up" data-aos-delay="250">
+              <h2 className='ser-title'>{activeService.title}</h2>
+              <p>{activeService.description}</p>
+              <div className="tech-stack">
                 {activeService.techStack.map((tech, i) => (
                   <span key={i} className="tech-badge">{tech}</span>
                 ))}
               </div>
             </div>
 
-            <div className="service-nav" data-aos="fade-up" data-aos-delay="350">
+            <div className="service-nav">
               <button aria-label="previous" onClick={() => handleNavClick(-1)}></button>
               <button aria-label="next" onClick={() => handleNavClick(1)}></button>
             </div>
           </div>
         </section>
 
-        <p className="services-note" data-aos="fade-up">Charges may vary according to the complexity of the client's requirements.</p>
+        <p className="services-note">Charges may vary according to the complexity of the client's requirements.</p>
 
-        <Link to="/#contact" className="contact-button" data-aos="zoom-in">
+        <Link to="/#contact" className="contact-button">
           Contact Us
         </Link>
       </div>

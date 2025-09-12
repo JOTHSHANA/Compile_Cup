@@ -1,81 +1,110 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useLayoutEffect, useRef } from "react";
 import bgImage from "../../assets/bg-m.png";
 import bgDark from "../../assets/bg-m-dark.png";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { ThemeContext } from "../../context/ThemeContext";
-
-const targetText = "COMPILE CUP";
-const characters = "☊⍜⋔⌿⟟⌰⟒ ☊⎍⌿";
+import { gsap } from "gsap";
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
-  const [displayText, setDisplayText] = useState("");
-  const [iteration, setIteration] = useState(0);
+  const homeRef = useRef(null);
 
-  useEffect(() => {
-    let interval;
+  const backgroundImageUrl = theme === "dark" ? bgDark : bgImage;
+  document.documentElement.style.setProperty(
+    "--bg-image-url",
+    `url(${backgroundImageUrl})`
+  );
+  const rgbValue = theme === "dark" ? "26, 26, 46" : "247, 247, 247";
+  document.documentElement.style.setProperty("--bg-gradient-rgb", rgbValue);
 
-    if (iteration < targetText.length) {
-      interval = setInterval(() => {
-        setDisplayText((prev) => {
-          let result = "";
-          for (let i = 0; i < targetText.length; i++) {
-            if (i <= iteration) {
-              result += targetText[i]; 
-            } else {
-              result += characters[Math.floor(Math.random() * characters.length)];
-            }
-          }
-          return result;
-        });
-        setIteration((prev) => prev + 1);
-      }, 200);
-    }
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
 
-    return () => clearInterval(interval);
-  }, [iteration]);
+      tl.fromTo(
+        ".home-tagline",
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+        0.2 
+      );
 
-  useEffect(() => {
-    const backgroundImageUrl = theme === "dark" ? bgDark : bgImage;
-    document.documentElement.style.setProperty(
-      "--bg-image-url",
-      `url(${backgroundImageUrl})`
-    );
+      tl.fromTo(
+        ".home-cta-button",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" },
+        0.6 
+      );
 
-    const rgbValue = theme === "dark" ? "26, 26, 46" : "247, 247, 247";
-    document.documentElement.style.setProperty("--bg-gradient-rgb", rgbValue);
-  }, [theme]);
+      tl.fromTo(
+        ".home-subtitle",
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+        1.0 
+      );
+    }, homeRef); 
+
+    return () => ctx.revert();
+  }, []);
+
+  const title = "COMPILE CUP";
+
+  const specialLetterIndexes = [];
+  title.split("").forEach((c, i) => {
+    if (/[I]/.test(c)) specialLetterIndexes.push(i);
+  });
 
   return (
-    <div id="home" className="home-container">
+    <div
+      id="home"
+      className="home-container"
+      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      ref={homeRef} 
+    >
       <div className="gradient-overlay"></div>
-
       <div className="home-content-container">
         <div className="home-content">
-          {/* Animated Cipher Title */}
-          <h1 className="home-title" data-aos="fade-up">
-            {displayText}
+          <h1 className="home-title">
+            {title.split("").map((char, i) => {
+              if (char === " ") return <span key={i} className="space"></span>;
+
+              const isSpecial = specialLetterIndexes.includes(i);
+              const isLetterI = char.toUpperCase() === "I";
+
+              return (
+                <span
+                  key={i}
+                  className={`letter ${isSpecial ? "animate-vowel" : ""} ${
+                    isLetterI ? "special-letter" : ""
+                  }`}
+                  style={{
+                    "--rand-x": Math.floor(Math.random() * 300),
+                    "--rand-y": Math.floor(Math.random() * 300),
+                    "--fly-in-delay": `${i * 0.1}s`,
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
+          </h1>
+          <h1 className="home-tagline">
+            <span className="word">Code</span>
+            <span className="word">
+              <span className="superscript">Crafted</span>
+            </span>
+            <span className="word">
+              <span className="superscript">Visions</span>
+            </span>
+            <span className="word">Launched</span>
           </h1>
 
-          {/* Tagline */}
-          <p className="home-tagline" data-aos="fade-up" data-aos-delay="200">
-            Code Crafted. Visions Launched.
-          </p>
-
-          {/* Subtitle */}
-          <p className="home-subtitle" data-aos="fade-up" data-aos-delay="400">
+          <p className="home-subtitle">
             We transform innovative ideas into seamless digital experiences,
             from concept to cloud.
           </p>
 
-          {/* CTA */}
-          <Link
-            to="/#projects"
-            className="home-cta-button"
-            data-aos="zoom-in"
-            data-aos-delay="600"
-          >
+          <Link to="/#projects" className="home-cta-button">
             Explore Our Work
           </Link>
         </div>

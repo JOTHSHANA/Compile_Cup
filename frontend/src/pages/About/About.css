@@ -1,363 +1,154 @@
-/* Main container for the cards with overlapping effect */
-
-.about-title {
-  font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 30px;
+:root {
+  --background-primary: #ffffff;
+  --text-primary: #1c1c1c;
+  --text-secondary: #555;
+  --chip-border: #333;
 }
 
-.about-container {
-  position: relative;
+.about-section {
+  padding: 5rem 2rem;
+  background: var(--background-primary);
+}
+
+.about-grid {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   justify-content: center;
-  align-items: center;
-  /* min-height: 100vh; */
+  margin: 0 auto;
 }
 
-/* Applying overlapping and separation logic */
-.about-container .parent {
-  margin: 0 -90px;
-  /* Negative margin to make cards overlap */
-  transition: margin 0.5s ease-in-out;
-}
-
-.about-container:hover .parent {
-  margin: 0 10px;
-  /* Positive margin to separate cards on container hover */
-}
-
-/* --- Original Card Styles --- */
-
-.parent {
-  width: 400px;
-  height: 400px;
-  perspective: 1000px;
-}
-
-.card {
-  height: 100%;
-  border-radius: 50px;
-  background: linear-gradient(135deg, var(--background-primary) 0%, var(--background-secondary) 100%);
-  transition: all 0.5s ease-in-out;
-  transform-style: preserve-3d;
-  box-shadow: 5px -5px 10px rgba(127, 180, 217, 0.551);
-}
-
-.glass {
-  transform-style: preserve-3d;
-  position: absolute;
-  inset: 8px;
-  border-radius: 55px;
-  border-top-right-radius: 100%;
-  background: linear-gradient(0deg, #88bdf247 0%, #659ace 100%);
-  transform: translate3d(0px, 0px, 25px);
-  border-left: 1px solid white;
-  border-bottom: 1px solid white;
-  transition: all 0.5s ease-in-out;
-}
-
-.content {
-  padding: 100px 60px 0px 30px;
-  transform: translate3d(0, 0, 26px);
-}
-
-.content .title {
-  display: block;
-  color: var(--);
-  font-size: 20px;
-}
-
-.content .text {
-  display: block;
-  /* font-size: 15px; */
-  margin-top: 20px;
-  line-height: 25px;
-}
-
-.bottom {
-  padding: 10px 12px;
-  transform-style: preserve-3d;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+.about-card {
+  border-radius: 2.5rem;
+  padding: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transform: translate3d(0, 0, 26px);
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.bottom .view-more {
-  display: flex;
-  align-items: center;
-  width: 40%;
-  justify-content: flex-end;
-  transition: all 0.2s ease-in-out;
+.about-card:hover {
+  transform: translateY(-8px);
 }
 
-.bottom .view-more:hover {
-  transform: translate3d(0, 0, 10px);
+.about-card.big-card-layout {
+  flex: 1 1 55%;
+  max-width: 55%;
+  max-height: 500px;
 }
 
-.bottom .view-more .view-more-button {
-  background: none;
-  border: none;
-  color: #1dc8f3;
-  font-size: 12px;
-  cursor: pointer;
+.about-card.small-card-layout {
+  flex: 1 1 40%;
+  max-width: 40%;
+  max-height: 500px;
 }
 
-.bottom .view-more .svg {
-  fill: none;
-  stroke: #88bdf2;
-  stroke-width: 3px;
-  max-height: 15px;
+.about-card:nth-child(3) {
+  flex: 1 1 100%;
+  max-width: 100%;
 }
 
-.bottom .social-buttons-container {
-  display: flex;
-  gap: 10px;
-  transform-style: preserve-3d;
-}
-
-.bottom .social-buttons-container .social-button {
-  width: 30px;
-  height: 30px;
-  aspect-ratio: 1;
-  padding: 5px;
-  background: rgb(255, 255, 255);
-  border-radius: 50%;
-  border: none;
-  display: grid;
-  place-content: center;
-  box-shadow: rgba(5, 71, 17, 0.5) 0px 7px 5px -5px;
-  cursor: pointer;
-}
-
-/* --- NEW styles for letters instead of SVGs --- */
-.social-button .social-letter {
-  font-size: 15px;
-  font-weight: bold;
-  color: #989a06;
-  transition: color 0.3s;
-}
-
-.bottom .social-buttons-container .social-button:hover {
-  background: black;
-}
-
-.bottom .social-buttons-container .social-button:hover .social-letter {
-  color: white;
-}
-
-.bottom .social-buttons-container .social-button:active {
-  background: rgb(255, 234, 0);
-}
-
-.bottom .social-buttons-container .social-button:active .social-letter {
+.about-card h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
   color: black;
 }
 
-/* --- End of NEW styles --- */
-
-.bottom .social-buttons-container .social-button.social-button1 {
-  transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s;
+.about-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: black;
+  letter-spacing: 1px;
+  color: rgb(55, 55, 55);
+  margin-bottom: 1.5rem;
 }
 
-.bottom .social-buttons-container .social-button.social-button2 {
-  transition: transform 0.2s ease-in-out 0.6s, box-shadow 0.2s ease-in-out 0.6s;
+.about-card .icon,
+.big-icon {
+  font-size: 3rem;
+  color: var(--text-primary);
 }
 
-.bottom .social-buttons-container .social-button.social-button3 {
-  transition: transform 0.2s ease-in-out 0.8s, box-shadow 0.2s ease-in-out 0.8s;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
-.logo {
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform-style: preserve-3d;
+.chip {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--chip-border);
+  background: transparent;
+  font-size: 0.85rem;
+  color: var(--chip-border);
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.logo .circle {
-  display: block;
-  position: absolute;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  top: 0;
-  right: 0;
-  box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  background: #88bdf242;
-  transition: all 0.5s ease-in-out;
+.chip:hover {
+  background: var(--chip-border);
+  color: #fff;
 }
 
-.logo .circle1 {
-  width: 170px;
-  transform: translate3d(0, 0, 20px);
-  top: 8px;
-  right: 8px;
+.big-card-layout .about-image img {
+  width: 100%;
+  max-width: 450px;
+  opacity: 0.9;
+  transition: transform 0.4s ease;
 }
 
-.logo .circle2 {
-  width: 140px;
-  transform: translate3d(0, 0, 40px);
-  top: 10px;
-  right: 10px;
-  -webkit-backdrop-filter: blur(1px);
-  backdrop-filter: blur(1px);
-  transition-delay: 0.4s;
+.big-card-layout:hover .about-image img {
+  transform: rotate(5deg) scale(1.05);
 }
 
-.logo .circle3 {
-  width: 110px;
-  transform: translate3d(0, 0, 60px);
-  top: 17px;
-  right: 17px;
-  transition-delay: 0.8s;
+.dark-theme {
+  color: white;
+}
+.dark-theme h2,
+.dark-theme .icon,
+.dark-theme .big-icon {
+  color: white;
+}
+.dark-theme p {
+  color: #ccc;
+}
+.dark-theme .chip {
+  border-color: #eee;
+  color: #eee;
+}
+.dark-theme .chip:hover {
+  background: #eee;
+  color: #1c1c1c;
 }
 
-.logo .circle4 {
-  width: 80px;
-  transform: translate3d(0, 0, 80px);
-  top: 23px;
-  right: 23px;
-  transition-delay: 1.2s;
-}
-
-.logo .circle5 {
-  width: 50px;
-  transform: translate3d(0, 0, 100px);
-  top: 30px;
-  right: 30px;
-  display: grid;
-  place-content: center;
-  transition-delay: 1.6s;
-}
-
-.logo .circle5 .svg {
-  width: 20px;
-  fill: white;
-}
-
-/* --- Individual Card Hover Effects --- */
-.parent:hover .card {
-  transform: rotate3d(1, 1, 0, 30deg);
-  box-shadow: 10px -10px 25px rgba(30, 175, 227, 0.553);
-}
-
-.parent:hover .card .bottom .social-buttons-container .social-button {
-  transform: translate3d(0, 0, 50px);
-  box-shadow: rgba(5, 71, 17, 0.2) -5px 20px 10px 0px;
-}
-
-.parent:hover .card .logo .circle2 {
-  transform: translate3d(0, 0, 60px);
-}
-
-.parent:hover .card .logo .circle3 {
-  transform: translate3d(0, 0, 80px);
-}
-
-.parent:hover .card .logo .circle4 {
-  transform: translate3d(0, 0, 100px);
-}
-
-.parent:hover .card .logo .circle5 {
-  transform: translate3d(0, 0, 120px);
-}
-
-
-
-
-@media (max-width: 1024px) {
-  .logo{
-    display: none;
-  }
-  .about-container {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .about-container .parent {
-    margin: 0;
-  }
-
-  .parent {
-    width: 90%;
-    max-width: 350px;
-    height: fit-content;
-  }
-
-  .card {
-    border-radius: 25px;
-  }
-
-  .content {
-    padding: 60px 25px 20px 25px;
-  }
-
-  .content .title {
-    font-size: 18px;
-  }
-
-  .content .text {
-    font-size: 14px;
-    line-height: 22px;
-  }
-
-  .bottom {
-    flex-direction: column;
-    gap: 10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    display: none;
-  }
-
-  .bottom .view-more {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .logo{
-    display: none;
-  }
-
-  .about-title {
-    font-size: 26px;
-  }
-
-  .background-title {
-    font-size: 40px;
-  }
-
-  .parent {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .content {
-    padding: 40px 20px 15px 20px;
-  }
-
-  .content .text {
-    font-size: 13px;
-    line-height: 20px;
-  }
-  .text{
+@media (max-width: 768px) {
+  .about-card {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
     padding: 10px;
   }
+}
 
-  .bottom {
-    flex-direction: column;
-    gap: 8px;
-  }
+.about-card .about-image {
+  position: relative; 
+  text-align: right;
+  margin-top: auto;
+}
 
-  .social-buttons-container {
-    justify-content: center;
-  }
+.about-card .about-image img {
+  width: 75%; 
+  /* max-width: 300px;  */
+  height: auto;
+  opacity: 0.9;
+  transition: transform 0.4s ease;
+}
+
+.about-card:hover .about-image img {
+  transform: rotate(5deg) scale(1.05);
 }

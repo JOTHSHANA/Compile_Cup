@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import paper from "../../assets/bg.png";
+import DescriptionIcon from '@mui/icons-material/Description';
+import WorkIcon from '@mui/icons-material/Work';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Import the MUI Icons you need
-import DescriptionIcon from '@mui/icons-material/Description'; // For Resume
-import WorkIcon from '@mui/icons-material/Work';               // For Portfolio
+gsap.registerPlugin(ScrollTrigger); 
 
-// A new reusable component for the expanding button
 const ExpandingButton = ({ text, icon, href }) => (
   <a href={href} target="_blank" rel="noreferrer" className="expanding-btn">
     <span className="expanding-btn-icon">{icon}</span>
@@ -14,46 +15,68 @@ const ExpandingButton = ({ text, icon, href }) => (
   </a>
 );
 
-
 const DeveloperProfile = ({ developer }) => {
   const { name, image, socials, role, bio, position } = developer;
+  const cardRef = useRef(null); 
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 80%", 
+          toggleActions: "restart pause resume reset", 
+        },
+      });
+
+      tl.from(cardRef.current, { opacity: 0, y: 50, duration: 0.8 }, 0.1) 
+        .from(".developer-image-container", { opacity: 0, scale: 0.8, duration: 0.8, ease: "power2.out" }, 0.15)
+        .from(".developer-role", { opacity: 0, y: -30, duration: 0.6, ease: "power2.out" }, 0.3)
+        .from(".developer-bio", { opacity: 0, y: 30, duration: 0.7, ease: "power2.out" }, 0.4)
+        // .from(".social-links", { opacity: 0, scale: 0.5, duration: 0.6, ease: "back.out(1.7)" }, 0.5)
+        .from(".resume-portfolio", { opacity: 0, y: 20, duration: 0.7, ease: "power2.out" }, 0.6); 
+
+    }, cardRef); 
+
+    return () => ctx.revert(); 
+  }, []);
 
   const SocialLinks = () => (
-    <div className="developer-info-container" data-aos="fade-up" data-aos-delay="200">
-      <h3 className="developer-role" data-aos="fade-down" data-aos-delay="300">
+    <div className="developer-info-container">
+      <h3 className="developer-role">
         {role.toUpperCase()}
       </h3>
-      <p className="developer-bio" data-aos="fade-up" data-aos-delay="400">
+      <p className="developer-bio">
         {bio}
       </p>
-      <div className="social-links" data-aos="zoom-in" data-aos-delay="500">
-        {/* Social links remain the same... */}
+      <div className="social-links">
         <a href={`mailto:${socials.email}`} target="_blank" rel="noreferrer" className="icon"><FaEnvelope /></a>
         <a href={`tel:${socials.phone}`} target="_blank" rel="noreferrer" className="icon"><FaPhoneAlt /></a>
         <a href={socials.linkedin} target="_blank" rel="noreferrer" className="icon"><FaLinkedin /></a>
         {socials.github && <a href={socials.github} target="_blank" rel="noreferrer" className="icon"><FaGithub /></a>}
         {socials.whatsapp && <a href={socials.whatsapp} target="_blank" rel="noreferrer" className="icon"><FaWhatsapp /></a>}
       </div>
-      
-      {/* --- UPDATED BUTTONS --- */}
       <div className="resume-portfolio">
-        <ExpandingButton 
-          text="View Resume" 
-          icon={<DescriptionIcon />} 
-          href={socials.resumeUrl} 
+        <ExpandingButton
+          text="View Resume"
+          icon={<DescriptionIcon />}
+          href={socials.resumeUrl}
         />
-        <ExpandingButton 
-          text="View Portfolio" 
-          icon={<WorkIcon />} 
-          href={socials.portfolioUrl} 
+        <ExpandingButton
+          text="View Portfolio"
+          icon={<WorkIcon />}
+          href={socials.portfolioUrl}
         />
       </div>
     </div>
   );
 
   return (
-    <div className={`developer-card ${position === "image-right" ? "reverse" : ""}`} data-aos="fade-up" data-aos-delay="100">
-      <div className="developer-image-container" data-aos="zoom-in" data-aos-delay="150">
+    <div
+      className={`developer-card ${position === "image-right" ? "reverse" : ""}`}
+      ref={cardRef} 
+    >
+      <div className="developer-image-container">
         <img
           src={image}
           alt={name}

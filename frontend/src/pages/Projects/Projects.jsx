@@ -4,6 +4,9 @@ import projectData from "../../shared/projects.json";
 import useWindowSize from "../../hooks/useWindowSize";
 import "./Projects.css";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import inventoryApp from '../../assets/inventory-app.png';
 import weatherApp from '../../assets/weather-app.png';
 import musicPlayer from '../../assets/music-player.png';
@@ -11,6 +14,8 @@ import ecom from '../../assets/ecom.png';
 import taskApp from '../../assets/task-app.png';
 import recipe from '../../assets/recipe.png';
 import portfolio from '../../assets/Portfolio.png';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projectImages = {
   'inventory-app.png': inventoryApp,
@@ -24,79 +29,98 @@ const projectImages = {
 
 function Projects() {
   const bookRef = useRef(null);
+  const wrapperRef = useRef(null);
   const size = useWindowSize();
   const bookWidth = size.width < 768 ? 350 : 400;
   const bookHeight = size.width < 768 ? 450 : 550;
 
   useEffect(() => {
+    // Initial flip animation
     const timer = setTimeout(() => {
       if (bookRef.current) {
         bookRef.current.pageFlip().flipNext();
       }
     }, 500);
 
+    // GSAP scroll animation
+    gsap.fromTo(
+      wrapperRef.current,
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: "top 80%", // when element hits 80% viewport
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    );
+
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="projects-wrapper" data-aos="fade-up"
-        data-aos-duration="1000">
+    <div className="projects-wrapper" ref={wrapperRef}>
       <h1 className="background-title">PROJECTS</h1>
-      {size.width && size.height ?(<HTMLFlipBook
-        ref={bookRef}
-        width={bookWidth}
-        height={bookHeight}
-        flippingTime={1000}
-        drawShadow={true}
-        maxShadowOpacity={0.5}
-        showCover={true}
-        size="fixed" 
-      >
-        <div className="page cover">
-          <div className="page-content">
-            <h1>Our Projects</h1>
-            <p>A showcase of our latest work.</p>
-          </div>
-        </div>
-
-        {projectData.map((project, index) => (
-          <div className="page" key={project.id}>
+      {size.width && size.height ? (
+        <HTMLFlipBook
+          ref={bookRef}
+          width={bookWidth}
+          height={bookHeight}
+          flippingTime={1000}
+          drawShadow={true}
+          maxShadowOpacity={0.5}
+          showCover={true}
+          size="fixed"
+        >
+          <div className="page cover">
             <div className="page-content">
-              <div className="project-img-container">
-                <img
-                  src={projectImages[project.imageName]}
-                  alt={project.name}
-                  className="project-image"
-                />
-                
-              </div>
-              <hr style={{width:'100%', marginBottom:"20px"}}/>
-              <div className="project-container">
-                <h2>{project.name}</h2>
-                <p>{project.description}</p>
-                <div className="tech-stack-container">
-                  {project.techStack.map((tech, i) => (
-                    <span key={i} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="page-number">{index + 1}</div>
+              <h1>Our Projects</h1>
+              <p>A showcase of our latest work.</p>
             </div>
           </div>
-        ))}
 
-        <div className="page cover">
-          <div className="page-content">
-            <h2>The End</h2>
-            <p>Contact us for collaborations!</p>
+          {projectData.map((project, index) => (
+            <div className="page" key={project.id}>
+              <div className="page-content">
+                <div className="project-img-container">
+                  <img
+                    src={projectImages[project.imageName]}
+                    alt={project.name}
+                    className="project-image"
+                  />
+                </div>
+                <hr style={{ width: "100%", marginBottom: "20px" }} />
+                <div className="project-container">
+                  <h2>{project.name}</h2>
+                  <p>{project.description}</p>
+                  <div className="tech-stack-container">
+                    {project.techStack.map((tech, i) => (
+                      <span key={i} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="page-number">{index + 1}</div>
+              </div>
+            </div>
+          ))}
+
+          <div className="page cover">
+            <div className="page-content">
+              <h2>The End</h2>
+              <p>Contact us for collaborations!</p>
+            </div>
           </div>
-        </div>
-      </HTMLFlipBook>):(<div>Loading...</div>)}
-      <p className="helper-text">
-        Click or swipe to flip through our projects.
-      </p>
+        </HTMLFlipBook>
+      ) : (
+        <div>Loading...</div>
+      )}
+      <p className="helper-text">Click or swipe to flip through our projects.</p>
     </div>
   );
 }

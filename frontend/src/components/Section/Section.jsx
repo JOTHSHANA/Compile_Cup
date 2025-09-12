@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Section.css';
@@ -7,6 +7,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Section = ({ children, id, variant = 'primary' }) => {
   const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".section-content", {
+        opacity: 0,
+        y: 100, 
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%', 
+          toggleActions: 'restart pause resume reset', 
+        },
+      });
+    }, sectionRef); 
+
+    return () => ctx.revert();
+  }, []);
 
 
   return (
@@ -23,7 +41,6 @@ const Section = ({ children, id, variant = 'primary' }) => {
 };
 
 export default Section;
-
 
 
 // import React from 'react';

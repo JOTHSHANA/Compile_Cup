@@ -1,128 +1,149 @@
-import React from 'react';
-import './About.css';
-import HotelClassIcon from '@mui/icons-material/HotelClass';
+import React, { useLayoutEffect, useRef } from "react";
+import {
+  FaRocket,
+  FaQuestionCircle,
+  FaCalendarAlt,
+  FaCogs,
+  FaPlusCircle,
+} from "react-icons/fa";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import team from "../../assets/team.svg";
+import startup from "../../assets/startup.svg";
+import develop from "../../assets/develop.svg";
+import mobile from "../../assets/mobile.svg";
+import service from "../../assets/service.svg";
+import "./About.css";
+
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const sectionRef = useRef(null); // Ref for the main section container
+
+  const cards = [
+    {
+      id: 1,
+      title: "What?",
+      desc: "We design and build modern apps, websites, and cloud solutions. From concept to deployment, we make technology work seamlessly for businesses and startups.",
+      icon: <FaRocket />,
+      color: "#faf7f6",
+      tags: ["Websites", "Apps", "Cloud"],
+      img: team,
+      isBig: true,
+    },
+    {
+      id: 2,
+      title: "Why?",
+      desc: "Because one-size-fits-all solutions never scale. We focus on performance, security, and usability—ensuring our builds grow with your business needs.",
+      icon: <FaQuestionCircle />,
+      color: "#ddf160",
+      tags: ["Scalable", "Secure", "Smart"],
+      img: startup,
+      isBig: false,
+    },
+    {
+      id: 3,
+      title: "When?",
+      desc: "Anytime. Whether it’s strict deadlines, midnight bug fixes, or last-minute server setups—we’ve got your back, 24/7.",
+      icon: <FaCalendarAlt />,
+      color: "#1c1c1c",
+      tags: ["24/7", "On-Demand", "Flexible"],
+      img: service,
+      isBig: true,
+    },
+    {
+      id: 4,
+      title: "How?",
+      desc: "Simple formula: Coffee ☕ + Code 💻 + Cloud ☁️ = Success 🚀. Our workflow blends DevOps, automation, and agile practices to deliver faster, better, and smarter.",
+      icon: <FaCogs />,
+      color: "#faf7f6",
+      tags: ["DevOps", "Automation", "Agile"],
+      img: develop,
+      isBig: false,
+    },
+    {
+      id: 5,
+      title: "More?",
+      desc: "From mobile apps to enterprise-grade pipelines, we act as your tech pit crew—keeping everything running smoothly, securely, and at scale.",
+      icon: <FaPlusCircle />,
+      color: "#ddf160",
+      tags: ["Mobile", "Web", "Cloud"],
+      img: mobile,
+      isBig: true,
+    },
+  ];
+
+  // --- GSAP ANIMATION ---
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Use GSAP's utility function to select all the cards
+      const cards = gsap.utils.toArray(".about-card");
+      
+      // Animate each card with a ScrollTrigger
+      cards.forEach((card) => {
+        gsap.from(card, {
+          scale: 0.8,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%", // Start animation when 85% of the card is visible
+            toggleActions: "play reverse play reverse", // Play once and don't replay
+          },
+        });
+      });
+      
+    }, sectionRef); // Scope the animations to the sectionRef container
+
+    // Cleanup function
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="about-wrapper">
-      <div className="about-title" data-aos="fade-down" data-aos-duration="1000">
-        ABOUT US
+    <section className="about-section" ref={sectionRef}>
+      <div className="about-grid">
+        {cards.map((card, i) => (
+          <div
+            key={card.id}
+            className={`about-card ${
+              card.isBig ? "big-card-layout" : "small-card-layout"
+            } ${card.color === "#1c1c1c" ? "dark-theme" : ""}`}
+            style={{ backgroundColor: card.color }}
+          >
+            <div className="about-content">
+              {card.isBig ? (
+                <div className="big-layout">
+                  <div className="big-header">
+                    <h2>{card.title}</h2>
+                    <div className="big-icon">{card.icon}</div>
+                  </div>
+                  <p>{card.desc}</p>
+                </div>
+              ) : (
+                <div className="small-layout">
+                  <div className="icon">{card.icon}</div>
+                  <h2>{card.title}</h2>
+                  <p>{card.desc}</p>
+                </div>
+              )}
+              <div className="tags">
+                {card.tags.map((tag, idx) => (
+                  <span key={idx} className="chip">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="about-image">
+              <img src={card.img} alt={card.title} />
+            </div>
+          </div>
+        ))}
       </div>
-      {/* <h1 className="background-title">ABOUT US</h1> */}
-
-      <div className="about-container">
-        {/* Card 1 */}
-        <div className="parent">
-          <div className="card">
-            <div className="logo">
-              <span className="circle circle1"></span>
-              <span className="circle circle2"></span>
-              <span className="circle circle3"></span>
-              <span className="circle circle4"></span>
-              <span className="circle circle5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.667 31.69" className="svg">
-                  <path d="M12.827,1.628A1.561,1.561,0,0,1,14.31,0h2.964a1.561,1.561,0,0,1,1.483,1.628v11.9a9.252,9.252,0,0,1-2.432,6.852q-2.432,2.409-6.963,2.409T2.4,20.452Q0,18.094,0,13.669V1.628A1.561,1.561,0,0,1,1.483,0h2.98A1.561,1.561,0,0,1,5.947,1.628V13.191a5.635,5.635,0,0,0,.85,3.451,3.153,3.153,0,0,0,2.632,1.094,3.032,3.032,0,0,0,2.582-1.076,5.836,5.836,0,0,0,.816-3.486Z"></path>
-                  <path d="M75.207,20.857a1.561,1.561,0,0,1-1.483,1.628h-2.98a1.561,1.561,0,0,1-1.483-1.628V1.628A1.561,1.561,0,0,1,70.743,0h2.98a1.561,1.561,0,0,1,1.483,1.628Z" transform="translate(-45.91 0)"></path>
-                  <path d="M0,80.018A1.561,1.561,0,0,1,1.483,78.39h26.7a1.561,1.561,0,0,1,1.483,1.628v2.006a1.561,1.561,0,0,1-1.483,1.628H1.483A1.561,1.561,0,0,1,0,82.025Z" transform="translate(0 -51.963)"></path>
-                </svg>
-              </span>
-            </div>
-            <div className="glass"></div>
-            <div className="content">
-              <span className="title">Who We Are?</span>
-              <span className="text">
-                We are a dynamic duo of final-year Computer Science Engineering students, combining cutting-edge academic knowledge with two years of real-world freelancing experience. We're passionate about building technology that solves problems and drives growth.
-              </span>
-            </div>
-            <div className="bottom">
-              <div className="social-buttons-container">
-                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
-              </div>
-              <div className="view-more">
-                <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 2 */}
-        <div className="parent">
-          <div className="card">
-            <div className="logo">
-              <span className="circle circle1"></span>
-              <span className="circle circle2"></span>
-              <span className="circle circle3"></span>
-              <span className="circle circle4"></span>
-              <span className="circle circle5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.667 31.69" className="svg">
-                  <path d="M12.827,1.628A1.561,1.561,0,0,1,14.31,0h2.964a1.561,1.561,0,0,1,1.483,1.628v11.9a9.252,9.252,0,0,1-2.432,6.852q-2.432,2.409-6.963,2.409T2.4,20.452Q0,18.094,0,13.669V1.628A1.561,1.561,0,0,1,1.483,0h2.98A1.561,1.561,0,0,1,5.947,1.628V13.191a5.635,5.635,0,0,0,.85,3.451,3.153,3.153,0,0,0,2.632,1.094,3.032,3.032,0,0,0,2.582-1.076,5.836,5.836,0,0,0,.816-3.486Z"></path>
-                  <path d="M75.207,20.857a1.561,1.561,0,0,1-1.483,1.628h-2.98a1.561,1.561,0,0,1-1.483-1.628V1.628A1.561,1.561,0,0,1,70.743,0h2.98a1.561,1.561,0,0,1,1.483,1.628Z" transform="translate(-45.91 0)"></path>
-                  <path d="M0,80.018A1.561,1.561,0,0,1,1.483,78.39h26.7a1.561,1.561,0,0,1,1.483,1.628v2.006a1.561,1.561,0,0,1-1.483,1.628H1.483A1.561,1.561,0,0,1,0,82.025Z" transform="translate(0 -51.963)"></path>
-                </svg>
-              </span>
-            </div>
-            <div className="glass"></div>
-            <div className="content">
-              <span className="title">What We Do?</span>
-              <span className="text">
-                We specialize in turning ideas into reality. Our core services include building custom web and mobile applications, handling seamless cloud deployment, and implementing efficient DevOps practices to ensure your project runs smoothly.
-              </span>
-            </div>
-            <div className="bottom">
-              <div className="social-buttons-container">
-                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
-              </div>
-              <div className="view-more">
-                <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="parent">
-          <div className="card">
-            <div className="logo">
-              <span className="circle circle1"></span>
-              <span className="circle circle2"></span>
-              <span className="circle circle3"></span>
-              <span className="circle circle4"></span>
-              <span className="circle circle5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.667 31.69" className="svg">
-                  <path d="M12.827,1.628A1.561,1.561,0,0,1,14.31,0h2.964a1.561,1.561,0,0,1,1.483,1.628v11.9a9.252,9.252,0,0,1-2.432,6.852q-2.432,2.409-6.963,2.409T2.4,20.452Q0,18.094,0,13.669V1.628A1.561,1.561,0,0,1,1.483,0h2.98A1.561,1.561,0,0,1,5.947,1.628V13.191a5.635,5.635,0,0,0,.85,3.451,3.153,3.153,0,0,0,2.632,1.094,3.032,3.032,0,0,0,2.582-1.076,5.836,5.836,0,0,0,.816-3.486Z"></path>
-                  <path d="M75.207,20.857a1.561,1.561,0,0,1-1.483,1.628h-2.98a1.561,1.561,0,0,1-1.483-1.628V1.628A1.561,1.561,0,0,1,70.743,0h2.98a1.561,1.561,0,0,1,1.483,1.628Z" transform="translate(-45.91 0)"></path>
-                  <path d="M0,80.018A1.561,1.561,0,0,1,1.483,78.39h26.7a1.561,1.561,0,0,1,1.483,1.628v2.006a1.561,1.561,0,0,1-1.483,1.628H1.483A1.561,1.561,0,0,1,0,82.025Z" transform="translate(0 -51.963)"></path>
-                </svg>
-              </span>
-            </div>
-            <div className="glass"></div>
-            <div className="content">
-              <span className="title">Why Choose Us?</span>
-              <span className="text">
-                Our partnership doesn't end at launch. We stand out by offering lifetime service and support for every project we build. This means we're committed to ensuring your application remains secure, updated, and effective for the long haul.
-              </span>
-            </div>
-            <div className="bottom">
-              <div className="social-buttons-container">
-                <button className="social-button social-button1"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button2"><span className="social-letter"><HotelClassIcon /></span></button>
-                <button className="social-button social-button3"><span className="social-letter"><HotelClassIcon /></span></button>
-              </div>
-              <div className="view-more">
-                <button className="view-more-button">View more</button>
-                <svg className="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 

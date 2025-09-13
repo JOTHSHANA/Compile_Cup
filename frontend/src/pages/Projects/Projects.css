@@ -1,211 +1,108 @@
 :root {
-  --page-background: #fdfdfd;
-  --page-border: #e0e0e0;
-  --page-text: #333;
-  --cover-background-start: #4a5568;
-  --cover-background-end: #2d3748;
-  --cover-border: #718096;
-  --cover-text: #f7fafc;
-  --project-title: #2d3748;
-  --project-text: #4a5568;
-  --tag-background: #e2e8f0;
-  --tag-text: #4a5568;
-  --helper-text: #718096;
+  --card-gap: 400px;
 }
 
-.projects-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.projects-section {
   position: relative;
-  padding: 2rem;
-}
-
-.page {
-  background: var(--page-background);
-  border: 1px solid var(--page-border);
-  color: var(--page-text);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-  font-family: "Georgia", serif;
-  transition: background 0.3s, color 0.3s;
-}
-
-.page::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.01),
-    rgba(0, 0, 0, 0.01) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-}
-
-.page-content {
   width: 100%;
-  height: 100%;
-  padding: 25px;
+  background: var(background-primary);
+  padding: 0 20px;
+}
+
+.projects-container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(var(--cards-count), var(--card-height));
+  gap: var(--card-gap) 0;
+}
+
+.project-card {
+  position: sticky;
+  top: 0;
+  will-change: transform;
+  z-index: 10;
+  transition: transform 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.project-card-inner {
+  background: white;
+  border-radius: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Aligns content to the top */
-  align-items: center;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: "Ubuntu Mono", monospace;
-  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px hsla(265, 20%, 10%, 0.35);
 }
 
-.page-number {
-  position: absolute; 
-  bottom: 20px;
-  font-size: 0.85rem;
-  color: #888;
-}
-
-.page.cover {
-  background: linear-gradient(145deg, var(--cover-background-start), var(--cover-background-end));
-  border: 2px solid var(--cover-border);
-  color: var(--cover-text);
-  font-weight: bold;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  font-family: "Playfair Display", serif;
-}
-
-.page.cover .page-content {
-  justify-content: center; /* Center content only on cover pages */
-}
-
-.page.cover h1,
-.page.cover h2 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: 2px;
-}
-
-.page.cover p {
-  font-style: italic;
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
-/* --- MODIFIED: Image Container Styles --- */
 .project-img-container {
-  height: 180px; /* Adjusted height slightly */
-  width: 100%;
-  margin-bottom: 20px; /* Adjusted margin */
-  border-radius: 4px;  /* Added for a softer look */
-  overflow: hidden;      /* Hides any part of the image that might overflow */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Added a subtle shadow */
+  width: 40%;
+  flex-shrink: 0;
 }
 
-/* --- NEW: Image Styles --- */
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This is the key property */
-  border: 1px solid gray;
+  object-fit: cover;
+  aspect-ratio: 1;
 }
 
-.project-container {
+.project-content {
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px; 
-  width: 90%;
-  padding: 0 10px;
-  text-align: center;
-  font-family: "Ubuntu Mono", monospace;
 }
 
-.project-container h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--project-title);
+.project-content h2 {
   margin: 0;
-  font-family: "Ubuntu Mono", monospace;
+  font-size: 40px;
+  color: #16263a;
 }
 
-.project-container p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--project-text);
-  margin-top: 0;
+.project-content p {
+  font-size: 20px;
+  color: #16263a;
+  line-height: 1.4;
 }
 
-.tech-stack-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 8px;
+.tech-stack {
+  margin-top: 15px;
 }
 
 .tech-tag {
-  background-color: var(--tag-background);
-  color: var(--tag-text);
+  display: inline-block;
   padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  font-family: "Ubuntu Mono", monospace;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.helper-text {
-  margin-top: 20px;
-  font-size: 13px;
-  color: var(--helper-text);
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 0.5px;
-}
-
-.flip-btn {
-  background: var(--bg, #f0f0f0);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background 0.3s;
-}
-
-.flip-btn:hover {
-  background: var(--blob2, #007bff);
+  margin: 5px 5px 0 0;
+  background: #16263a;
   color: white;
+  font-size: 12px;
+  border-radius: 6px;
 }
 
-@media (max-width: 768px) {
-  .page-wrapper {
-    padding: 1rem;
-    width: 80%;
-  }
-  .page-content {
-    padding: 15px;
+.space1 {
+  height: 95vh;
+}
+
+@media (max-width: 600px) {
+  .project-card-inner {
+    flex-direction: column;
   }
 
   .project-img-container {
-    height: 150px; /* Slightly reduced height for smaller screens */
-    margin-bottom: 15px; /* Reduced margin */
+    width: 100%;
   }
 
-  .project-container h2 {
-    font-size: 1.3rem;
+  .project-image {
+    aspect-ratio: 16/9;
   }
 
-  .project-container p {
-    font-size: 0.85rem;
+  .project-content {
+    padding: 30px 20px;
   }
 
-  .tech-tag {
-    font-size: 0.75rem;
-    padding: 4px 10px;
+  .project-content h2 {
+    font-size: 28px;
+  }
+
+  .project-content p {
+    font-size: 16px;
   }
 }
-

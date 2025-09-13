@@ -1,11 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import HTMLFlipBook from "react-pageflip";
 import projectData from "../../shared/projects.json";
-import useWindowSize from "../../hooks/useWindowSize";
 import "./Projects.css";
-
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import inventoryApp from '../../assets/inventory-app.png';
 import weatherApp from '../../assets/weather-app.png';
@@ -14,8 +9,6 @@ import ecom from '../../assets/ecom.png';
 import taskApp from '../../assets/task-app.png';
 import recipe from '../../assets/recipe.png';
 import portfolio from '../../assets/Portfolio.png';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projectImages = {
   'inventory-app.png': inventoryApp,
@@ -27,102 +20,75 @@ const projectImages = {
   'portfolio.png': portfolio,
 };
 
-function Projects() {
-  const bookRef = useRef(null);
-  const wrapperRef = useRef(null);
-  const size = useWindowSize();
-  const bookWidth = size.width < 768 ? 350 : 400;
-  const bookHeight = size.width < 768 ? 450 : 550;
+const Projects = () => {
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
-    // Initial flip animation
-    const timer = setTimeout(() => {
-      if (bookRef.current) {
-        bookRef.current.pageFlip().flipNext();
-      }
-    }, 500);
+    const cards = cardsRef.current;
+    const container = sectionRef.current.querySelector(".projects-container");
 
-    // GSAP scroll animation
-    gsap.fromTo(
-      wrapperRef.current,
-      { autoAlpha: 0, y: 50 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "top 80%", // when element hits 80% viewport
-          toggleActions: "play reverse play reverse",
-        },
-      }
-    );
+    container.style.setProperty("--cards-count", cards.length);
+    const cardHeight = cards[0].clientHeight;
+    container.style.setProperty("--card-height", `${cardHeight}px`);
 
-    return () => clearTimeout(timer);
+    cards.forEach((card, index) => {
+      card.style.paddingTop = `${index * 20}px`;
+    });
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardInner = card.querySelector(".project-card-inner");
+
+        let percentage = Math.min(Math.max(-rect.top / window.innerHeight, 0), 1);
+        let scale = 1 - (cards.length - 1 - index) * 0.05 * percentage;
+        let brightness = 1 - 0.4 * percentage;
+
+        card.style.transform = `scale(${scale})`;
+        card.style.filter = `brightness(${brightness})`;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="projects-wrapper" ref={wrapperRef}>
-      <h1 className="background-title">PROJECTS</h1>
-      {size.width && size.height ? (
-        <HTMLFlipBook
-          ref={bookRef}
-          width={bookWidth}
-          height={bookHeight}
-          flippingTime={1000}
-          drawShadow={true}
-          maxShadowOpacity={0.5}
-          showCover={true}
-          size="fixed"
-        >
-          <div className="page cover">
-            <div className="page-content">
-              <h1>Our Projects</h1>
-              <p>A showcase of our latest work.</p>
-            </div>
-          </div>
-
-          {projectData.map((project, index) => (
-            <div className="page" key={project.id}>
-              <div className="page-content">
-                <div className="project-img-container">
-                  <img
-                    src={projectImages[project.imageName]}
-                    alt={project.name}
-                    className="project-image"
-                  />
+    <section className="projects-section" ref={sectionRef}>
+      <h1 className="background-titl">PROJECTS</h1>
+      <div className="projects-container">
+        {projectData.map((project, i) => (
+          <div
+            className="project-card"
+            key={project.id}
+            ref={(el) => (cardsRef.current[i] = el)}
+          >
+            <div className="project-card-inner">
+              <div className="project-img-container">
+                <img
+                  src={projectImages[project.imageName]}
+                  alt={project.name}
+                  className="project-image"
+                />
+              </div>
+              <div className="project-content">
+                <h2>{project.name}</h2>
+                <p>{project.description}</p>
+                <div className="tech-stack">
+                  {project.techStack.map((tech, idx) => (
+                    <span key={idx} className="tech-tag">{tech}</span>
+                  ))}
                 </div>
-                <hr style={{ width: "100%", marginBottom: "20px" }} />
-                <div className="project-container">
-                  <h2>{project.name}</h2>
-                  <p>{project.description}</p>
-                  <div className="tech-stack-container">
-                    {project.techStack.map((tech, i) => (
-                      <span key={i} className="tech-tag">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="page-number">{index + 1}</div>
               </div>
             </div>
-          ))}
-
-          <div className="page cover">
-            <div className="page-content">
-              <h2>The End</h2>
-              <p>Contact us for collaborations!</p>
-            </div>
           </div>
-        </HTMLFlipBook>
-      ) : (
-        <div>Loading...</div>
-      )}
-      <p className="helper-text">Click or swipe to flip through our projects.</p>
-    </div>
+        ))}
+      </div>
+      <div className="space1"></div>
+    </section>
   );
-}
+};
 
 export default Projects;

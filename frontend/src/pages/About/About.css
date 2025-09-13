@@ -26,6 +26,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   position: relative;
+  will-change: transform, opacity;
 }
 
 .about-card:hover {

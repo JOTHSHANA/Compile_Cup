@@ -1,8 +1,6 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import emailjs from "emailjs-com";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; // Import ScrollTrigger
 import { submitAnimation } from "../../components/Button/buttonAnimation";
 import { showSuccess, showError } from "../../components/toast/toast";
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -11,8 +9,7 @@ import contact from "../../assets/contact.png";
 import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
-gsap.registerPlugin(ScrollTrigger); // Register the plugin
+import GsapAnimation from "../../components/Animation/Gsap"; 
 
 const { TextArea } = Input;
 
@@ -20,77 +17,21 @@ const Contact = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const contactRef = useRef(null); // Ref for the main container
 
   const handleFormChange = (_, allValues) => {
     let completed = 0;
-    if (allValues.name && allValues.name.trim() !== "") completed++;
-    if (allValues.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(allValues.email))
-      completed++;
-    if (allValues.message && allValues.message.trim() !== "") completed++;
+    if (allValues.name?.trim()) completed++;
+    if (allValues.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(allValues.email)) completed++;
+    if (allValues.message?.trim()) completed++;
     setProgress((completed / 3) * 100);
   };
 
-  // --- GSAP ANIMATIONS ---
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. Keep the existing continuous, looping animation
-      gsap.to(".arc-bg", {
-        y: 20,
-        scale: 1.05,
-        repeat: -1,
-        yoyo: true,
-        duration: 4,
-        ease: "power1.inOut",
-      });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: contactRef.current,
-          start: "top 80%", 
-          toggleActions: "restart pause resume reset", 
-        },
-      });
-
-      tl.from(".left-contact", { opacity: 0, y: 100, duration: 1, ease: "power3.out" }, 0)
-        .from(".right-contact-formm", { opacity: 0, y: -100, duration: 1, ease: "power3.out" }, 0);
-
-      tl.from(".contact-image", { opacity: 0, scale: 0.8, duration: 0.8, ease: "power2.out" }, 0.2);
-      
-      tl.from(".con-info-container", { opacity: 0, y: 30, stagger: 0.15, duration: 0.6 }, 0.3);
-
-      tl.from(".contact-title", { opacity: 0, y: -30, duration: 0.6 }, 0.2);
-
-      tl.from(".contact-form", { opacity: 0, y: 50, scale: 0.95, duration: 1 }, 0.3);
-
-      tl.from(".arc-bg", { opacity: 0, duration: 1 }, 0.6);
-
-      tl.from(".progress-bar-container", { opacity: 0, y: 20, duration: 0.8 }, 0.7);
-
-    }, contactRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const validateForm = (values) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!values.name || values.name.trim() === "") {
-      showError("Please enter your name!");
-      return false;
-    }
-    if (!values.email || values.email.trim() === "") {
-      showError("Please enter your email!");
-      return false;
-    }
-    if (!emailRegex.test(values.email)) {
-      showError("Please enter a valid email!");
-      return false;
-    }
-    if (!values.message || values.message.trim() === "") {
-      showError("Please enter your message!");
-      return false;
-    }
+    if (!values.name?.trim()) return showError("Please enter your name!");
+    if (!values.email?.trim()) return showError("Please enter your email!");
+    if (!emailRegex.test(values.email)) return showError("Please enter a valid email!");
+    if (!values.message?.trim()) return showError("Please enter your message!");
     return true;
   };
 
@@ -99,9 +40,7 @@ const Contact = () => {
     setLoading(true);
 
     const templateParams = {
-      name: values.name,
-      email: values.email,
-      message: values.message,
+      ...values,
       time: new Date().toLocaleString(),
     };
 
@@ -128,39 +67,37 @@ const Contact = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      ref={contactRef} // Attach ref here
-    >
-      <div className="contact-page-container">
-        <div className="left-contact">
+    <div className="contact-page-container">
+      <div className="left-contact">
           <div className="contact-image">
             <img src={contact} alt="Contact" className="contact-img-element" />
           </div>
 
-          <div className="contact-info">
+        <div className="contact-info">
             <div className="con-info-container">
-              <MarkAsUnreadIcon sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }} />
+              <MarkAsUnreadIcon
+                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+              />
               compilecup@gmail.com
             </div>
 
             <div className="con-info-container">
-              <PhoneInTalkIcon sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }} />
+              <PhoneInTalkIcon
+                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+              />
               +91 8281352999
             </div>
 
             <div className="con-info-container">
-              <LinkedInIcon sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }} />
+              <LinkedInIcon
+                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+              />
               Compile Cup
             </div>
-          </div>
         </div>
+      </div>
 
-        <div className="right-contact-formm">
+      <div className="right-contact-formm">
           <h1 className="contact-title">Contact Us</h1>
 
           <Form
@@ -184,7 +121,16 @@ const Contact = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button color="cyan" variant="solid" type="success" htmlType="submit" className="submit-btn" loading={loading} onClick={submitAnimation} disabled={progress < 100}>
+              <Button
+                color="cyan"
+                variant="solid"
+                type="success"
+                htmlType="submit"
+                className="submit-btn"
+                loading={loading}
+                onClick={submitAnimation}
+                disabled={progress < 100}
+              >
                 <span className="text">{loading ? "Sending..." : "Send"}</span>
                 <span className="icon">
                   <svg viewBox="0 0 512.005 512.005">
@@ -195,11 +141,9 @@ const Contact = () => {
             </Form.Item>
           </Form>
 
-          <div className="arc-bg"></div>
           <div className="progress-bar-container">
             <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
           </div>
-        </div>
       </div>
     </div>
   );

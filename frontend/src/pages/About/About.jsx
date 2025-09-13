@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 import {
   FaRocket,
   FaQuestionCircle,
@@ -6,22 +6,16 @@ import {
   FaCogs,
   FaPlusCircle,
 } from "react-icons/fa";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import team from "../../assets/team.svg";
 import startup from "../../assets/startup.svg";
 import develop from "../../assets/develop.svg";
 import mobile from "../../assets/mobile.svg";
 import service from "../../assets/service.svg";
+import GsapAnimation from "../../components/Animation/Gsap"; 
 import "./About.css";
 
-// Register the ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
 const About = () => {
-  const sectionRef = useRef(null); // Ref for the main section container
-
   const cards = [
     {
       id: 1,
@@ -75,37 +69,10 @@ const About = () => {
     },
   ];
 
-  // --- GSAP ANIMATION ---
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Use GSAP's utility function to select all the cards
-      const cards = gsap.utils.toArray(".about-card");
-      
-      // Animate each card with a ScrollTrigger
-      cards.forEach((card) => {
-        gsap.from(card, {
-          scale: 0.8,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%", // Start animation when 85% of the card is visible
-            toggleActions: "play reverse play reverse", // Play once and don't replay
-          },
-        });
-      });
-      
-    }, sectionRef); // Scope the animations to the sectionRef container
-
-    // Cleanup function
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section className="about-section" ref={sectionRef}>
+    <section className="about-section">
       <div className="about-grid">
-        {cards.map((card, i) => (
+        {cards.map((card) => (
           <div
             key={card.id}
             className={`about-card ${
@@ -117,29 +84,43 @@ const About = () => {
               {card.isBig ? (
                 <div className="big-layout">
                   <div className="big-header">
-                    <h2>{card.title}</h2>
+                    <GsapAnimation type="fade-up">
+                      <h2>{card.title}</h2>
+                    </GsapAnimation>
                     <div className="big-icon">{card.icon}</div>
                   </div>
-                  <p>{card.desc}</p>
+                  <GsapAnimation type="fade-up" delay={0.2}>
+                    <p>{card.desc}</p>
+                  </GsapAnimation>
                 </div>
               ) : (
                 <div className="small-layout">
                   <div className="icon">{card.icon}</div>
-                  <h2>{card.title}</h2>
-                  <p>{card.desc}</p>
+                  <GsapAnimation type="fade-up">
+                    <h2>{card.title}</h2>
+                  </GsapAnimation>
+                  <GsapAnimation type="fade-up" delay={0.2}>
+                    <p>{card.desc}</p>
+                  </GsapAnimation>
                 </div>
               )}
-              <div className="tags">
-                {card.tags.map((tag, idx) => (
-                  <span key={idx} className="chip">
-                    {tag}
-                  </span>
-                ))}
+
+              <GsapAnimation type="fade-up" delay={0.3}>
+                <div className="tags">
+                  {card.tags.map((tag, idx) => (
+                    <span key={idx} className="chip">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </GsapAnimation>
+            </div>
+
+            <GsapAnimation type="fade-up" delay={0.4}>
+              <div className="about-image">
+                <img src={card.img} alt={card.title} />
               </div>
-            </div>
-            <div className="about-image">
-              <img src={card.img} alt={card.title} />
-            </div>
+            </GsapAnimation>
           </div>
         ))}
       </div>

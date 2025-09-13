@@ -1,16 +1,20 @@
 :root {
-  --card-gap: 400px;
+  --background-primary: #121212;
+  --card-gap: 50vh;
+  --sticky-top: 150px;
+  --card-height: 650px; 
 }
 
 .projects-section {
   position: relative;
   width: 100%;
-  background: var(background-primary);
+  background: var(--background-primary);
   padding: 0 20px;
 }
 
 .projects-container {
   width: 100%;
+  max-width: 1400px; 
   margin: 0 auto;
   display: grid;
   grid-template-rows: repeat(var(--cards-count), var(--card-height));
@@ -19,83 +23,154 @@
 
 .project-card {
   position: sticky;
-  top: 0;
-  will-change: transform;
+  top: var(--sticky-top);
   z-index: 10;
-  transition: transform 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .project-card-inner {
-  background: white;
-  border-radius: 20px;
+  background: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 45px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px hsla(265, 20%, 10%, 0.35);
+  padding: 40px;
+  height: var(--card-height);
+  box-shadow: 0 20px 40px -20px color-mix(in srgb, var(--card-text) 20%, transparent);
+  position: relative;
+  will-change: transform, filter;
+  transition: transform 0.3s ease-out, filter 0.3s ease-out, background 0.3s ease-in-out;
 }
 
-.project-img-container {
-  width: 40%;
-  flex-shrink: 0;
+.card-svg-decorator {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  width: 18rem;
+  height: 18rem;
+  opacity: 0.8;
+  pointer-events: none; 
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1;
+.project-card-inner:hover .card-svg-decorator {
+  transform: scale(1.15) rotate(10deg);
 }
 
 .project-content {
-  padding: 40px 30px;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center; 
+  gap: 20px;
+  z-index: 2;
 }
 
 .project-content h2 {
   margin: 0;
-  font-size: 40px;
-  color: #16263a;
+  font-size: 52px;
+  color: inherit; 
 }
 
 .project-content p {
-  font-size: 20px;
-  color: #16263a;
-  line-height: 1.4;
+  font-size: 24px;
+  line-height: 1.6;
+  max-width: 420px;
+  color: inherit; 
+  opacity: 0.85; 
 }
 
-.tech-stack {
-  margin-top: 15px;
+.tech-stacks {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .tech-tag {
-  display: inline-block;
-  padding: 5px 12px;
-  margin: 5px 5px 0 0;
-  background: #16263a;
-  color: white;
-  font-size: 12px;
-  border-radius: 6px;
+  color: var(--card-text);
+  border: 1px solid var(--card-text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  background: color-mix(in srgb, var(--card-text) 8%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.project-img-container {
+  flex: 1.2; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.project-image {
+  max-width: 95%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
 }
 
 .space1 {
   height: 95vh;
 }
+.project-title{
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 4px;
+  user-select: none;
+  position: relative;
+  z-index: 999;
+}
+@media (max-width: 768px) {
+  :root {
+    --card-height: 650px; 
+  }
 
-@media (max-width: 600px) {
+  .projects-container {
+    --card-gap: 35vh;
+  }
+  
   .project-card-inner {
     flex-direction: column;
+    padding: 20px 20px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .card-svg-decorator {
+    width: 8rem;
+    height: 8rem;
+    bottom: -10px;
+    right: -10px;
+    opacity: 0.5;
+  }
+
+  .tech-stacks {
+    position: static;
+    justify-content: center;
+    margin-bottom: 15px;
+    order: -1;
+    margin-top: 10px;
   }
 
   .project-img-container {
+    flex: 1;
     width: 100%;
+    margin-top: 20px;
+    justify-content: center;
   }
 
   .project-image {
+    width: 100%;
     aspect-ratio: 16/9;
-  }
-
-  .project-content {
-    padding: 30px 20px;
+    border-radius: 20px;
   }
 
   .project-content h2 {

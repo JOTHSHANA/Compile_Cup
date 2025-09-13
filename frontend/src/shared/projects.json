@@ -1,90 +1,40 @@
-[
-  {
-    "id": 1,
-    "name": "Inventory Management System",
-    "imageName": "inventory-app.png",
-    "description": "A modern inventory management system built with Blazor MAUI Hybrid. Supports Google Sign-In, Supabase storage, and MongoDB integration.",
-    "techStack": [
-      "React JS",
-      "Node JS",
-      "Express JS",
-      "MySQL"
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Weather App",
-    "imageName": "weather-app.png",
-    "description": "A cross-platform weather app fetching live data from OpenWeatherMap API with support for dark mode and temperature unit toggle.",
-    "techStack": [
-      ".NET MAUI",
-      "OpenWeatherMap API",
-      "C#",
-      "Bootstrap"
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Music Player",
-    "imageName": "music-player.png",
-    "description": "A Blazor Hybrid music player app with audio playback, shuffle/repeat, and timeline slider control.",
-    "techStack": [
-      ".NET MAUI",
-      "Blazor",
-      "CommunityToolkit.Maui.MediaElement",
-      "Bootstrap"
-    ]
-  },
-  {
-    "id": 4,
-    "name": "E-commerce Storefront",
-    "imageName": "ecom.png",
-    "description": "A mobile-first e-commerce app with product listings, a shopping cart, and a secure checkout process powered by Stripe.",
-    "techStack": [
-      "React Native",
-      "Firebase",
-      "Stripe API",
-      "Redux",
-      "Styled Components"
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Task Management App",
-    "imageName": "task-app.png",
-    "description": "A collaborative task manager with drag-and-drop boards, due date reminders, and real-time updates using SignalR.",
-    "techStack": [
-      "ASP.NET Core",
-      "Angular",
-      "SignalR",
-      "SQL Server",
-      "Material UI"
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Recipe Finder",
-    "imageName": "recipe.png",
-    "description": "An application that allows users to search for recipes by ingredients, view nutritional information, and save their favorites.",
-    "techStack": [
-      "Vue.js",
-      "Edamam API",
-      "Vuex",
-      "Tailwind CSS",
-      "Axios"
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Portfolio Website",
-    "imageName": "portfolio.png",
-    "description": "A personal portfolio website built with Next.js for server-side rendering, featuring a contact form and animated page transitions.",
-    "techStack": [
-      "Next.js",
-      "React",
-      "Framer Motion",
-      "Nodemailer",
-      "Vercel"
-    ]
-  }
+[{
+  "id": 1,
+  "name": "Billing Software Suite",
+  "imageName": "inventory-app.png",
+  "description": "A full-stack billing and retail solution featuring QR code generation, product scanning, and attendance tracking. Built with a modern React front-end and secured MongoDB back-end, it provides seamless invoice management, real-time product updates, and interactive dashboards for business insights.",
+  "techStack": [
+    "React.js",
+    "Tailwind CSS",
+    "MongoDB",
+    "Ant Design",
+    "Node.js"
+  ]
+},
+{
+  "id": 2,
+  "name": "EDFN PCB",
+  "imageName": "weather-app.png",
+  "description": "A sleek, responsive landing page designed for a PCB manufacturing company. Developed with React and Tailwind CSS, it emphasizes clean layouts, optimized performance, and mobile-first design principles to effectively showcase services and drive customer engagement.",
+  "techStack": [
+    "React.js",
+    "Tailwind CSS",
+    "JavaScript",
+    "Vercel Hosting"
+  ]
+},
+{
+  "id": 3,
+  "name": "E-Learning Platform",
+  "imageName": "portfolio.png",
+  "description": "A comprehensive e-learning system offering interactive courses, document sharing, online compiler, learning roadmaps, and community discussion forums. The platform ensures collaborative learning with scalable architecture, making it suitable for both students and professionals.",
+  "techStack": [
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Socket.io"
+  ]
+}
 ]

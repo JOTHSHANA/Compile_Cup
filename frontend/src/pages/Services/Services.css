@@ -250,7 +250,6 @@
   --sgn: 1;
 }
 
-/* --- Footer Elements (Unchanged) --- */
 .services-note,
 .contact-button {
   margin-top: 1rem;
@@ -265,7 +264,6 @@
 .contact-button {
   padding: 0.7em 1.7em;
   font-size: 18px;
-  /* float: left; */
   border-radius: 5px 20px 5px 20px;
   background: #e8e8e800;
   cursor: pointer;
@@ -273,6 +271,7 @@
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #19c6d6;
+  margin-top: 1rem;
 }
 
 .contact-button:hover {

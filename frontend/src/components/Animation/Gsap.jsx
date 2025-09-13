@@ -4,28 +4,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GsapAnimation = ({ children, type = "fade-up", duration = 1, delay = 0 }) => {
+const GsapAnimation = ({ children, type = "fade-up", duration = 1, delay = 0, stagger = 0.2 }) => {
   const elRef = useRef(null);
 
   useEffect(() => {
-    const el = elRef.current;
-    if (!el) return;
+    const elements = elRef.current ? gsap.utils.toArray(elRef.current.children) : [];
+    if (elements.length === 0) return;
 
     let fromVars = {};
     let toVars = { duration, delay, ease: "power3.out" };
 
     switch (type) {
       case "fade-up":
-        fromVars = { y: 50, opacity: 0 };
+        fromVars = { y: 100, opacity: 0 };
         break;
       case "fade-down":
-        fromVars = { y: -50, opacity: 0 };
+        fromVars = { y: -100, opacity: 0 };
         break;
       case "zoom-in":
-        fromVars = { scale: 0.8, opacity: 0 };
+        fromVars = { scale: 0.9, opacity: 0 };
         break;
       case "zoom-out":
-        fromVars = { scale: 1.2, opacity: 0 };
+        fromVars = { scale: 1.5, opacity: 0 };
         break;
       default:
         fromVars = { opacity: 0 };
@@ -33,27 +33,26 @@ const GsapAnimation = ({ children, type = "fade-up", duration = 1, delay = 0 }) 
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        el,
+        elements, 
         fromVars,
         {
           ...toVars,
           y: 0,
           scale: 1,
           opacity: 1,
+          stagger: stagger,
           scrollTrigger: {
-            trigger: el,
-            start: "top 100%",
-            end: "bottom 5%",
-            toggleActions: "play reverse play reverse",
+            trigger: elRef.current,
+            start: "top 85%", 
+            toggleActions: "restart none none reset",
             scrub: false,
           },
-           stagger: 0.2,
         }
       );
-    }, el);
+    }, elRef);
 
     return () => ctx.revert();
-  }, [type, duration, delay]);
+  }, [type, duration, delay, stagger]);
 
   return <div ref={elRef}>{children}</div>;
 };

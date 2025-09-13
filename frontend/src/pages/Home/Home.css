@@ -41,15 +41,15 @@
 
 .home-title {
   font-size: clamp(2rem, 8vw, 12rem);
-  font-weight: 800;
+  font-weight: 600;
   color: var(--text-primary);
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  font-family: "Michroma", sans-serif;
   margin: 0;
   line-height: 1.2;
   user-select: none;
   letter-spacing: 4px;
   overflow: visible;
+  font-family:Michroma, sans-serif;
   position: relative;
   z-index: 999;
 }
@@ -267,9 +267,18 @@ font-family: "Epunda Slab", serif;
 }
 
 @media (max-width: 500px) {
-  .home-title {
-    font-size: clamp(1.8rem, 6vw, 3rem);
+ .home-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: clamp(1.8rem, 10vw, 3rem); 
     letter-spacing: 2px;
     margin-bottom: 2rem;
+  }
+
+  .home-title .space {
+    flex-basis: 100%;
+    width: 0;
+    height: 0;
   }
 }

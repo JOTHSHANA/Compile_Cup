@@ -21,7 +21,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 2rem 1rem;
+    padding: 0.5rem;
     min-height: 60vh;
   }
 }

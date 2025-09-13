@@ -62,7 +62,6 @@ const Services = () => {
   return (
     <div>
       <div className="services-page-container">
-        {/* Title */}
         <GsapAnimation type="fade-up">
           <h1 className="services-title">OUR SERVICES</h1>
         </GsapAnimation>
@@ -71,7 +70,6 @@ const Services = () => {
           className="services-carousel"
           style={{ "--n": totalServices, "--k": activeIndex }}
         >
-          {/* Left Column → Card Stack */}
           <GsapAnimation type="zoom-in">
             <div className="card-stack-container">
               {servicesWithAngles.map((service, index) => (
@@ -92,7 +90,6 @@ const Services = () => {
             </div>
           </GsapAnimation>
 
-          {/* Right Column */}
           <GsapAnimation type="fade-up">
             <div className="right-column-container">
               <div key={activeIndex} className="service-content">
@@ -129,7 +126,6 @@ const Services = () => {
           </GsapAnimation>
         </section>
 
-        {/* Note + Button */}
         <GsapAnimation type="fade-up" delay={0.2}>
           <p className="services-note">
             Charges may vary according to the complexity of the client's

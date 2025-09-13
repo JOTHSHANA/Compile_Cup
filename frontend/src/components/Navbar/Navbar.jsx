@@ -14,74 +14,93 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+  }
+
   const getLinkClass = (id) => {
     if (location.pathname === "/reviews") {
-      return `navbar-link ${id === "reviews" ? "active" : ""}`;
+      return id === "reviews" ? "active" : "";
     }
-    return `navbar-link ${activeId === id ? "active" : ""}`;
+    return activeId === id ? "active" : "";
   };
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/#home">COMPILE CUP</Link>
-        
-      </div>
+  const menuLinks = [
+    ...sectionIds.map(id => ({ path: `/#${id}`, label: id.charAt(0).toUpperCase() + id.slice(1), id })),
+    { path: '/reviews', label: 'Reviews', id: 'reviews' }
+  ];
 
-      {/* Desktop Navbar */}
-      <div className="navbar-right-desktop">
-        <ul className="navbar-links">
-          <li><Link to="/#home" className={getLinkClass('home')}>Home</Link></li>
-          <li><Link to="/#about" className={getLinkClass('about')}>About</Link></li>
-          <li><Link to="/#services" className={getLinkClass('services')}>Services</Link></li>
-          <li><Link to="/#projects" className={getLinkClass('projects')}>Projects</Link></li>
-          <li><Link to="/#developers" className={getLinkClass('developers')}>Developers</Link></li>
-          <li><Link to="/#brochure" className={getLinkClass('brochure')}>Brochure</Link></li>
-          <li><Link to="/#contact" className={getLinkClass('contact')}>Contact</Link></li>
-          <li><Link to="/reviews" className={getLinkClass("reviews")}>Reviews</Link></li>
-        </ul>
-        <ThemeToggleButton />
-      </div>
- <div className="navbar-mobile-theme">
-    <ThemeToggleButton />
-  </div>
-      <div
-        className={`menu-icon-button ${mobileMenuOpen ? "open" : ""}`}
-        onClick={handleDrawerToggle}
-      >
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+  return (
+    <>
+      <nav className="navbar-popup">
+        <div className="navbar-logo">
+          <Link to="/#home" onClick={closeMenu}>COMPILE CUP</Link>
         </div>
+      </nav>
+
+      <div className="floating-controls">
+        <div className="control-button">
+          <ThemeToggleButton />
+        </div>
+        <button
+          className={`menu-icon-button ${mobileMenuOpen ? "open" : ""}`}
+          onClick={handleDrawerToggle}
+          aria-label="Toggle Menu"
+        >
+          <div className="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
       </div>
 
       <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
         <ul className="mobile-links">
-          {sectionIds.map((id, index) => (
-            <li
-              key={id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              onClick={handleDrawerToggle}
-            >
-              <Link to={`/#${id}`} className={getLinkClass(id)}>
-                {id.charAt(0).toUpperCase() + id.slice(1)}
+          {menuLinks.map(link => (
+            <li key={link.id} onClick={handleDrawerToggle}>
+              <Link to={link.path} className={getLinkClass(link.id)}>
+                {link.label}
+                <span className="link-icon">+</span>
               </Link>
             </li>
           ))}
-          <li
-            data-aos="fade-up"
-            data-aos-delay={sectionIds.length * 100}
-            onClick={handleDrawerToggle}
-          >
-            <Link to="/reviews" className={getLinkClass("reviews")}>
-              Reviews
-            </Link>
-          </li>
         </ul>
+        <div className="mobile-menu-footer">
+          <p>Made with 💜 by COMPILE CUP © {new Date().getFullYear()}</p>
+        </div>
       </div>
-    </nav>
+      
+      <div className={`desktop-menu ${mobileMenuOpen ? "open" : ""}`}>
+        <div className="desktop-menu-left">
+          {/* <div className="desktop-menu-header">
+            <p>Innovative design<br/>and cutting-edge development</p>
+          </div> */}
+          <ul className="desktop-links">
+            {menuLinks.map(link => (
+              <li key={link.id} onClick={handleDrawerToggle}>
+                <Link to={link.path} className={getLinkClass(link.id)}>
+                  {link.label}
+                  <span className="link-icon">+</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="desktop-menu-footer">
+            <p>Made with 💜 by COMPILE CUP</p>
+          </div>
+        </div>
+        <div className="desktop-menu-right">
+          <div className="desktop-promo-content">
+            <p className="promo-greeting">👋 Nice to see you!</p>
+            <p>We are a passionate team of digital creators based in India, ready to bring your vision to life.</p>
+          </div>
+          <div className="desktop-menu-copyright">
+             © {new Date().getFullYear()}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

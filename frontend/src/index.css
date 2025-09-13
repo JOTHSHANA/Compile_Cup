@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@500&family=Roboto&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600");
 @import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
 :root {
   --bg-grd: linear-gradient(to right, #f0f1f3, rgba(215, 219, 223, 0.8), transparent);
   --bd-grd-color: #f0f1f3;
@@ -26,10 +28,8 @@
   --page-text: #3b2f2f;
   --project-title: #2c2c2c;
   --project-text: #555;
-
   --tag-background: #5c6bc0;
   --tag-text: #ffffff;
-
   --helper-text: #777;
   --neumorphic-shadow: 
     -5px -5px 12px rgba(255, 255, 255, 0.8),
@@ -39,6 +39,11 @@
   --blob1: rgba(0, 102, 255, 0.6);
   --blob2: rgba(0, 204, 255, 0.6);
   --blob3: rgba(102, 153, 255, 0.6);
+  --navbar-bg: #1d1d1f;
+  --control-icon-color: #f5f5f7;
+  --mobile-menu-bg: #1d1d1f;
+  --mobile-menu-border: #3a3a3c;
+  --navbar-text: #f5f5f7;
 }
 
 [data-theme='dark'] {
@@ -66,13 +71,19 @@
   --tag-text: #1b222a;
   --helper-text: #aab7c4;
   --neumorphic-shadow: 
-    -5px -5px 12px rgba(255, 255, 255, 0.05),
-    5px 5px 12px rgba(0, 0, 0, 0.5);
-   --bg: #0a0f1f;
+  -5px -5px 12px rgba(255, 255, 255, 0.05),
+  5px 5px 12px rgba(0, 0, 0, 0.5);
+  --bg: #0a0f1f;
   --bg-gradient: linear-gradient(135deg, #0a0f1f, #0f111a, #0d151e);
   --blob1: rgba(1, 19, 54, 0.6);   
   --blob2: rgba(11, 24, 36, 0.6);  
   --blob3: rgba(27, 7, 48, 0.6); 
+  --navbar-bg: #ffffff;
+  --control-icon-color: #1d1d1f; 
+    --mobile-menu-bg: #ffffff;
+  --mobile-menu-border: #e5e5e5;
+  --navbar-text: #1d1d1f;
+ 
 }
 
 
@@ -84,10 +95,11 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* font-family: "Funnel Display", sans-serif; */
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Funnel Display", sans-serif;
   background: linear-gradient(to bottom left, var(--background-primary), var(--background-secondary));
   color: var(--text-primary);
   transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
@@ -100,7 +112,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Funnel Display", sans-serif;
 }
 
 a {

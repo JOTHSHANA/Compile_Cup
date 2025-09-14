@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Import useRef
 import { Form, Input, Button } from "antd";
 import emailjs from "emailjs-com";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"; // Import ScrollTrigger
 import { submitAnimation } from "../../components/Button/buttonAnimation";
 import { showSuccess, showError } from "../../components/toast/toast";
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -9,7 +11,9 @@ import contact from "../../assets/contact.png";
 import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GsapAnimation from "../../components/Animation/Gsap"; 
+import AnimatedSvg from "../../assets/con-1.svg"; // 1. Import your SVG here
+
+gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
 
 const { TextArea } = Input;
 
@@ -18,20 +22,67 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const animatedSvgRef = useRef(null);
+  const contactFormRef = useRef(null); // Ref for the right-contact-formm div to use as trigger
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(animatedSvgRef.current,
+        {
+          rotation: -5, 
+          scale: 0.9,
+          opacity: 0,
+        },
+        {
+          rotation: 5, 
+          scale: 1,
+          opacity: 0.5,
+          duration: 1.5,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true, 
+          scrollTrigger: {
+            trigger: contactFormRef.current, 
+            start: "top 70%",
+            toggleActions: "play pause resume reset", 
+          }
+        }
+      );
+    }, [animatedSvgRef, contactFormRef]); 
+
+    return () => ctx.revert();
+  }, []); 
+
   const handleFormChange = (_, allValues) => {
     let completed = 0;
-    if (allValues.name?.trim()) completed++;
-    if (allValues.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(allValues.email)) completed++;
-    if (allValues.message?.trim()) completed++;
+
+    if (allValues.name && allValues.name.trim() !== "") completed++;
+    if (allValues.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(allValues.email))
+      completed++;
+    if (allValues.message && allValues.message.trim() !== "") completed++;
+
     setProgress((completed / 3) * 100);
   };
 
   const validateForm = (values) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!values.name?.trim()) return showError("Please enter your name!");
-    if (!values.email?.trim()) return showError("Please enter your email!");
-    if (!emailRegex.test(values.email)) return showError("Please enter a valid email!");
-    if (!values.message?.trim()) return showError("Please enter your message!");
+
+    if (!values.name || values.name.trim() === "") {
+      showError("Please enter your name!");
+      return false;
+    }
+    if (!values.email || values.email.trim() === "") {
+      showError("Please enter your email!");
+      return false;
+    }
+    if (!emailRegex.test(values.email)) {
+      showError("Please enter a valid email!");
+      return false;
+    }
+    if (!values.message || values.message.trim() === "") {
+      showError("Please enter your message!");
+      return false;
+    }
     return true;
   };
 
@@ -40,7 +91,9 @@ const Contact = () => {
     setLoading(true);
 
     const templateParams = {
-      ...values,
+      name: values.name,
+      email: values.email,
+      message: values.message,
       time: new Date().toLocaleString(),
     };
 
@@ -67,38 +120,81 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page-container">
-      <div className="left-contact">
-          <div className="contact-image">
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div className="contact-page-container">
+        <div className="left-contact" data-aos="fade-up" data-aos-duration="1000">
+          <div className="contact-image" data-aos="zoom-in" data-aos-delay="200">
             <img src={contact} alt="Contact" className="contact-img-element" />
           </div>
 
-        <div className="contact-info">
-            <div className="con-info-container">
+          <div className="contact-info">
+            <div
+              className="con-info-container"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <MarkAsUnreadIcon
-                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+                sx={{
+                  padding: "10px",
+                  backgroundColor: "white",
+                  fontSize: "40px",
+                  color: "black",
+                  borderRadius: "5px",
+                }}
               />
               compilecup@gmail.com
             </div>
 
-            <div className="con-info-container">
+            <div
+              className="con-info-container"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <PhoneInTalkIcon
-                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+                sx={{
+                  padding: "10px",
+                  backgroundColor: "white",
+                  fontSize: "40px",
+                  color: "black",
+                  borderRadius: "5px",
+                }}
               />
               +91 8281352999
             </div>
 
-            <div className="con-info-container">
+            <div
+              className="con-info-container"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
               <LinkedInIcon
-                sx={{ padding: "10px", backgroundColor: "white", fontSize: "40px", color: "black", borderRadius: "5px" }}
+                sx={{
+                  padding: "10px",
+                  backgroundColor: "white",
+                  fontSize: "40px",
+                  color: "black",
+                  borderRadius: "5px",
+                }}
               />
               Compile Cup
             </div>
+          </div>
         </div>
-      </div>
 
-      <div className="right-contact-formm">
-          <h1 className="contact-title">Contact Us</h1>
+        {/* 3. Attach ref to the form container */}
+        <div ref={contactFormRef} className="right-contact-formm" data-aos="fade-down" data-aos-duration="1000">
+          {/* 4. Place your SVG here with its ref */}
+          <img ref={animatedSvgRef} src={AnimatedSvg} alt="Animated Decoration" className="animated-contact-svg" />
+
+          <h1 className="contact-title" data-aos="fade-down">
+            Contact Us
+          </h1>
 
           <Form
             form={form}
@@ -106,18 +202,32 @@ const Contact = () => {
             onFinish={onFinish}
             onValuesChange={handleFormChange}
             className="contact-form"
+            data-aos="zoom-in-up"
+            data-aos-delay="300"
           >
             <div className="form-row">
               <Form.Item name="name" label="Name" className="form-item">
-                <Input prefix={<UserOutlined />} size="large" placeholder="Enter your name" />
+                <Input
+                  prefix={<UserOutlined />}
+                  size="large"
+                  placeholder="Enter your name"
+                />
               </Form.Item>
               <Form.Item name="email" label="Email" className="form-item">
-                <Input prefix={<MailOutlined />} size="large" placeholder="Enter your email" />
+                <Input
+                  prefix={<MailOutlined />}
+                  size="large"
+                  placeholder="Enter your email"
+                />
               </Form.Item>
             </div>
 
             <Form.Item name="message" label="Message">
-              <TextArea rows={5} placeholder="Write your message here..." className="no-resize" />
+              <TextArea
+                rows={5}
+                placeholder="Write your message here..."
+                className="no-resize"
+              />
             </Form.Item>
 
             <Form.Item>
@@ -131,7 +241,9 @@ const Contact = () => {
                 onClick={submitAnimation}
                 disabled={progress < 100}
               >
-                <span className="text">{loading ? "Sending..." : "Send"}</span>
+                <span className="text">
+                  {loading ? "Sending..." : "Send"}
+                </span>
                 <span className="icon">
                   <svg viewBox="0 0 512.005 512.005">
                     <path d="M511.658 51.675c2.496-11.619-8.895-21.416-20.007-17.176l-482 184a15 15 0 00-.054 28.006L145 298.8v164.713a15 15 0 0028.396 6.75l56.001-111.128 136.664 101.423c8.313 6.17 20.262 2.246 23.287-7.669C516.947 34.532 511.431 52.726 511.658 51.675zm-118.981 52.718L157.874 271.612 56.846 232.594zM175 296.245l204.668-145.757c-176.114 185.79-166.916 176.011-167.684 177.045-1.141 1.535 1.985-4.448-36.984 72.882zm191.858 127.546l-120.296-89.276 217.511-229.462z" />
@@ -141,9 +253,18 @@ const Contact = () => {
             </Form.Item>
           </Form>
 
-          <div className="progress-bar-container">
-            <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
+          <div className="arc-bg" data-aos="fade-in" data-aos-delay="600"></div>
+          <div
+            className="progress-bar-container"
+            data-aos="fade-up"
+            data-aos-delay="700"
+          >
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
+        </div>
       </div>
     </div>
   );

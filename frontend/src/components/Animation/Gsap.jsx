@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GsapAnimation = ({ children, type = "fade-up", duration = 1, delay = 0, stagger = 0.2 }) => {
+const GsapAnimation = ({ children, type = "fade-up", duration = 2, delay = 0, stagger = 0.9 }) => {
   const elRef = useRef(null);
 
   useEffect(() => {
@@ -16,16 +16,16 @@ const GsapAnimation = ({ children, type = "fade-up", duration = 1, delay = 0, st
 
     switch (type) {
       case "fade-up":
-        fromVars = { y: 100, opacity: 0 };
+        fromVars = { y: 200, opacity: 0 };
         break;
       case "fade-down":
-        fromVars = { y: -100, opacity: 0 };
+        fromVars = { y: -200, opacity: 0 };
         break;
       case "zoom-in":
-        fromVars = { scale: 0.9, opacity: 0 };
+        fromVars = { scale: 1, opacity: 0 };
         break;
       case "zoom-out":
-        fromVars = { scale: 1.5, opacity: 0 };
+        fromVars = { scale: 2.5, opacity: 0 };
         break;
       default:
         fromVars = { opacity: 0 };

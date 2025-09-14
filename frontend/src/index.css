@@ -86,16 +86,15 @@
  
 }
 
-
+/* 
 html {
   scroll-behavior: smooth;
-}
+} */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Funnel Display", sans-serif; */
 }
 
 body {
@@ -181,7 +180,7 @@ html.lenis {
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+  scroll-behavior: auto;
 }
 
 .lenis.lenis-stopped {

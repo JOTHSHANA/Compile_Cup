@@ -42,7 +42,6 @@
 }
 
 .services-carousel {
-  /* --- Core Animation Logic (Unchanged) --- */
   --t: 0.8s;
   --p: var(--k);
   --abs-p: max(var(--k) - var(--p), var(--p) - var(--k));
@@ -52,7 +51,6 @@
   --v: var(--k);
   --abs-v: max(var(--v) - var(--p), var(--p) - var(--v));
   --prg: calc(var(--abs-v) / (1 - var(--end) + var(--end) * (var(--n) - 1)));
-  /* --- End of Animation Logic --- */
 
   display: flex;
   flex-direction: row;
@@ -66,8 +64,8 @@
   background-color: var(--background-secondary);
   border-radius: 15px;
   padding: 60px;
-  position: relative; /* Added for absolute positioning of the icon within the carousel */
-  overflow: hidden; /* Ensure icon doesn't spill out */
+  position: relative;
+  overflow: hidden;
 }
 
 .card-stack-container {
@@ -84,12 +82,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
-  position: relative; /* Needed if the icon is absolutely positioned within this, instead of carousel */
-  z-index: 1; /* Ensure content is above the background icon */
+  position: relative;
+  z-index: 1;
 }
 
 .service-article {
-  /* --- Core Animation Logic (Unchanged) --- */
   --abs-top: max(var(--k) - var(--i), var(--i) - var(--k));
   --not-top: min(1, var(--abs-top));
   --top: calc(1 - var(--not-top));
@@ -97,7 +94,6 @@
   --abs-mov: max(var(--val-mov), -1 * var(--val-mov));
   --not-mov: min(1, var(--abs-mov));
   --mov: calc(1 - var(--not-mov));
-  /* --- End of Animation Logic --- */
 
   grid-area: 1 / 1 / -1 / -1;
   z-index: calc(var(--n) - var(--abs-top));
@@ -142,29 +138,28 @@
   align-items: flex-start;
   text-align: left;
   animation: fadeIn 0.5s ease-in-out;
-  position: relative; 
-  overflow: hidden; 
-  /* padding-bottom: 50px;  */
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
 }
 
 .service-content-bg-icon {
   position: absolute;
-  bottom: -50px; 
-  right: -50px;
+  bottom: -100px;
+  right: -60px;
   width: 300px;
   height: 300px;
-  z-index: -1; 
-  opacity: 0.5;
-  transition: transform 0.4s ease-out; 
-  transform: rotate(-10deg); 
-  /* filter: drop-shadow(0 0 5px rgba(99, 179, 237, 0.5)); */
+  opacity: 0.2;
+  z-index: 0;
+  transition: transform 0.4s ease-out;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 0 5px rgba(99, 179, 237, 0.5));
 }
 
 .services-carousel:hover .service-content-bg-icon {
-  transform: scale(1.1) rotate(5deg); 
-  opacity: 0.7; 
+  transform: scale(1.1) rotate(5deg);
+  opacity: 0.2;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -295,8 +290,16 @@
     align-items: center;
     text-align: center;
   }
+  
+  .service-nav {
+    order: -1; 
+    margin-bottom: 1.5rem; 
+    width: 100%;
+    justify-content: center;
+  }
+  
   .service-content-bg-icon {
-    bottom: 20px; 
+    bottom: 20px;
     right: 20px;
   }
 }
@@ -313,12 +316,14 @@
   }
   .card-stack-container,
   .service-icon-card {
-    height: 18em;
+    height: 15em;
   }
   .service-content-bg-icon {
-    width: 250px; 
-    height: 250px;
+    width: 190px;
+    height: 190px;
     bottom: -10px;
     right: -50px;
   }
+ 
+ 
 }

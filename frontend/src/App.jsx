@@ -11,8 +11,8 @@ import ToastMessage from "./components/toast/toast";
 import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
 import AntdThemeContext from "./context/AntdThemeContext";
 import Loader from "./components/Loader/Loader";
-import ParallaxBackground from "./components/Parallax/Parallax";
 import "./App.css";
+import { LenisProvider } from "./context/LenisContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -61,8 +61,9 @@ function App() {
   return (
     <ThemeProvider>
       <AntdThemeContext>
-        {/* <ParallaxBackground/> */}
-        <AppContent />
+       <LenisProvider>
+          <AppContent />
+        </LenisProvider>
       </AntdThemeContext>
     </ThemeProvider>
   );

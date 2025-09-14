@@ -20,11 +20,25 @@
 }
 
 .right-contact-formm {
-  flex: 2;
+ flex: 2;
   background-color: var(--background-primary);
   padding: 25px 25px 0px 25px;
   border-radius: 10px;
+  position: relative; 
+  overflow: hidden;
 }
+
+.animated-contact-svg {
+  position: absolute;
+  bottom: -20px; 
+  left: -20px; 
+  width: clamp(150px, 20vw, 400px); 
+  height: auto;
+  opacity: 0.3; 
+  z-index: 0; 
+  pointer-events: none; 
+}
+
 .contact-title{
   font-size: 2rem;
   font-weight: bold;
@@ -196,8 +210,6 @@
   width: 1.2rem;
   height: 1.2rem;
 }
-
-
 @media (max-width: 1080px){
   .contact-image{
     display: none;
@@ -205,5 +217,10 @@
 
   .contact-page-container{
     flex-direction: column-reverse;
+  }
+   .animated-contact-svg {
+      width: clamp(80px, 30vw, 150px);
+      bottom: -10px;
+      right: -10px;
   }
 }

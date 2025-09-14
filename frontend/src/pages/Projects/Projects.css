@@ -74,10 +74,8 @@
 }
 
 .project-content p {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.6;
-  max-width: 420px;
-  color: inherit; 
   opacity: 0.85; 
 }
 
@@ -115,7 +113,7 @@
 }
 
 .space1 {
-  height: 95vh;
+  height: 15vh;
 }
 .project-title{
   font-size: 3rem;
@@ -126,11 +124,11 @@
   letter-spacing: 4px;
   user-select: none;
   position: relative;
-  z-index: 999;
+  /* z-index: 999; */
 }
 @media (max-width: 768px) {
   :root {
-    --card-height: 650px; 
+    --card-height: 600px; 
   }
 
   .projects-container {
@@ -159,6 +157,10 @@
     order: -1;
     margin-top: 10px;
   }
+    .tech-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
 
   .project-img-container {
     flex: 1;
@@ -174,10 +176,15 @@
   }
 
   .project-content h2 {
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: 900;
   }
 
   .project-content p {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .projects-section{
+    padding: 10px;
   }
 }

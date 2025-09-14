@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import projectData from "../../shared/projects.json";
 import "./Projects.css";
+import GsapAnimation from "../../components/Animation/Gsap";
 
 // Import images
 import inventoryApp from '../../assets/inventory-app.png';
@@ -83,7 +84,8 @@ const Projects = () => {
 
   return (
     <section className="projects-section" ref={sectionRef}>
-      <h1 className="project-title">PROJECTS</h1>
+      <br />
+      <h1 className="project-title">Projects</h1>
       <div className="projects-container">
         {projectData.map((project, i) => (
           <div
@@ -99,15 +101,21 @@ const Projects = () => {
               }}
             >
               <div className="project-img-container">
-                <img
-                  src={projectImages[project.imageName]}
-                  alt={project.name}
-                  className="project-image"
-                />
+                <GsapAnimation type="zoom-in">
+                  <img
+                    src={projectImages[project.imageName]}
+                    alt={project.name}
+                    className="project-image"
+                  />
+                </GsapAnimation>
               </div>
               <div className="project-content">
-                <h2>{project.name}</h2>
-                <p>{project.description}</p>
+                <GsapAnimation type="fade-down">
+                  <h2>{project.name}</h2>
+                </GsapAnimation>
+                <GsapAnimation type="fade-up">
+                  <p>{project.description}</p>
+                </GsapAnimation>
                 <div className="tech-stacks">
                   {project.techStack.map((tech, idx) => (
                     <span key={idx} className="tech-tag">{tech}</span>

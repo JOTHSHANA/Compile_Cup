@@ -1,11 +1,11 @@
 @property --p {
-  syntax: '<number>';
+  syntax: "<number>";
   initial-value: 0;
   inherits: true;
 }
 
 @property --v {
-  syntax: '<number>';
+  syntax: "<number>";
   initial-value: 0;
   inherits: true;
 }
@@ -21,36 +21,28 @@
 .services-page-container {
   width: 100vw;
   min-height: 100vh;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
   overflow: hidden;
-  /* background-color: var(--background-primary); */
 }
 
-#services{
+#services {
   padding: 0px;
 }
 
 .services-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
   color: var(--text-primary);
 }
 
-.debug-index-display {
-  background: #ffc107;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  /* margin-bottom: 2rem; */
-  font-family: monospace;
-}
-
 .services-carousel {
+  /* --- Core Animation Logic (Unchanged) --- */
   --t: 0.8s;
   --p: var(--k);
   --abs-p: max(var(--k) - var(--p), var(--p) - var(--k));
@@ -60,53 +52,44 @@
   --v: var(--k);
   --abs-v: max(var(--v) - var(--p), var(--p) - var(--v));
   --prg: calc(var(--abs-v) / (1 - var(--end) + var(--end) * (var(--n) - 1)));
+  /* --- End of Animation Logic --- */
 
-  /* CONVERTED TO FLEXBOX */
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 900px;
-  gap: 5rem;
+  max-width: 1100px;
+  gap: 6rem;
   align-items: center;
   color: var(--text-primary);
   transition: --p 0s var(--t), --v var(--t);
-  min-height: 400px;
+  min-height: 500px;
   background-color: var(--background-secondary);
-  /* padding: 40px; */
-  border-radius: 10px;
-  /* margin: 40px; */
-  padding: 50px;
+  border-radius: 15px;
+  padding: 60px;
+  position: relative; /* Added for absolute positioning of the icon within the carousel */
+  overflow: hidden; /* Ensure icon doesn't spill out */
 }
 
-/* Left Column for Cards */
 .card-stack-container {
-  /* This is now a flex item */
   flex: 1;
-  /* Defines its proportion of the space */
-  min-width: 250px;
-
-  /* Internal grid for stacking cards remains the same */
+  min-width: 300px;
   display: grid;
   place-items: center;
-  height: 15em;
-  /* Give container a height to align with */
+  height: 20em;
 }
 
-/* Right Column for Content & Nav */
 .right-column-container {
-  /* This is the new flex item wrapper */
   flex: 2;
-  /* Takes up twice the space of the card column */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* Aligns content and nav to the left */
-  gap: 1.5rem;
-  /* Space between content and nav */
+  gap: 2rem;
+  position: relative; /* Needed if the icon is absolutely positioned within this, instead of carousel */
+  z-index: 1; /* Ensure content is above the background icon */
 }
 
-/* --- Card Animation Styles (Unchanged) --- */
 .service-article {
+  /* --- Core Animation Logic (Unchanged) --- */
   --abs-top: max(var(--k) - var(--i), var(--i) - var(--k));
   --not-top: min(1, var(--abs-top));
   --top: calc(1 - var(--not-top));
@@ -114,8 +97,8 @@
   --abs-mov: max(var(--val-mov), -1 * var(--val-mov));
   --not-mov: min(1, var(--abs-mov));
   --mov: calc(1 - var(--not-mov));
+  /* --- End of Animation Logic --- */
 
-  /* Stacks all articles inside the card-stack-container */
   grid-area: 1 / 1 / -1 / -1;
   z-index: calc(var(--n) - var(--abs-top));
   transition: z-index var(--t) cubic-bezier(1, -0.9, 0, 1.9);
@@ -125,55 +108,69 @@
   --sin: sin(var(--prg) * 0.5turn);
   display: grid;
   place-items: center;
-  border: 2px solid var(--accent-primary);
-  height: 15em;
+  border: 3px solid var(--accent-primary);
+  height: 20em;
   aspect-ratio: 1;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   position: relative;
+  overflow: hidden;
 
-  transform: translate(calc(-150% * var(--mov) * sqrt(var(--sin)))) rotate(calc((1 - var(--sin)) * var(--a)));
+  transform: translate(calc(-150% * var(--mov) * sqrt(var(--sin))))
+    rotate(calc((1 - var(--sin)) * var(--a)));
 
-  background-color: color-mix(in srgb, var(--accent-primary) calc(var(--top) * 100%), var(--background-secondary));
+  background-color: color-mix(
+    in srgb,
+    var(--accent-primary) calc(var(--top) * 100%),
+    var(--background-secondary)
+  );
   transition: transform 0.2s, background-color 0.8s;
 }
 
-.card-debug-letter,
-.icon-container {
-  position: absolute;
-  transition: color 0.8s;
-  color: color-mix(in srgb, var(--background-secondary) calc(var(--top) * 100%), var(--accent-primary));
+.service-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  opacity: calc(var(--top) * 0.6 + 0.4);
+  filter: grayscale(calc(1 - var(--top)));
+  transition: filter 0.5s, opacity 0.5s;
 }
 
-.card-debug-letter {
-  font-size: 3rem;
-  font-weight: bold;
-  z-index: 10;
-}
-
-.icon-container {
-  opacity: 0.2;
-}
-
-.icon-container .MuiSvgIcon-root {
-  font-size: 6rem;
-  color: inherit;
-}
-
-/* --- Content and Nav Styles (Mostly Unchanged) --- */
 .service-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   animation: fadeIn 0.5s ease-in-out;
+  position: relative; 
+  overflow: hidden; 
+  /* padding-bottom: 50px;  */
 }
+
+.service-content-bg-icon {
+  position: absolute;
+  bottom: -50px; 
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  z-index: -1; 
+  opacity: 0.5;
+  transition: transform 0.4s ease-out; 
+  transform: rotate(-10deg); 
+  /* filter: drop-shadow(0 0 5px rgba(99, 179, 237, 0.5)); */
+}
+
+.services-carousel:hover .service-content-bg-icon {
+  transform: scale(1.1) rotate(5deg); 
+  opacity: 0.7; 
+}
+
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -181,31 +178,32 @@
 }
 
 .service-content h2 {
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
 
 .service-content p {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
-  max-width: 450px;
+  max-width: 500px;
   color: var(--text-secondary);
 }
 
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .tech-badge {
   background-color: var(--background-secondary);
   border: 1px solid var(--accent-primary);
   color: var(--text-primary);
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 16px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .service-nav {
@@ -220,7 +218,7 @@
   --c: color-mix(in hsl, var(--accent-primary) var(--prc), #52527a);
   display: grid;
   border: none;
-  width: 3rem;
+  width: 3.5rem;
   aspect-ratio: 1;
   border-radius: 50%;
   background: rgba(82, 82, 122, 0.2);
@@ -237,7 +235,7 @@
 }
 
 .service-nav button::before {
-  content: '';
+  content: "";
   place-self: center;
   border: solid 2px;
   border-width: 2px 2px 0 0;
@@ -246,7 +244,7 @@
   transform: translateX(calc(var(--sgn) * -15%)) rotate(45deg) scale(var(--sgn));
 }
 
-.service-nav button[aria-label='next'] {
+.service-nav button[aria-label="next"] {
   --sgn: 1;
 }
 
@@ -259,11 +257,12 @@
 
 .services-note {
   color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .contact-button {
-  padding: 0.7em 1.7em;
-  font-size: 18px;
+  padding: 0.8em 2em;
+  font-size: 1.1rem;
   border-radius: 5px 20px 5px 20px;
   background: #e8e8e800;
   cursor: pointer;
@@ -271,63 +270,55 @@
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #19c6d6;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .contact-button:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .contact-button:active {
   color: #666;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
 }
-
-.service-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-
-
-  opacity: calc(var(--top) * 0.6 + 0.4);
-  filter: grayscale(calc(1 - var(--top)));
-}
-
-
-
-.service-icon-card {
-  border: 2px solid var(--accent-primary);
-  height: 15em;
-  aspect-ratio: 1;
-  border-radius: 1rem;
-  position: relative;
-}
-
-
-.services-title {
-  font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 30px;
-}
-
 
 @media (max-width: 1024px) {
   .services-carousel {
     flex-direction: column;
-    gap: 30px;
+    gap: 3rem;
+    padding: 40px 30px;
+  }
+  .right-column-container,
+  .service-content {
+    align-items: center;
+    text-align: center;
+  }
+  .service-content-bg-icon {
+    bottom: 20px; 
+    right: 20px;
   }
 }
 
-@media (max-width:748px){
+@media (max-width: 748px) {
   .services-page-container {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
   .services-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
   }
-.service-content h2{
-    font-size: 1.5rem;
+  .service-content h2 {
+    font-size: 2rem;
+  }
+  .card-stack-container,
+  .service-icon-card {
+    height: 18em;
+  }
+  .service-content-bg-icon {
+    width: 250px; 
+    height: 250px;
+    bottom: -10px;
+    right: -50px;
   }
 }

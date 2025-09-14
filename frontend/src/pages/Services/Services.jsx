@@ -6,6 +6,10 @@ import serviceImage1 from "../../assets/service1.jpeg";
 import serviceImage2 from "../../assets/service2.png";
 import serviceImage3 from "../../assets/service3.png";
 import serviceImage4 from "../../assets/service4.png";
+import ser1 from "../../assets/ser-1.svg";
+import ser2 from "../../assets/ser-2.svg";
+import ser3 from "../../assets/ser-3.svg";
+import ser4 from "../../assets/ser-4.svg";
 
 import GsapAnimation from "../../components/Animation/Gsap";
 
@@ -13,6 +17,7 @@ const servicesData = [
   {
     title: "Web Applications",
     image: serviceImage1,
+    icon: ser1, 
     description:
       "Modern, responsive, and feature-rich web applications tailored to your business needs.",
     techStack: ["React", "Node.js", ".NET", "Blazor", "Python", "Django"],
@@ -20,6 +25,7 @@ const servicesData = [
   {
     title: "Mobile Applications",
     image: serviceImage2,
+    icon: ser2, 
     description:
       "Cross-platform mobile apps for iOS and Android with a focus on performance and user experience.",
     techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Maui"],
@@ -27,6 +33,7 @@ const servicesData = [
   {
     title: "Deployment & DevOps",
     image: serviceImage3,
+    icon: ser3, 
     description:
       "Efficient and scalable deployment pipelines to get your application to market quickly and reliably.",
     techStack: ["AWS", "Docker", "Kubernetes", "CI/CD"],
@@ -34,6 +41,7 @@ const servicesData = [
   {
     title: "Lifetime Service & Support",
     image: serviceImage4,
+    icon: ser4, 
     description:
       "We provide continuous support and maintenance to ensure your application remains up-to-date and secure.",
     techStack: ["Monitoring", "Backups", "Security", "Updates"],
@@ -63,7 +71,7 @@ const Services = () => {
     <div>
       <div className="services-page-container">
         <GsapAnimation type="fade-up">
-          <h1 className="services-title">OUR SERVICES</h1>
+          <h1 className="services-title">Our Services</h1>
         </GsapAnimation>
 
         <section
@@ -122,6 +130,11 @@ const Services = () => {
                   onClick={() => handleNavClick(1)}
                 ></button>
               </div>
+                <img
+                    src={activeService.icon}
+                    alt={`${activeService.title} icon`}
+                    className="service-content-bg-icon"
+                  />
             </div>
           </GsapAnimation>
         </section>
@@ -132,8 +145,8 @@ const Services = () => {
             requirements.
           </p>
         </GsapAnimation>
-
-        <GsapAnimation type="fade-up" delay={0.3}>
+<br />
+        <GsapAnimation type="fade-down" delay={0.3}>
           <Link to="/#contact" className="contact-button">
             Contact Us
           </Link>

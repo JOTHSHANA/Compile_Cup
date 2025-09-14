@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'; // Import icons
 import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import './Navbar.css';
+
+// Reusable component for contact info
+const ContactDetails = () => (
+  <div className="menu-contact-details">
+    <div className="contact-links">
+      <a href="mailto:contact@compilecup.com">contact@compilecup.com</a>
+      <a href="tel:+911234567890">+91 123 456 7890</a>
+    </div>
+    <div className="social-media-links">
+      <a href="https://www.linkedin.com/company/compilecup" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
+      <a href="https://github.com/compilecup" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
+      <a href="https://www.instagram.com/compilecup" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+    </div>
+  </div>
+);
 
 const Navbar = () => {
   const sectionIds = ['home', 'about', 'services', 'projects', 'developers', 'brochure', 'contact'];
@@ -66,6 +82,8 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        {/* Contact details added here for mobile */}
+        <ContactDetails />
         <div className="mobile-menu-footer">
           <p>Made with 💜 by COMPILE CUP © {new Date().getFullYear()}</p>
         </div>
@@ -73,9 +91,6 @@ const Navbar = () => {
       
       <div className={`desktop-menu ${mobileMenuOpen ? "open" : ""}`}>
         <div className="desktop-menu-left">
-          {/* <div className="desktop-menu-header">
-            <p>Innovative design<br/>and cutting-edge development</p>
-          </div> */}
           <ul className="desktop-links">
             {menuLinks.map(link => (
               <li key={link.id} onClick={handleDrawerToggle}>
@@ -95,8 +110,9 @@ const Navbar = () => {
             <p className="promo-greeting">👋 Nice to see you!</p>
             <p>We are a passionate team of digital creators based in India, ready to bring your vision to life.</p>
           </div>
+          <ContactDetails />
           <div className="desktop-menu-copyright">
-             © {new Date().getFullYear()}
+            © {new Date().getFullYear()}
           </div>
         </div>
       </div>

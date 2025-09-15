@@ -22,7 +22,8 @@ const About = () => {
       title: "What?",
       desc: "We design and build modern apps, websites, and cloud solutions. From concept to deployment, we make technology work seamlessly for businesses and startups.",
       icon: <FaRocket />,
-      color: "#faf7f6",
+      color: "card1",
+      text:"text-card-1",
       tags: ["Websites", "Apps", "Cloud"],
       img: team,
       isBig: true,
@@ -32,7 +33,8 @@ const About = () => {
       title: "Why?",
       desc: "Because one-size-fits-all solutions never scale. We focus on performance, security, and usability—ensuring our builds grow with your business needs.",
       icon: <FaQuestionCircle />,
-      color: "#ddf160",
+      color: "card2",
+      text:"text-card-1",
       tags: ["Scalable", "Secure", "Smart"],
       img: startup,
       isBig: false,
@@ -40,9 +42,10 @@ const About = () => {
     {
       id: 3,
       title: "When?",
-      desc: "Anytime. Whether it’s strict deadlines, midnight bug fixes, or last-minute server setups—we’ve got your back, 24/7.",
+      desc: "Anytime. Whether it’s strict deadlines, midnight bug fixes, last-minute server setups, unexpected crashes during peak hours, or sudden client demands—we’ve got your back, 24/7. From urgent troubleshooting to smooth rollouts, we stay ready so you don’t have to worry",
       icon: <FaCalendarAlt />,
-      color: "#1c1c1c",
+      color: "card3",
+      text:"text-card-2",
       tags: ["24/7", "On-Demand", "Flexible"],
       img: service,
       isBig: true,
@@ -52,7 +55,8 @@ const About = () => {
       title: "How?",
       desc: "Simple formula: Coffee ☕ + Code 💻 + Cloud ☁️ = Success 🚀. Our workflow blends DevOps, automation, and agile practices to deliver faster, better, and smarter.",
       icon: <FaCogs />,
-      color: "#faf7f6",
+      color: "card1",
+      text:"text-card-1",
       tags: ["DevOps", "Automation", "Agile"],
       img: develop,
       isBig: false,
@@ -62,7 +66,8 @@ const About = () => {
       title: "More?",
       desc: "From mobile apps to enterprise-grade pipelines, we act as your tech pit crew—keeping everything running smoothly, securely, and at scale.",
       icon: <FaPlusCircle />,
-      color: "#ddf160",
+      color: "card2",
+      text:"text-card-1",
       tags: ["Mobile", "Web", "Cloud"],
       img: mobile,
       isBig: true,
@@ -78,13 +83,13 @@ const About = () => {
             className={`about-card ${
               card.isBig ? "big-card-layout" : "small-card-layout"
             } ${card.color === "#1c1c1c" ? "dark-theme" : ""}`}
-            style={{ backgroundColor: card.color }}
+            style={{ backgroundColor:`var(--${card.color})`, color:`var(--${card.text})`}}
           >
             <div className="about-content">
               {card.isBig ? (
                 <div className="big-layout">
                   <div className="big-header">
-                    <GsapAnimation type="fade-up">
+                    <GsapAnimation type="fade-up" >
                       <h2>{card.title}</h2>
                     </GsapAnimation>
                     <div className="big-icon">{card.icon}</div>

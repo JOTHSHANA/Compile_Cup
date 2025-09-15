@@ -44,6 +44,11 @@
   --mobile-menu-bg: #1d1d1f;
   --mobile-menu-border: #3a3a3c;
   --navbar-text: #f5f5f7;
+  --card1:black;
+  --card2:#9f8be7;  
+  --card3:white;
+  --text-card-1:white;
+  --text-card-2:black;
 }
 
 [data-theme='dark'] {
@@ -80,9 +85,14 @@
   --blob3: rgba(27, 7, 48, 0.6); 
   --navbar-bg: #ffffff;
   --control-icon-color: #1d1d1f; 
-    --mobile-menu-bg: #ffffff;
+  --mobile-menu-bg: #ffffff;
   --mobile-menu-border: #e5e5e5;
   --navbar-text: #1d1d1f;
+  --card1:rgb(255, 255, 255);
+  --card2:#ddf160;  
+  --card3:rgb(0, 0, 0);
+  --text-card-1:black;
+  --text-card-2:white;
  
 }
 

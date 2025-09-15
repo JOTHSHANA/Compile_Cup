@@ -18,7 +18,7 @@ const DeveloperProfile = ({ developer }) => {
   const SocialLinks = () => (
     <div className="developer-info-container">
       <GsapAnimation type="fade-down">
-        <h3 className="developer-role">{role.toUpperCase()}</h3>
+        <h3 className="developer-role">{role}</h3>
       </GsapAnimation>
 
       <GsapAnimation type="fade-up">

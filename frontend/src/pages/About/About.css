@@ -19,14 +19,20 @@
 }
 
 .about-card {
-  border-radius: 2.5rem;
+  border-radius: 3.5rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   overflow: hidden;
   position: relative;
+  background-color: var(--dynamic-light);
   will-change: transform, opacity;
+  color: var(--text-card-2);
+}
+
+[data-theme="dark"] .about-card {
+  background-color: var(--dynamic-dark);
 }
 
 .about-card:hover {
@@ -51,32 +57,32 @@
 }
 
 .about-card h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 500;
   margin-bottom: 0.8rem;
-  color: black;
+  /* color: black; */
 }
 
 .about-card p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.6;
-  color: black;
+  font-weight: 400;
   letter-spacing: 1px;
-  color: rgb(55, 55, 55);
   margin-bottom: 1.5rem;
 }
 
 .about-card .icon,
 .big-icon {
   font-size: 3rem;
-  color: var(--text-primary);
+  /* color: var(--text-card-2); */
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  z-index: 999;
   margin-top: auto;
   padding-top: 1rem;
 }
@@ -86,7 +92,7 @@
   border-radius: 999px;
   border: 1px solid var(--chip-border);
   background: transparent;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--chip-border);
   font-weight: 600;
   transition: all 0.2s ease;
@@ -130,6 +136,9 @@
 
 .big-header{
   display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
   justify-content: space-between;
 }
 @media (max-width: 768px) {
@@ -141,6 +150,9 @@
 }
 .about-section{
   padding: 2rem 1rem;
+}
+.tags{
+  gap: 8px;
 }
 
 .about-card .about-image {

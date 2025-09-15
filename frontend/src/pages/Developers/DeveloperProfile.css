@@ -87,15 +87,14 @@
 }
 
 .developer-role {
-  font-size: 1.5rem;
-  /* font-weight: lighter; */
+  font-size: 2rem;
   color: #19c6d6;
   line-height: 50px;
   margin: 0;
 }
 
 .developer-bio {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--text-primary);
   font-weight: lighter;
   line-height: 1.4;
@@ -182,11 +181,11 @@
 
 @media (max-width: 768px) {
   .developer-role {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .developer-bio {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .social-links .icon {
@@ -238,7 +237,6 @@
   }
 }
 
-/* 📱 Tablet (<= 768px) */
 @media (max-width: 768px) {
   .developer-card {
     flex-direction: column !important;
@@ -283,7 +281,6 @@
   }
 }
 
-/* 📱 Small Mobile (<= 480px) */
 @media (max-width: 480px) {
   .developer-image {
     width: 100%;
@@ -291,17 +288,17 @@
   }
 
   .developer-name {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     bottom: 6px;
   }
 
   .developer-role {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.4;
   }
 
   .developer-bio {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     line-height: 1.2;
     margin-bottom: 12px;
   }

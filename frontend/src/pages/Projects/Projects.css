@@ -13,8 +13,8 @@
 }
 
 .projects-container {
-  width: 100%;
-  max-width: 1400px; 
+  width: 90%;
+  max-width: 1350px; 
   margin: 0 auto;
   display: grid;
   grid-template-rows: repeat(var(--cards-count), var(--card-height));
@@ -128,7 +128,7 @@
 }
 @media (max-width: 768px) {
   :root {
-    --card-height: 600px; 
+    --card-height: 650px; 
   }
 
   .projects-container {
@@ -137,7 +137,7 @@
   
   .project-card-inner {
     flex-direction: column;
-    padding: 20px 20px;
+    padding: 15px 15px;
     text-align: center;
     justify-content: center;
   }

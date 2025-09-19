@@ -181,7 +181,6 @@
   transition: width 0.3s ease;
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .contact-page-container {
     flex-direction: column;
@@ -195,6 +194,16 @@
 
   .form-row {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-page-container {
+    flex-direction: column-reverse; 
+  }
+
+  .contact-image {
+    display: none;
   }
 }
 

@@ -49,6 +49,11 @@
   --card3:white;
   --text-card-1:white;
   --text-card-2:black;
+    --bg-light: #ffffff;
+      --text-light: #000000;
+  --input-light: #f9f9f9;
+
+
 }
 
 [data-theme='dark'] {
@@ -93,6 +98,10 @@
   --card3:rgb(0, 0, 0);
   --text-card-1:black;
   --text-card-2:white;
+    --bg-dark: #1e1e1e;
+  --text-dark: #f0f0f0;
+  --input-dark: #2c2c2c;
+
  
 }
 

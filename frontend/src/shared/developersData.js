@@ -1,4 +1,4 @@
-import priyan from '../assets/priyan1.jpeg';
+import priyan from '../assets/priyan.jpeg';
 import jo from '../assets/jo1.jpg';
 
 const developersData = [

@@ -90,7 +90,7 @@
 .chip {
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--chip-border);
+  /* border: 1px solid var(--chip-border); */
   background: transparent;
   font-size: 1rem;
   color: var(--chip-border);
@@ -99,7 +99,7 @@
 }
 
 .chip:hover {
-  background: var(--chip-border);
+  /* background: var(--chip-border); */
   color: #fff;
 }
 

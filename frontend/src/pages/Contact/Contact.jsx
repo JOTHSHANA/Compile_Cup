@@ -1,99 +1,172 @@
-import React, { useState, useEffect, useRef } from "react"; // Import useRef
-import { Form, Input, Button } from "antd";
+import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; // Import ScrollTrigger
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { submitAnimation } from "../../components/Button/buttonAnimation";
 import { showSuccess, showError } from "../../components/toast/toast";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
 import "./Contact.css";
+
 import contact from "../../assets/contact.png";
 import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import AnimatedSvg from "../../assets/con-1.svg"; // 1. Import your SVG here
+import AnimatedSvg from "../../assets/con-1.svg";
 
-gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
-
-const { TextArea } = Input;
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-  const [form] = Form.useForm();
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const animatedSvgRef = useRef(null);
-  const contactFormRef = useRef(null); // Ref for the right-contact-formm div to use as trigger
+  const contactFormRef = useRef(null);
+  const leftContactRef = useRef(null);
+  const contactImageRef = useRef(null);
+  const infoRefs = useRef([]);
+  const titleRef = useRef(null);
+  const formRef = useRef(null);
+  const progressRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(animatedSvgRef.current,
-        {
-          rotation: -5, 
-          scale: 0.9,
-          opacity: 0,
+      gsap.from(leftContactRef.current, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        scrollTrigger: {
+          trigger: leftContactRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
         },
+      });
+
+      gsap.from(contactImageRef.current, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: contactImageRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.from(infoRefs.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: leftContactRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.from(contactFormRef.current, {
+        opacity: 0,
+        y: -50,
+        duration: 1,
+        scrollTrigger: {
+          trigger: contactFormRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.from(titleRef.current, {
+        opacity: 0,
+        y: -30,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.from(formRef.current, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.from(progressRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        delay: 0.7,
+        scrollTrigger: {
+          trigger: progressRef.current,
+          start: "top 85%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      gsap.fromTo(
+        animatedSvgRef.current,
+        { rotation: -5, scale: 0.9, opacity: 0 },
         {
-          rotation: 5, 
+          rotation: 5,
           scale: 1,
           opacity: 0.5,
           duration: 1.5,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true, 
+          yoyo: true,
           scrollTrigger: {
-            trigger: contactFormRef.current, 
+            trigger: contactFormRef.current,
             start: "top 70%",
-            toggleActions: "play pause resume reset", 
-          }
+          },
         }
       );
-    }, [animatedSvgRef, contactFormRef]); 
+    });
 
     return () => ctx.revert();
-  }, []); 
+  }, []);
 
-  const handleFormChange = (_, allValues) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+    handleProgress(newFormData);
+  };
+
+  const handleProgress = (values) => {
     let completed = 0;
-
-    if (allValues.name && allValues.name.trim() !== "") completed++;
-    if (allValues.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(allValues.email))
-      completed++;
-    if (allValues.message && allValues.message.trim() !== "") completed++;
-
+    if (values.name.trim() !== "") completed++;
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) completed++;
+    if (values.message.trim() !== "") completed++;
     setProgress((completed / 3) * 100);
   };
 
-  const validateForm = (values) => {
+  const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!values.name || values.name.trim() === "") {
-      showError("Please enter your name!");
-      return false;
-    }
-    if (!values.email || values.email.trim() === "") {
-      showError("Please enter your email!");
-      return false;
-    }
-    if (!emailRegex.test(values.email)) {
-      showError("Please enter a valid email!");
-      return false;
-    }
-    if (!values.message || values.message.trim() === "") {
-      showError("Please enter your message!");
-      return false;
-    }
+    if (!formData.name.trim()) return showError("Please enter your name!");
+    if (!formData.email.trim()) return showError("Please enter your email!");
+    if (!emailRegex.test(formData.email)) return showError("Please enter a valid email!");
+    if (!formData.message.trim()) return showError("Please enter your message!");
     return true;
   };
 
-  const onFinish = (values) => {
-    if (!validateForm(values)) return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
     setLoading(true);
 
     const templateParams = {
-      name: values.name,
-      email: values.email,
-      message: values.message,
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
       time: new Date().toLocaleString(),
     };
 
@@ -107,9 +180,9 @@ const Contact = () => {
       .then(
         () => {
           showSuccess("Message sent successfully!");
-          form.resetFields();
-          setLoading(false);
+          setFormData({ name: "", email: "", message: "" });
           setProgress(0);
+          setLoading(false);
         },
         (error) => {
           console.error("EmailJS Error:", error);
@@ -120,149 +193,98 @@ const Contact = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="contact-page-wrapper">
       <div className="contact-page-container">
-        <div className="left-contact" data-aos="fade-up" data-aos-duration="1000">
-          <div className="contact-image" data-aos="zoom-in" data-aos-delay="200">
+        <div ref={leftContactRef} className="left-contact">
+          <div className="contact-image" ref={contactImageRef}>
             <img src={contact} alt="Contact" className="contact-img-element" />
           </div>
 
           <div className="contact-info">
-            <div
-              className="con-info-container"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <MarkAsUnreadIcon
-                sx={{
-                  padding: "10px",
-                  backgroundColor: "white",
-                  fontSize: "40px",
-                  color: "black",
-                  borderRadius: "5px",
-                }}
-              />
-              compilecup@gmail.com
-            </div>
-
-            <div
-              className="con-info-container"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <PhoneInTalkIcon
-                sx={{
-                  padding: "10px",
-                  backgroundColor: "white",
-                  fontSize: "40px",
-                  color: "black",
-                  borderRadius: "5px",
-                }}
-              />
-              +91 8281352999
-            </div>
-
-            <div
-              className="con-info-container"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <LinkedInIcon
-                sx={{
-                  padding: "10px",
-                  backgroundColor: "white",
-                  fontSize: "40px",
-                  color: "black",
-                  borderRadius: "5px",
-                }}
-              />
-              Compile Cup
-            </div>
+            {[
+              { Icon: MarkAsUnreadIcon, text: "compilecup@gmail.com" },
+              { Icon: PhoneInTalkIcon, text: "+91 8281352999" },
+              { Icon: LinkedInIcon, text: "Compile Cup" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                ref={(el) => (infoRefs.current[i] = el)}
+                className="con-info-container"
+              >
+                <item.Icon
+                  sx={{
+                    padding: "10px",
+                    backgroundColor: "white",
+                    fontSize: "40px",
+                    color: "black",
+                    borderRadius: "5px",
+                  }}
+                />
+                {item.text}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* 3. Attach ref to the form container */}
-        <div ref={contactFormRef} className="right-contact-formm" data-aos="fade-down" data-aos-duration="1000">
-          {/* 4. Place your SVG here with its ref */}
-          <img ref={animatedSvgRef} src={AnimatedSvg} alt="Animated Decoration" className="animated-contact-svg" />
+        <div ref={contactFormRef} className="right-contact-formm">
+          <img
+            ref={animatedSvgRef}
+            src={AnimatedSvg}
+            alt="Animated Decoration"
+            className="animated-contact-svg"
+          />
 
-          <h1 className="contact-title" data-aos="fade-down">
+          <h1 ref={titleRef} className="contact-title">
             Contact Us
           </h1>
 
-          <Form
-            form={form}
-            layout="vertical"
-            onFinish={onFinish}
-            onValuesChange={handleFormChange}
-            className="contact-form"
-            data-aos="zoom-in-up"
-            data-aos-delay="300"
-          >
+          <form ref={formRef} className="native-contact-form" onSubmit={handleSubmit}>
             <div className="form-row">
-              <Form.Item name="name" label="Name" className="form-item">
-                <Input
-                  prefix={<UserOutlined />}
-                  size="large"
-                  placeholder="Enter your name"
-                />
-              </Form.Item>
-              <Form.Item name="email" label="Email" className="form-item">
-                <Input
-                  prefix={<MailOutlined />}
-                  size="large"
-                  placeholder="Enter your email"
-                />
-              </Form.Item>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
+                className="input-field"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="input-field"
+              />
             </div>
 
-            <Form.Item name="message" label="Message">
-              <TextArea
-                rows={5}
-                placeholder="Write your message here..."
-                className="no-resize"
-              />
-            </Form.Item>
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Write your message here..."
+              value={formData.message}
+              onChange={handleChange}
+              className="textarea-field"
+            />
 
-            <Form.Item>
-              <Button
-                color="cyan"
-                variant="solid"
-                type="success"
-                htmlType="submit"
-                className="submit-btn"
-                loading={loading}
-                onClick={submitAnimation}
-                disabled={progress < 100}
-              >
-                <span className="text">
-                  {loading ? "Sending..." : "Send"}
-                </span>
-                <span className="icon">
-                  <svg viewBox="0 0 512.005 512.005">
-                    <path d="M511.658 51.675c2.496-11.619-8.895-21.416-20.007-17.176l-482 184a15 15 0 00-.054 28.006L145 298.8v164.713a15 15 0 0028.396 6.75l56.001-111.128 136.664 101.423c8.313 6.17 20.262 2.246 23.287-7.669C516.947 34.532 511.431 52.726 511.658 51.675zm-118.981 52.718L157.874 271.612 56.846 232.594zM175 296.245l204.668-145.757c-176.114 185.79-166.916 176.011-167.684 177.045-1.141 1.535 1.985-4.448-36.984 72.882zm191.858 127.546l-120.296-89.276 217.511-229.462z" />
-                  </svg>
-                </span>
-              </Button>
-            </Form.Item>
-          </Form>
+            <button
+              type="submit"
+              className="submit-btn"
+              disabled={progress < 100 || loading}
+              onClick={submitAnimation}
+            >
+              <span className="text">{loading ? "Sending..." : "Send"}</span>
+              <span className="icon">
+                <svg viewBox="0 0 512.005 512.005">
+                  <path d="M511.658 51.675c2.496-11.619-8.895-21.416-20.007-17.176l-482 184a15 15 0 00-.054 28.006L145 298.8v164.713a15 15 0 0028.396 6.75l56.001-111.128 136.664 101.423c8.313 6.17 20.262 2.246 23.287-7.669C516.947 34.532 511.431 52.726 511.658 51.675zm-118.981 52.718L157.874 271.612 56.846 232.594zM175 296.245l204.668-145.757c-176.114 185.79-166.916 176.011-167.684 177.045-1.141 1.535 1.985-4.448-36.984 72.882zm191.858 127.546l-120.296-89.276 217.511-229.462z" />
+                </svg>
+              </span>
+            </button>
+          </form>
 
-          <div className="arc-bg" data-aos="fade-in" data-aos-delay="600"></div>
-          <div
-            className="progress-bar-container"
-            data-aos="fade-up"
-            data-aos-delay="700"
-          >
-            <div
-              className="progress-bar-fill"
-              style={{ width: `${progress}%` }}
-            ></div>
+          <div className="arc-bg"></div>
+          <div ref={progressRef} className="progress-bar-container">
+            <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
           </div>
         </div>
       </div>

@@ -111,9 +111,9 @@ const About = () => {
               )}
 
               <GsapAnimation type="fade-up" delay={0.3}>
-                <div className="tags">
+                <div className="tags" style={{color:`var(--${card.text})`}}>
                   {card.tags.map((tag, idx) => (
-                    <span key={idx} className="chip">
+                    <span key={idx} className="chip" style={{color:`var(--${card.text})`,border:`1px solid var(--${card.text})`}} >
                       {tag}
                     </span>
                   ))}

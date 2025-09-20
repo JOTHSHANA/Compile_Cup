@@ -1,12 +1,5 @@
 :root {
-    --bg-primary: #f8f9fa;
-    --bg-secondary: #ffffff;
-    --bg-tertiary: #f1f3f5;
-    --accent-primary: #ff8f77;
-    --text-primary: #212529;
-    --text-secondary: #6c757d;
-    --border-color: #dee2e6;
-    --disabled-color: #ced4da;
+    --accent1-primary: #ff8f77;
 }
 
 body {
@@ -16,19 +9,17 @@ body {
 .brochure-page-container {
     min-height: 100vh;
     background-color: var(--bg-primary);
-    font-family: 'Inter', sans-serif;
     color: var(--text-primary);
     padding: 2rem 1rem;
     box-sizing: border-box;
 }
 
-/* --- Headings --- */
 .brochure-main-heading {
     font-weight: 700;
     font-size: clamp(2rem, 5vw, 2.5rem);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--accent-primary);
+    color: var(--accent1-primary);
     letter-spacing: 2px;
     text-shadow: 0 0 10px rgba(255, 143, 119, 0.5);
 }
@@ -37,7 +28,7 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    border-bottom: 2px solid var(--accent-primary);
+    border-bottom: 2px solid var(--accent1-primary);
     width: fit-content;
     padding-bottom: 0.5rem;
     color: var(--text-primary);
@@ -46,8 +37,8 @@ body {
 .brochure-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1400px;
+    /* gap: 2rem; */
+    /* max-width: 1400px; */
     margin: 0 auto;
 }
 
@@ -63,26 +54,27 @@ body {
 }
 
 .b1 {
-   padding-top: 0;
-   background-color: var(--bg-secondary); /* White */
+   padding-top: 10px;
+   background-color: var(--bg-secondary); 
 }
 
 .b2 {
-    background-color: var(--bg-tertiary); /* Light Grey */
+    background-color: var(--bg-tertiary); 
+    padding: 10px;
 }
 
 .b3 {
-    background-color: var(--bg-secondary); /* White */
+    background-color: var(--bg-secondary); 
+    padding: 10px;
 }
 
 .content-padding {
     padding: 0 1.5rem 1.5rem;
 }
 
-/* --- Interactive Hover Effects --- */
 .brochure-content:has(.zoom-section:hover) .zoom-section:not(:hover) {
     opacity: 0.4;
-    filter: blur(5px);
+    filter: blur(4px);
     transform: scale(0.98);
 }
 
@@ -95,6 +87,7 @@ body {
     transform: scale(1.03);
     box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
     z-index: 10;
+    padding: 5px;
 }
 
 .intro_img {
@@ -145,7 +138,7 @@ body {
 }
 
 .dev-profile-flex .icon-wrapper {
-    background-color: var(--accent-primary);
+    background-color: var(--accent1-primary);
     padding: 0.5rem;
     border-radius: 8px;
 }
@@ -184,15 +177,15 @@ body {
 }
 
 .process-step .icon-wrapper {
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
+    border: 2px solid var(--accent1-primary);
+    color: var(--accent1-primary);
     background-color: transparent;
     min-width: 40px;
     height: 40px;
 }
 
 .brochure-services svg {
-    color: var(--accent-primary);
+    color: var(--accent1-primary);
     width: 24px;
     height: 24px;
 }
@@ -226,7 +219,7 @@ body {
 }
 
 .contact-item .icon-wrapper svg {
-    color: var(--accent-primary);
+    color: var(--accent1-primary);
 }
 
 .contact-text {
@@ -238,7 +231,7 @@ body {
 }
 
 a.contact-text:hover {
-    color: var(--accent-primary);
+    color: var(--accent1-primary);
 }
 
 .download-button {
@@ -246,7 +239,7 @@ a.contact-text:hover {
     bottom: 20px;
     right: 20px;
     padding: 12px 25px;
-    background-color: var(--accent-primary);
+    background-color: var(--accent1-primary);
     color: white;
     border: none;
     border-radius: 50px;

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import './Brochure.css';
+import brochure from '../../assets/brochure_img2.png'
+import jo from '../../assets/jo1.jpg'
+import priyan from '../../assets/priyan.jpg'
 
-// --- SVG Icons ---
 const PersonIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
 );
@@ -109,11 +112,10 @@ const Brochure = () => {
         <div className="brochure-main-heading">COMPILE CUP</div>
 
         <div className="brochure-content">
-          {/* Card 1: Who We Are */}
           <div className="brochure-blocks b1">
             <div className="intro_img">
               <img className="brochure-image1" 
-                src="https://placehold.co/600x400/1E1E1E/38BDF8?text=Hello\nWorld" 
+                src={brochure}
                 alt="Abstract digital art" 
                 onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/1E1E1E/FFFFFF?text=Image+Not+Found'; }}
               />
@@ -143,7 +145,6 @@ const Brochure = () => {
             </div>
           </div>
 
-          {/* Card 2: What We Do & How We Do It */}
           <div className="brochure-blocks b2">
               <div className="content-padding">
                 <div className="brochure_headings">Our Services</div>
@@ -194,7 +195,6 @@ const Brochure = () => {
               </div>
           </div>
 
-          {/* Card 3: Why Us & Contact */}
           <div className="brochure-blocks b3">
             <div className="content-padding">
                 <div className="brochure_headings">Why Choose Us?</div>

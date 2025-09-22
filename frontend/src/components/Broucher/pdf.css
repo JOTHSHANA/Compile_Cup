@@ -1,0 +1,153 @@
+/* PDF-fit A4 page */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f5f5f5, #e8ebf0);
+  color: #333;
+}
+
+.brochure-page-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Decorative 3D shapes */
+.brochure-page-container::before,
+.brochure-page-container::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #6C63FF, transparent 70%);
+  z-index: 0;
+}
+.brochure-page-container::before { top: -50px; left: -50px; }
+.brochure-page-container::after { bottom: -50px; right: -50px; }
+
+.brochure-main-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #4B0082;
+  position: relative;
+  z-index: 1;
+}
+
+.brochure-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.brochure-blocks {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  flex: 1;
+  min-width: 45%;
+}
+
+.b1, .b2 { flex: 1 1 48%; }
+.b3 { flex: 1 1 100%; margin-top: 20px; }
+
+.intro_img {
+  text-align: center;
+}
+.brochure-image1 {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.company-name {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px 0 20px;
+  font-weight: 600;
+  color: #444;
+}
+
+.brochure_headings {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #4B0082;
+}
+
+.brochure_paragraphs {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.dev-profile-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.dev-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.dev-info {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.brochure-services, .process-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.icon-wrapper {
+  width: 35px;
+  height: 35px;
+  background: #4B0082;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.service-info, .process-info {
+  flex: 1;
+}
+
+.contact-details {
+  margin-top: 15px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.contact-text {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+}
+.contact-text:hover {
+  text-decoration: underline;
+}

@@ -3,6 +3,7 @@ import './Brochure.css';
 import brochure from '../../assets/brochure_img2.png';
 import jo from '../../assets/jo1.jpg';
 import priyan from '../../assets/priyan.jpg';
+import pdfFile from '../../assets/brochure.pdf';
 
 const PersonIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
@@ -69,41 +70,51 @@ const Brochure = () => {
 
   }, []);
 
-  const handleDownloadPdf = () => {
-    if (!libsLoaded) {
-      console.error("Libraries not loaded yet!");
-      return;
-    }
+//   const handleDownloadPdf = () => {
+//     if (!libsLoaded) {
+//       console.error("Libraries not loaded yet!");
+//       return;
+//     }
 
-    const { jsPDF } = window.jspdf;
-    const html2canvas = window.html2canvas;
-    const input = document.querySelector('.brochure-content');
-    const button = document.querySelector('.download-button');
-    if (button) button.style.display = 'none';
+//     const { jsPDF } = window.jspdf;
+//     const html2canvas = window.html2canvas;
+//     const input = document.querySelector('.brochure-content');
+//     const button = document.querySelector('.download-button');
+//     if (button) button.style.display = 'none';
 
-    html2canvas(input, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: null,
-      onclone: (document) => {
-        const clonedButton = document.querySelector('.download-button');
-        if (clonedButton) clonedButton.style.display = 'none';
-      }
-    })
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 1080;
-        const pageHeight = (canvas.height * imgWidth) / canvas.width;
-        const pdf = new jsPDF({ orientation: 'p', unit: 'px', format: [imgWidth, pageHeight] });
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, pageHeight);
-        pdf.save('brochure-compile-cup.pdf');
-        if (button) button.style.display = 'block';
-      })
-      .catch((err) => {
-        console.error('Error generating PDF:', err);
-        if (button) button.style.display = 'block';
-      });
-  };
+//     html2canvas(input, {
+//       scale: 2,
+//       useCORS: true,
+//       backgroundColor: null,
+//       onclone: (document) => {
+//         const clonedButton = document.querySelector('.download-button');
+//         if (clonedButton) clonedButton.style.display = 'none';
+//       }
+//     })
+//       .then((canvas) => {
+//         const imgData = canvas.toDataURL('image/png');
+//         const imgWidth = 1080;
+//         const pageHeight = (canvas.height * imgWidth) / canvas.width;
+//         const pdf = new jsPDF({ orientation: 'p', unit: 'px', format: [imgWidth, pageHeight] });
+//         pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, pageHeight);
+//         pdf.save('brochure-compile-cup.pdf');
+//         if (button) button.style.display = 'block';
+//       })
+//       .catch((err) => {
+//         console.error('Error generating PDF:', err);
+//         if (button) button.style.display = 'block';
+//       });
+//   };
+
+ const handleDownloadPdf = () => {
+    const link = document.createElement('a');
+    link.href = pdfFile;
+    link.download = 'Compile_Cup_Brochure.pdf'; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 
   return (
     <>
@@ -246,9 +257,30 @@ const Brochure = () => {
           </div>
         </div>
 
-        <button onClick={handleDownloadPdf} className="download-button" disabled={!libsLoaded}>
-          {libsLoaded ? 'Download PDF' : 'Loading...'}
-        </button>
+         <button className="botao" onClick={handleDownloadPdf} >
+      <svg
+        className="mysvg"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        height="24px"
+        width="24px"
+      >
+        <g id="SVGRepo_iconCarrier">
+          <g id="Interface / Download">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              stroke="#000000ff"
+              d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12"
+            ></path>
+          </g>
+        </g>
+      </svg>
+      <span className="texto">
+        Download</span>
+    </button>
       </div>
     </>
   );

@@ -11,6 +11,8 @@ import ToastMessage from "./components/toast/toast";
 import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
 import AntdThemeContext from "./context/AntdThemeContext";
 import Loader from "./components/Loader/Loader";
+import BackToTop from "./components/Button/BackToTop/BackToTop";
+import DownloadButton from "./components/Button/DownloadBrochure/DownloadButton";
 import "./App.css";
 import { LenisProvider } from "./context/LenisContext";
 import AOS from "aos";
@@ -34,6 +36,8 @@ const AppContent = () => {
           <Route path="/" element={<MainLayout />} />
           <Route path="/reviews" element={<Reviews />} />
         </Routes>
+      <BackToTop />
+      <DownloadButton/>
       </main>
       <Footer />
     </>

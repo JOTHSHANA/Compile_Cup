@@ -24,18 +24,88 @@
   gap: 0.75rem;
 }
 
-.control-button,
-.menu-icon-button {
-  cursor: pointer;
+.control-button{
+   cursor: pointer;
   background: var(--navbar-bg);
   border: none;
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease;
+}
+.menu-icon-button {
+  cursor: pointer;
+  background: var(--navbar-bg);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 50px;                
+  height: 50px;               
+  border-radius: 50%;        
+  background-color: var(--navbar-bg); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: auto;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+
+.bar {
+  position: absolute;
+  width: 25px; 
+  height: 4px;
+  border-radius: 2px;
+  background: var(--control-icon-color);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.35s cubic-bezier(.5,-0.35,.35,1.5);
+}
+
+.bar--top {
+  bottom: calc(50% + 8px); 
+}
+
+.bar--middle {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bar--bottom {
+  top: calc(50% + 8px); 
+}
+
+
+#checkbox:checked + .toggle .bar--top {
+  transform: translate(-50%, 50%) rotate(-135deg);
+  bottom: 50%;
+}
+
+#checkbox:checked + .toggle .bar--middle {
+  opacity: 0;
+  transform: translateX(-50%) rotate(-135deg);
+}
+
+#checkbox:checked + .toggle .bar--bottom {
+  transform: translate(-50%, -50%) rotate(-225deg);
+  top: 50%;
 }
 
 .hamburger {

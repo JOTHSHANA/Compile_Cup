@@ -128,7 +128,7 @@
 }
 @media (max-width: 768px) {
   :root {
-    --card-height: 650px; 
+    --card-height: 600px; 
   }
 
   .projects-container {
@@ -137,7 +137,7 @@
   
   .project-card-inner {
     flex-direction: column;
-    padding: 15px 15px;
+    padding: 15px 12px;
     text-align: center;
     justify-content: center;
   }
@@ -167,12 +167,12 @@
     width: 100%;
     margin-top: 20px;
     justify-content: center;
+    border-radius: 20px;
   }
 
   .project-image {
     width: 100%;
     aspect-ratio: 16/9;
-    border-radius: 20px;
   }
 
   .project-content h2 {
@@ -181,10 +181,11 @@
   }
 
   .project-content p {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.5;
+    font-weight: 100;
   }
   .projects-section{
-    padding: 10px;
+    padding: 1px;
   }
 }

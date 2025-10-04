@@ -40,27 +40,37 @@
   fill: white;
 }
 
-.button:hover {
-  width: 140px;
-  border-radius: 50px;
-  background-color: rgb(181, 160, 255);
+/* Hover effects for desktop */
+@media (min-width: 769px) {
+  .button:hover {
+    width: 140px;
+    border-radius: 50px;
+    background-color: rgb(181, 160, 255);
+  }
+
+  .button:hover .svgIcon {
+    transform: translateY(-200%);
+  }
+
+  .button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Back to Top";
+    color: white;
+    font-size: 0px;
+  }
+
+  .button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+  }
 }
 
-.button:hover .svgIcon {
-  transform: translateY(-200%);
-}
-
-.button::before {
-  position: absolute;
-  bottom: -20px;
-  content: "Back to Top";
-  color: white;
-  font-size: 0px;
-}
-
-.button:hover::before {
-  font-size: 13px;
-  opacity: 1;
-  bottom: unset;
-  transition-duration: 0.3s;
+/* Mobile / small screens: remove the "Back to Top" text */
+@media (max-width: 768px) {
+  .button::before {
+    content: none;
+  }
 }

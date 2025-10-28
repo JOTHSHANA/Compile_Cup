@@ -5,8 +5,8 @@ import GsapAnimation from "../../components/Animation/Gsap";
 
 // Import images
 import inventoryApp from '../../assets/inventory-app.png';
-import weatherApp from '../../assets/weather-app.png';
-import portfolio from '../../assets/Portfolio.png';
+import weatherApp from '../../assets/pcb_bg.jpg';
+import portfolio from '../../assets/elearn_bg.jpg';
 // 1. Import your new project image
 import inventoryProject from '../../assets/inventory.png'; 
 

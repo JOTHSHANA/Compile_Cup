@@ -22,14 +22,7 @@ const ContactDetails = () => (
       >
         <FaLinkedin />
       </a>
-      {/* <a
-        href="https://github.com/compilecup"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-      >
-        <FaGithub />
-      </a> */}
+     
       <a
         href="https://www.instagram.com/compilecup"
         target="_blank"

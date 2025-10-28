@@ -11,6 +11,7 @@ const ContactDetails = () => (
     <div className="contact-links">
       <a href="mailto:contact@compilecup.com">compilecup@gmail.com</a>
       <a href="tel:+919789762908">+91 9789762908</a>
+      <a href="tel:+918281352999">+91 8281352999</a>
     </div>
     <div className="social-media-links">
       <a

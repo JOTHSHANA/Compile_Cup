@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react"; // Added useRef
 import "./Brochure.css";
 import brochure from "../../assets/brochure_img2.png";
 import jo from "../../assets/jo1.jpg";
 import priyan from "../../assets/priyan.jpg";
+
+// ... (all your SVG icon components remain unchanged) ...
 
 const WebhookIcon = () => (
   <svg
@@ -119,7 +121,7 @@ const EmailIcon = () => (
 );
 const CallIcon = () => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2E_ssvg"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -142,6 +144,8 @@ const LocationOnIcon = () => (
 
 const Brochure = () => {
   const [libsLoaded, setLibsLoaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false); // Added download state
+  const brochureRef = useRef(null); // Added ref for capture
 
   useEffect(() => {
     const loadScript = (src, id) => {
@@ -176,10 +180,54 @@ const Brochure = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  // --- NEW FUNCTION TO HANDLE PDF DOWNLOAD ---
+  const handleDownloadPdf = async () => {
+    // Check if libs are loaded and the ref is attached
+    if (!libsLoaded || !brochureRef.current) {
+      console.error("Libraries not loaded or component not ready.");
+      return;
+    }
+
+    setIsDownloading(true);
+
+    try {
+      const { jsPDF } = window.jspdf;
+      const canvas = await window.html2canvas(brochureRef.current, {
+        scale: 2, // Increase resolution for better quality
+        useCORS: true, // Handle cross-origin images
+        allowTaint: true,
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+
+      // Use the element's dimensions to set the PDF size
+      const element = brochureRef.current;
+      const pdfWidth = element.clientWidth;
+      const pdfHeight = element.clientHeight;
+
+      // Create a PDF with the same dimensions as the content
+      const pdf = new jsPDF({
+        orientation: pdfWidth > pdfHeight ? "landscape" : "portrait",
+        unit: "px",
+        format: [pdfWidth, pdfHeight],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("compile-cup-brochure.pdf");
+
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+  // --- END OF NEW FUNCTION ---
+
   return (
     <>
-      <div className="brochure-page-container">
-                <div className="brochure-main-heading">COMPILE CUP</div>       {" "}
+      {/* Attach the ref to the container you want to download */}
+      <div className="brochure-page-container" ref={brochureRef}>
+        <div className="brochure-main-heading">....</div>        {" "}
         <div className="brochure-content">
           <div className="brochure-blocks b1">
             <div className="intro_img">
@@ -194,24 +242,24 @@ const Brochure = () => {
                 }}
               />
             </div>
-            <div className="company-name">Innovate. Create. Deploy.</div>       
+            <div className="brochure-main-heading">COMPILE CUP</div>
             <div className="content-padding">
               <div className="zoom-section">
-                <div className="brochure_headings">About Us</div>               {" "}
+                <div className="brochure_headings">About Us</div>                {" "}
                 <p className="brochure_paragraphs">
-                                    We are a dynamic duo of final-year Computer
-                  Science students,                   combining cutting-edge
-                  academic knowledge with two years of real-world              
-                      freelancing experience. We're passionate about building
-                  technology that solves                   problems and drives
-                  growth through elegant, efficient code.                {" "}
+                  We are a dynamic duo of final-year Computer
+                  Science students,                 combining cutting-edge
+                  academic knowledge with two years of real-world
+                  freelancing experience. We're passionate about building
+                  technology that solves                 problems and drives
+                  growth through elegant, efficient code.                {" "}
                 </p>
               </div>
               <div className="zoom-section">
-                <div className="brochure_headings">Developers</div>             
+                <div className="brochure_headings">Developers</div>
                 <div className="dev-profile-container">
                   <div className="dev-profile-flex">
-                    <img src={jo} alt="Jothshana S M" className="dev-image" /> 
+                    <img src={jo} alt="Jothshana S M" className="dev-image" />
                     <div className="dev-info">
                       JOTHSHANA S M<div>Full Stack Developer</div>
                     </div>
@@ -234,7 +282,7 @@ const Brochure = () => {
           </div>
           <div className="brochure-blocks b2">
             <div className="content-padding">
-              <div className="brochure_headings">Our Services</div>             
+              <div className="brochure_headings">Our Services</div>
               <div className="zoom-section">
                 <div className="brochure-services">
                   <div className="icon-wrapper">
@@ -294,7 +342,7 @@ const Brochure = () => {
               <div className="brochure_headings" style={{ marginTop: "2rem" }}>
                 Our Proven Process
               </div>
-                               
+
               <div className="zoom-section">
                 <div className="process-step">
                   <div className="icon-wrapper">
@@ -341,7 +389,7 @@ const Brochure = () => {
           </div>
           <div className="brochure-blocks b3">
             <div className="content-padding">
-              <div className="brochure_headings">Why Choose Us?</div>           
+              <div className="brochure_headings">Why Choose Us?</div>
               <div className="zoom-section">
                 <div className="brochure-services">
                   <div className="icon-wrapper">
@@ -372,7 +420,7 @@ const Brochure = () => {
                   </div>
                 </div>
               </div>
-                               
+
               <div className="zoom-section">
                 <div className="brochure-services">
                   <div className="icon-wrapper">
@@ -414,13 +462,13 @@ const Brochure = () => {
                   <div className="icon-wrapper">
                     <CallIcon />
                   </div>
-                  <span className="contact-text">+91 9789762908</span>         
+                  <span className="contact-text">+91 9789762908</span>
                 </div>
                 <div className="contact-item">
                   <div className="icon-wrapper">
                     <LocationOnIcon />
                   </div>
-                  <span className="contact-text">Erode, TamilNadu, India</span> 
+                  <span className="contact-text">Erode, TamilNadu, India</span>
                 </div>
               </div>
             </div>

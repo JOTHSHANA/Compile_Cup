@@ -1,40 +1,53 @@
-[{
-  "id": 1,
-  "name": "Billing Software Suite",
-  "imageName": "inventory-app.png",
-  "description": "A full-stack billing and retail solution featuring QR code generation, product scanning, and attendance tracking. Built with a modern React front-end and secured MongoDB back-end, it provides seamless invoice management, real-time product updates, and interactive dashboards for business insights.",
-  "techStack": [
-    "React.js",
-    "Tailwind CSS",
-    "MongoDB",
-    "Ant Design",
-    "Node.js"
-  ]
-},
-{
-  "id": 2,
-  "name": "EDFN PCB",
-  "imageName": "weather-app.png",
-  "description": "A sleek, responsive landing page designed for a PCB manufacturing company. Developed with React and Tailwind CSS, it emphasizes clean layouts, optimized performance, and mobile-first design principles to effectively showcase services and drive customer engagement.",
-  "techStack": [
-    "React.js",
-    "Tailwind CSS",
-    "JavaScript",
-    "Vercel Hosting"
-  ]
-},
-{
-  "id": 3,
-  "name": "E-Learning Platform",
-  "imageName": "portfolio.png",
-  "description": "A comprehensive e-learning system offering interactive courses, document sharing, online compiler, learning roadmaps, and community discussion forums. The platform ensures collaborative learning with scalable architecture, making it suitable for both students and professionals.",
-  "techStack": [
-    "React.js",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "Tailwind CSS",
-    "Socket.io"
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "Billing Software Suite",
+    "imageName": "inventory-app.png",
+    "description": "A full-stack billing and retail solution featuring QR code generation, product scanning, and attendance tracking. Built with a modern React front-end and secured MongoDB back-end, it provides seamless invoice management, real-time product updates, and interactive dashboards for business insights.",
+    "techStack": [
+      "React.js",
+      "Tailwind CSS",
+      "MongoDB",
+      "Ant Design",
+      "Node.js"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "EDFN PCB",
+    "imageName": "weather-app.png",
+    "description": "A sleek, responsive landing page designed for a PCB manufacturing company. Developed with React and Tailwind CSS, it emphasizes clean layouts, optimized performance, and mobile-first design principles to effectively showcase services and drive customer engagement.",
+    "techStack": [
+      "React.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Vercel Hosting"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "E-Learning Platform",
+    "imageName": "portfolio.png",
+    "description": "A comprehensive e-learning system offering interactive courses, document sharing, online compiler, learning roadmaps, and community discussion forums. The platform ensures collaborative learning with scalable architecture, making it suitable for both students and professionals.",
+    "techStack": [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Socket.io"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Inventory Management System",
+    "imageName": "inventory.png",
+    "description": "A full-stack Inventory Management System using React, Node.js, and MySQL. It features a dynamic dashboard to monitor stock levels, manage products, and process bulk sales by uploading Excel files. The application also includes visual graphs to track sales trends and optimize inventory control.",
+    "techStack": [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MySQL"
+    ]
+  }
 ]

@@ -16,7 +16,7 @@ const developersData = [
       github: 'https://github-com/Priyadarshan-B',
       whatsapp: 'https://wa.me/9789762908',
       portfolioUrl: 'https://portfolio-priyan.netlify.app/',
-      resumeUrl: 'https://drive.google.com/file/d/your_file_id/view?usp=sharing',
+      resumeUrl: 'https://drive.google.com/file/d/1sKi_thyePGIYrd3KmjYT-0-HYFriRZUN/view?usp=sharing',
     },
   },
   {
@@ -33,7 +33,7 @@ const developersData = [
       github: 'https://github.com/JOTHSHANA',
       whatsapp: 'https://wa.me/7306176900',
       portfolioUrl: 'https://jothshana.netlify.app/',
-      resumeUrl: 'https://drive.google.com/file/d/your_file_id/view?usp=sharing',
+      resumeUrl: 'https://drive.google.com/file/d/1eaqBCDXnDTA-QGKNbku4dFviOfBqyuMv/view?usp=sharing',
     },
   },
 ];

@@ -13,7 +13,7 @@
 }
 
 .projects-container {
-  width: 90%;
+  width: 85%;
   max-width: 1350px; 
   margin: 0 auto;
   display: grid;
@@ -30,7 +30,7 @@
 .project-card-inner {
   background: var(--card-bg);
   color: var(--card-text);
-  border-radius: 45px;
+  border-radius: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +81,7 @@
 
 .tech-stacks {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 60px;
   display: flex;
   gap: 10px;

@@ -9,9 +9,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  position: fixed;   /* make floating */
-  bottom: 30px;      /* distance from bottom */
-  left: 30px;        /* distance from left */
+  position: fixed;
+  /* make floating */
+  bottom: 30px;
+  /* distance from bottom */
+  left: 30px;
+  /* distance from left */
   transition-duration: 0.3s;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
   z-index: 1000;
@@ -31,7 +34,7 @@
 
 .tooltip {
   position: absolute;
-  right: -105px;
+  right: -190px;
   opacity: 0;
   background-color: rgb(12, 12, 12);
   color: white;
@@ -82,8 +85,142 @@
     transform: translateY(-10px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0px);
     opacity: 1;
   }
+}
+
+
+
+
+
+
+
+
+
+/* --- NEW MODAL STYLES --- */
+
+/* The full-screen background overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+/* The popup box */
+.modal-content {
+  background: var(--background-primary, #fff);
+  color: var(--text-primary, #000);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #000);
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary, #555);
+}
+
+/* Container for the side-by-side previews */
+.modal-preview-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual preview option */
+.modal-preview-option {
+  border: 3px solid var(--background-secondary, #eee);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background: var(--background-secondary, #f9f9f9);
+}
+
+.modal-preview-option img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+.modal-preview-option span {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+}
+
+/* Highlight style when selected */
+.modal-preview-option.selected {
+  border-color: var(--accent-primary, #007bff);
+  box-shadow: 0 0 10px var(--accent-primary, #007bff);
+  transform: scale(1.03);
+}
+
+/* Container for the final buttons */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* General modal button style */
+.modal-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Cancel button style */
+.modal-btn.cancel {
+  background-color: var(--background-secondary, #f0f0f0);
+  color: var(--text-primary, #333);
+}
+
+.modal-btn.cancel:hover {
+  background-color: #ddd;
+}
+
+/* Download button style */
+.modal-btn.download {
+  background-color: var(--accent-primary, #007bff);
+  color: white;
+}
+
+.modal-btn.download:hover {
+  background-color: #0056b3;
+}
+
+/* Disabled state for download button */
+.modal-btn.download:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  opacity: 0.7;
 }

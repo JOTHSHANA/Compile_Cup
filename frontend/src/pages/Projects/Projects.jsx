@@ -7,8 +7,10 @@ import GsapAnimation from "../../components/Animation/Gsap";
 import inventoryApp from '../../assets/inventory-app.png';
 import weatherApp from '../../assets/weather-app.png';
 import portfolio from '../../assets/Portfolio.png';
+// 1. Import your new project image
+import inventoryProject from '../../assets/inventory.png'; 
 
-// 1. Import your new SVG files
+// Import your new SVG files
 import pro1 from '../../assets/pro-1.svg';
 import pro2 from '../../assets/pro-2.svg';
 import pro3 from '../../assets/pro-3.svg';
@@ -17,6 +19,8 @@ const projectImages = {
   'inventory-app.png': inventoryApp,
   'weather-app.png': weatherApp,
   'portfolio.png': portfolio,
+  // 2. Add your new image to the mapping
+  'inventory.png': inventoryProject, 
 };
 
 const cardColors = [
@@ -29,7 +33,6 @@ const cardColors = [
   { bg: "#d38ca2", text: "#f1f1f1" },
 ];
 
-// 2. Create an array for the decorative SVGs
 const cardSvgs = [pro1, pro2, pro3];
 
 const Projects = () => {
@@ -80,13 +83,16 @@ const Projects = () => {
       window.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();
     };
-  }, []);
+  }, []); // The dependency array is empty, which is correct here.
+
+  // 3. The 'newProject' object and 'allProjects' array are no longer needed here.
 
   return (
     <section className="projects-section" ref={sectionRef}>
       <br />
       <h1 className="project-title">Projects</h1>
       <div className="projects-container">
+        {/* 4. Map over 'projectData' directly */}
         {projectData.map((project, i) => (
           <div
             className="project-card"

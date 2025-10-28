@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from 'split-type';
-import bgImage from "../../assets/bg-m.png";
-import bgDark from "../../assets/bg-m-dark.png";
+import bgImage from "../../assets/main-home2.png";
+import bgDark from "../../assets/main-home.png";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import GsapAnimation from "../../components/Animation/Gsap";
 
-gsap.registerPlugin(ScrollTrigger); 
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
@@ -30,7 +30,7 @@ const Home = () => {
         scrollTrigger: {
           trigger: subtitleRef.current,
           start: "top 85%",
-          toggleActions: "play none none none", 
+          toggleActions: "play none none none",
         },
       });
 
@@ -40,10 +40,10 @@ const Home = () => {
     }, subtitleRef);
 
     return () => ctx.revert();
-  }, []); 
+  }, []);
 
   document.documentElement.style.setProperty("--bg-image-url", `url(${backgroundImageUrl})`);
-  const rgbValue = theme === "dark" ? "26, 26, 46" : "247, 247, 247";
+  const rgbValue = theme === "dark" ? "6, 6, 6" : "547, 547, 547";
   document.documentElement.style.setProperty("--bg-gradient-rgb", rgbValue);
 
   const title = "COMPILE CUP";
@@ -87,8 +87,8 @@ const Home = () => {
           <GsapAnimation type="fade-up" delay={0.2}>
             <h1 className="home-tagline">
               <span className="word">Code</span>
-              <span className="word"><span className="superscript">Crafted</span></span>
-              <span className="word"><span className="superscript">Visions</span></span>
+              <span className="word"><span className="superscrit">Crafted</span></span>
+              <span className="word"><span className="superscrit">Visions</span></span>
               <span className="word">Launched</span>
             </h1>
           </GsapAnimation>
